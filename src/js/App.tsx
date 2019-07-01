@@ -1,17 +1,20 @@
 import React from 'react';
 import '../css/index.scss';
 import FormView from './FormView/FormView';
+import FormProvider from './context/FormContext';
 
 const App: React.FC = () => {
     return (
+      <FormProvider>
         <div className="App">
-          <header className="App-header">
+          <header className="app-header">
             Header
           </header>
           <section>
             <FormView />
           </section>
         </div>
+      </FormProvider>
     );
 }
 

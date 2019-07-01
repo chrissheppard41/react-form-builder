@@ -1,15 +1,18 @@
+@import './mixins/reset.scss';
+@import './mixins/mixins.scss';
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    @include box-sizing(border-box);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-@import './App.scss';
+@import './styles/App.scss';
+@import './styles/FormView.scss';
+@import './styles/Panels.scss';
+@import './styles/Containers.scss';
