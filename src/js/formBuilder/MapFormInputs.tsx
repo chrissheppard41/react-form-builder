@@ -1,20 +1,39 @@
 import React, { Fragment } from 'react';
-
-type Props = {
-    inputs: {
-        [id: string] : any,
-    },
-}
+import ClassificationInputs from '../constants/ClassificationInputs';
+import {inputType} from '../types/inputType';
+import {IInputSet} from '../Interfaces/inputSet';
 
 const MapFormInputs = ({
     inputs,
-}: Props) => 
-    <Fragment>
-        {Object.keys(inputs).map(({parentClassName}: any, key) => 
-            <div key={key} className={parentClassName}>
-                hello
-            </div>
-        )}
-    </Fragment>
+}: IInputSet) => 
+    <form>
+        {Object.keys(inputs).map((index: string, key: number) => {
+            const {
+                parentClassName,
+                type,
+                label,
+                inputId,
+                inputName,
+                inputValue,
+                inputClassName,
+            }: inputType = inputs[index];
+
+            return <div key={key} className={`inputContainer ${parentClassName}`}>
+                {(ClassificationInputs.TEXT === type ||
+                ClassificationInputs.EMAIL === type) && (
+                    <Fragment>
+                        <label htmlFor={inputName}>{label}</label>
+                        <input 
+                            type={type}
+                            id={inputId}
+                            name={inputName}
+                            value={inputValue}
+                            className={inputClassName}
+                        />
+                    </Fragment>
+                )}
+            </div>;
+        })}
+    </form>
         
 export default MapFormInputs;

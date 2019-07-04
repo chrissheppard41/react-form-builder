@@ -1,4 +1,5 @@
 import React from 'react';
+import ClassificationPanel from '../constants/ClassificationPanel';
 
 // this is the equivalent to the createStore method of Redux
 // https://redux.js.org/api/createstore
@@ -76,7 +77,7 @@ class FormProvider extends React.Component<Props, State> {
                     },
                     editInput: (id: string) => {
                         this.setState({
-                            panel: 'textPanel', 
+                            panel: ClassificationPanel.TEXTPANEL, 
                             panelData: {
                                 id,
                             }   

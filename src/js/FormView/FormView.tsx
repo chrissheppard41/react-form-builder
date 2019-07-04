@@ -23,6 +23,8 @@ class FormView extends React.Component<Props> {
             deleteInput,
         } = this.props;
 
+        console.log('inputs', inputs);
+
         return (
             <div className="formView-container">
                 <div className="formView-builder">

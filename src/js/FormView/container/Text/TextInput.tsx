@@ -1,5 +1,6 @@
-import React from 'react'
-import { useDrag } from 'react-dnd'
+import React from 'react';
+import { useDrag } from 'react-dnd';
+import ClassificationInputs from '../../../constants/ClassificationInputs';
 
 export interface BoxProps {
   name: string,
@@ -19,7 +20,7 @@ const TextInput = ({name, addInput, className}: any) => {
   const [{ opacity }, drag] = useDrag({
     item,
     end(/*dropResult?: DropResult*/) {
-      addInput({type: 'text', label: 'text input'});
+      addInput({type: ClassificationInputs.TEXT, label: 'text input'});
     },
     collect: (monitor: any) => ({
       opacity: monitor.isDragging() ? 0.4 : 1,

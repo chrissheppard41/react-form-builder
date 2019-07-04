@@ -1,28 +1,21 @@
 import React, {useState} from 'react';
-
-type Props = {
-    label: string,
-    className: string,
-    name: string,
-    value: string,
-    options: Array<string>,
-};
+import {selectType} from '../../types/inputType';
 
 const Select = ({
     label,
-    className,
-    name,
-    value,
-    options,
-}: Props) => {
-    const [val, setVal] = useState(value);
+    inputName,
+    inputValue,
+    inputClassName,
+    options
+}: selectType) => {
+    const [val, setVal] = useState(inputValue);
   
     return (
         <div className="selectInput">
-            <label htmlFor={name}>{label}</label>
+            <label htmlFor={inputName}>{label}</label>
             <select 
-                id={name}
-                className={`${name} ${className}`}
+                id={inputName}
+                className={`${inputName} ${inputClassName}`}
                 onChange={e => setVal(e.target.value)}
                 value={val}
             >
@@ -33,5 +26,10 @@ const Select = ({
         </div>
     );
 }
+
+Select.defaultProps = {
+    inputValue: '',
+    inputClassName: '',
+};
 
 export default Select;

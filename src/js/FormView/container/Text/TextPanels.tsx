@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import Panel from '../../Panel';
-import Text from '../../Panel/Text';
-import Select from '../../Panel/Select';
+import Text from '../../../formBuilder/elements/Text';
+import Select from '../../../formBuilder/elements/Select';
+import ClassificationInputs from '../../../constants/ClassificationInputs';
+import ClassificationPanel from '../../../constants/ClassificationPanel';
 
 type Props = {
     panel: string,
@@ -12,56 +14,62 @@ type Props = {
 const TextPanel = ({panel, save, panelData}: Props): any => {
     return (
         <Fragment>
-            {panel === 'textPanel' &&
+            {panel === ClassificationPanel.TEXTPANEL &&
                 <Panel
                     title="Text input panel"
                     submit={save}
                     id={panelData.id}
                 >
                     <Select 
-                        label="Enter label"
-                        className="select"
-                        name="type"
-                        value={panelData.type}
+                        label="Enter type"
+                        inputClassName="select"
+                        inputName="type"
+                        inputValue={panelData.type}
                         options={[
-                            'text', 'email'
+                            ClassificationInputs.TEXT, ClassificationInputs.EMAIL
                         ]}
                     />
                     <Text 
                         label="Enter label"
-                        className="text"
-                        name="label"
-                        value={panelData.label}
+                        type="text"
+                        inputValue={panelData.label}
+                        inputClassName="text"
+                        inputName="label"
                     />
                     <Text 
                         label="Enter id"
-                        className="text"
-                        name="inputId"
-                        value={panelData.inputId}
+                        type="text"
+                        inputClassName="text"
+                        inputName="inputId"
+                        inputValue={panelData.inputId}
                     />
                     <Text 
                         label="Enter name"
-                        className="text"
-                        name="inputName"
-                        value={panelData.inputName}
+                        type="text"
+                        inputClassName="text"
+                        inputName="inputName"
+                        inputValue={panelData.inputName}
                     />
                     <Text 
                         label="Enter default value"
-                        className="text"
-                        name="inputValue"
-                        value={panelData.inputValue}
+                        type="text"
+                        inputClassName="text"
+                        inputName="inputValue"
+                        inputValue={panelData.inputValue}
                     />
                     <Text 
                         label="Enter parent class name"
-                        className="text"
-                        name="parentClassName"
-                        value={panelData.parentClassName}
+                        type="text"
+                        inputClassName="text"
+                        inputName="parentClassName"
+                        inputValue={panelData.parentClassName}
                     />
                     <Text 
                         label="Enter input class name"
-                        className="text"
-                        name="inputClassName"
-                        value={panelData.inputClassName}
+                        type="text"
+                        inputClassName="text"
+                        inputName="inputClassName"
+                        inputValue={panelData.inputClassName}
                     />
                 </Panel>}
         </Fragment>
