@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Panel from '../../Panel';
 import Text from '../../../formBuilder/elements/Text';
 import Select from '../../../formBuilder/elements/Select';
+import Required from '../validation/required/Required';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 
@@ -20,13 +21,17 @@ const TextPanel = ({panel, save, panelData}: Props): any => {
                     submit={save}
                     id={panelData.id}
                 >
+                    <h5>Input fields</h5>
                     <Select 
                         label="Enter type"
                         inputClassName="select"
+                        id="type"
                         inputName="type"
                         inputValue={panelData.type}
                         options={[
-                            ClassificationInputs.TEXT, ClassificationInputs.EMAIL
+                            ClassificationInputs.TEXT, 
+                            ClassificationInputs.EMAIL, 
+                            ClassificationInputs.NUMBER
                         ]}
                     />
                     <Text 
@@ -35,13 +40,6 @@ const TextPanel = ({panel, save, panelData}: Props): any => {
                         inputValue={panelData.label}
                         inputClassName="text"
                         inputName="label"
-                    />
-                    <Text 
-                        label="Enter id"
-                        type="text"
-                        inputClassName="text"
-                        inputName="inputId"
-                        inputValue={panelData.inputId}
                     />
                     <Text 
                         label="Enter name"
@@ -71,6 +69,12 @@ const TextPanel = ({panel, save, panelData}: Props): any => {
                         inputName="inputClassName"
                         inputValue={panelData.inputClassName}
                     />
+                    <div className="validation">
+                        <h5>Validation rules</h5>
+                        <Required 
+                            validation={panelData.validation}
+                        />
+                    </div>
                 </Panel>}
         </Fragment>
     );

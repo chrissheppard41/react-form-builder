@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import ClassificationInputs from '../constants/ClassificationInputs';
 import {inputType} from '../types/inputType';
 import {IInputSet} from '../Interfaces/inputSet';
+import Text from './elements/Text';
 
 const MapFormInputs = ({
     inputs,
@@ -12,23 +13,25 @@ const MapFormInputs = ({
                 parentClassName,
                 type,
                 label,
-                inputId,
                 inputName,
                 inputValue,
                 inputClassName,
+                validation,
             }: inputType = inputs[index];
 
             return <div key={key} className={`inputContainer ${parentClassName}`}>
                 {(ClassificationInputs.TEXT === type ||
-                ClassificationInputs.EMAIL === type) && (
+                ClassificationInputs.EMAIL === type ||
+                ClassificationInputs.NUMBER === type) && (
                     <Fragment>
-                        <label htmlFor={inputName}>{label}</label>
-                        <input 
+                        <Text 
+                            label={label}
                             type={type}
-                            id={inputId}
-                            name={inputName}
-                            value={inputValue}
-                            className={inputClassName}
+                            id={key.toString()}
+                            inputName={inputName}
+                            inputValue={inputValue}
+                            inputClassName={inputClassName}
+                            validation={validation}
                         />
                     </Fragment>
                 )}

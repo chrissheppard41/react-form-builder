@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {inputType} from '../../types/inputType';
+import ValidationRules from '../ValidationRules';
 
 const Text = ({
     label,
     type,
-    inputId,
+    id,
     inputName,
     inputValue,
-    inputClassName
+    inputClassName,
+    validation
 }: inputType) => {
     const [val, setVal] = useState(inputValue);
   
@@ -15,21 +17,25 @@ const Text = ({
         <div className="textInput">
             <label htmlFor={inputName}>{label}</label>
             <input
-                type={type} 
-                name={inputName} 
+                type={type}
+                name={inputName}
                 className={inputClassName}
-                id={inputId}
+                id={id}
                 value={val}
                 onChange={e => setVal(e.target.value)}
+            />
+            <ValidationRules 
+                validation={validation}
             />
         </div>
     );
 }
 
 Text.defaultProps = {
-    inputId: '',
+    id: '',
     inputValue: '',
     inputClassName: '',
+    validation: {},
 };
 
 export default Text;

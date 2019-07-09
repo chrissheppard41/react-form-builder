@@ -5,6 +5,7 @@ const Select = ({
     label,
     inputName,
     inputValue,
+    id,
     inputClassName,
     options
 }: selectType) => {
@@ -14,7 +15,7 @@ const Select = ({
         <div className="selectInput">
             <label htmlFor={inputName}>{label}</label>
             <select 
-                id={inputName}
+                id={id}
                 className={`${inputName} ${inputClassName}`}
                 onChange={e => setVal(e.target.value)}
                 value={val}
@@ -28,8 +29,10 @@ const Select = ({
 }
 
 Select.defaultProps = {
+    id: '',
     inputValue: '',
     inputClassName: '',
+    validation: {},
 };
 
 export default Select;

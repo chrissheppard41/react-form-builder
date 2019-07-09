@@ -20,7 +20,7 @@ const TextInput = ({name, addInput, className}: any) => {
   const [{ opacity }, drag] = useDrag({
     item,
     end(/*dropResult?: DropResult*/) {
-      addInput({type: ClassificationInputs.TEXT, label: 'text input'});
+      addInput({type: ClassificationInputs.TEXT, label: 'text input', validation: {}});
     },
     collect: (monitor: any) => ({
       opacity: monitor.isDragging() ? 0.4 : 1,

@@ -27,7 +27,6 @@ type State = {
 interface IInputs {
     id: string,
     type: string,
-    inputId: string,
     inputName: string,
     label: string,
     inputValue: string,
