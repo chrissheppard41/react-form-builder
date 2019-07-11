@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {inputType} from '../../types/inputType';
 import ValidationRules from '../ValidationRules';
+import useValidationRequire from '../../hooks/useValidationRequire';
 
 const Text = ({
     label,
@@ -12,7 +13,8 @@ const Text = ({
     validation
 }: inputType) => {
     const [val, setVal] = useState(inputValue);
-  
+    const {message, require} = useValidationRequire(validation, val);
+
     return (
         <div className="textInput">
             <label htmlFor={inputName}>{label}</label>
@@ -23,9 +25,10 @@ const Text = ({
                 id={id}
                 value={val}
                 onChange={e => setVal(e.target.value)}
+                required={require}
             />
             <ValidationRules 
-                validation={validation}
+                validation={[message]}
             />
         </div>
     );

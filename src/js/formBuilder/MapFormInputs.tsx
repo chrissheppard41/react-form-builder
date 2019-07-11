@@ -4,9 +4,9 @@ import {inputType} from '../types/inputType';
 import {IInputSet} from '../Interfaces/inputSet';
 import Text from './elements/Text';
 
-const MapFormInputs = ({
-    inputs,
-}: IInputSet) => 
+const MapFormInputs = (
+    {inputs}: IInputSet,
+) => 
     <form>
         {Object.keys(inputs).map((index: string, key: number) => {
             const {

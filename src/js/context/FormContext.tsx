@@ -4,7 +4,7 @@ import ClassificationPanel from '../constants/ClassificationPanel';
 // this is the equivalent to the createStore method of Redux
 // https://redux.js.org/api/createstore
 
-const FormContext = React.createContext({});
+export const FormContext = React.createContext({});
 
 type Props = {
     children: any,
@@ -22,6 +22,7 @@ type State = {
     panelData: {
         id: string,
     },
+    validation: boolean,
 };
 
 interface IInputs {
@@ -49,6 +50,7 @@ class FormProvider extends React.Component<Props, State> {
         inputs: {},
         panel: "",
         panelData: {id: ""},
+        validation: false
     };
 
     render() {

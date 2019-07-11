@@ -9,6 +9,7 @@ type Props = {
     inputs: any,
     deleteInput: (id: string) => void,
     editInput: (id: string) => void,
+    setValidation: (validation: boolean) => void,
 }
 
 class FormView extends React.Component<Props> {
