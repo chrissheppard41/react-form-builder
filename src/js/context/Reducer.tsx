@@ -1,10 +1,17 @@
 import ClassificationPanel from '../constants/ClassificationPanel';
 import Actions from '../constants/Actions';
 
+type InputType = {
+    inputName: string,
+    validation: {
+        error: boolean,
+        mesage: string,
+        enable: boolean,
+    }
+};
+
 interface IIndivualInput {
-    [id: string]: {
-        inputName: string,
-    },
+    [id: string]: InputType,
 }
 
 type Props = {
@@ -13,15 +20,21 @@ type Props = {
     panelData: {
         id: string,
     },
-    validation: boolean,
 };
 
 export const initialState: Props = {
     inputs: {},
     panel: "",
-    panelData: {id: ""},
-    validation: false
+    panelData: {id: ""}
 };
+
+const validationRules = (input: any, validationType: string, error: boolean) => ({
+    ...input.validation,
+    [validationType]: {
+        ...input.validation[validationType],
+        error
+    }
+});
 
 const uuidv4 = () => {
     const s4 = () =>  {
@@ -84,6 +97,18 @@ export default (state: any, action: any) => {
             inputs: {
                 ...state.inputs,
                 [state.panelData.id]: action.payload.data,
+            }
+        };
+
+    case Actions.SET_FORM_INPUT_ERROR:
+        return {
+            ...state,
+            inputs: {
+                ...state.inputs,
+                [action.payload.id]: {
+                    ...state.inputs[action.payload.id],
+                    validation: validationRules(state.inputs[action.payload.id], action.payload.validationType, action.payload.error)
+                },
             }
         };
         

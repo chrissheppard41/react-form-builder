@@ -27,7 +27,7 @@ const MapFormInputs = (
                         <Text 
                             label={label}
                             type={type}
-                            id={key.toString()}
+                            id={index}
                             inputName={inputName}
                             inputValue={inputValue}
                             inputClassName={inputClassName}

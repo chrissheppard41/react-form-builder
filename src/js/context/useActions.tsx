@@ -33,12 +33,22 @@ export default (state: any, dispatch: any) => {
         }
     });
 
+    const validation = (id: string, validationType: string, error: boolean) => dispatch({
+        type: Actions.SET_FORM_INPUT_ERROR,
+        payload: {
+            id,
+            validationType,
+            error,
+        }
+    });
+
     return {
         addInput,
         save,
         editInput,
         deleteInput,
         clearPanel,
-        setPanel
+        setPanel,
+        validation
     };
 };

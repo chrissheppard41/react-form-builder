@@ -6,5 +6,6 @@ export default KeyMappings([
     'CLEAR_PANEL',
     'EDIT_PANEL',
     'DELETE_INPUT',
-    'SAVE'
+    'SAVE',
+    'SET_FORM_INPUT_ERROR'
 ]);

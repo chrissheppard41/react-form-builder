@@ -13,7 +13,7 @@ const Text = ({
     validation
 }: inputType) => {
     const [val, setVal] = useState(inputValue);
-    const {message, require} = useValidationRequire(validation, val);
+    const {message, require} = useValidationRequire(validation, val, id);
 
     return (
         <div className="textInput">
