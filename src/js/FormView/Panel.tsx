@@ -1,13 +1,12 @@
 import React from 'react';
-import {FormConsumer} from '../context/FormContext';
 
 type Props = {
     children: Array<React.ReactNode>,
     title: string,
-    submit: (data: any) => void,
-    setPanel: (panelName: string) => void,
-    clearPanel: () => void,
     id: string,
+    submit: (data: any) => void,
+    clearPanel: () => void,
+    setPanel: (name: string) => void,
 }
 
 class Panel extends React.Component<Props> {
@@ -19,12 +18,11 @@ class Panel extends React.Component<Props> {
 
     submit = (event: any) => {
         event.preventDefault();
-        
         const {
-            clearPanel,
             submit,
+            clearPanel,
         } = this.props;
-
+        
         let formData = {validation: {}};
         
         for(const field in event.target){
@@ -64,8 +62,8 @@ class Panel extends React.Component<Props> {
         const {
             children,
             title,
-            setPanel,
             id,
+            setPanel,
         } = this.props;
 
         return (
@@ -94,4 +92,4 @@ class Panel extends React.Component<Props> {
 
 }
 
-export default FormConsumer(Panel);
+export default Panel;

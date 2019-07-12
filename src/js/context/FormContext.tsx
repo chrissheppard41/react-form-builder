@@ -1,121 +1,24 @@
-import React from 'react';
-import ClassificationPanel from '../constants/ClassificationPanel';
+import React, {createContext, useReducer, useContext} from 'react';
+import useActions from '../context/useActions';
+import Reducer, {initialState} from './Reducer';
 
-// this is the equivalent to the createStore method of Redux
-// https://redux.js.org/api/createstore
-
-export const FormContext = React.createContext({});
+export const FormContext = createContext({});
 
 type Props = {
     children: any,
 };
 
-interface IIndivualInput {
-    [id: string]: {
-        inputName: string,
-    },
-}
+const FormProvider = ({children}: Props) => {
+    const [state, dispatch]: any = useReducer(Reducer, initialState);
+    const actions = useActions(state, dispatch);
 
-type State = {
-    inputs: IIndivualInput,
-    panel: string,
-    panelData: {
-        id: string,
-    },
-    validation: boolean,
+    return (
+    <FormContext.Provider value={{state, dispatch, actions}}>
+      {children}
+    </FormContext.Provider>
+  )
 };
-
-interface IInputs {
-    id: string,
-    type: string,
-    inputName: string,
-    label: string,
-    inputValue: string,
-    parentClassName: string,
-    inputClassName: string,
-}
-
-function uuidv4() {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-}
-
-class FormProvider extends React.Component<Props, State> {
-    state: State = {
-        inputs: {},
-        panel: "",
-        panelData: {id: ""},
-        validation: false
-    };
-
-    render() {
-        return (
-            <FormContext.Provider
-                value={{
-                    addInput: (InputData: IInputs) => {
-                        const id = uuidv4();
-                        this.setState({
-                            inputs: {
-                                ...this.state.inputs,
-                                [id]: {
-                                    id,
-                                    ...InputData,
-                                },
-                            },
-                        });
-                    },
-                    setPanel: (panelName: string) => {this.setState({panel: panelName})},
-                    clearPanel: () => {
-                        this.setState({
-                            panel: '', 
-                            panelData: {id: ''},
-                        });
-                    },
-                    editInput: (id: string) => {
-                        this.setState({
-                            panel: ClassificationPanel.TEXTPANEL, 
-                            panelData: {
-                                id,
-                            }   
-                        });
-                    },
-                    deleteInput: (id: string) => {
-                        delete this.state.inputs[id];
-                        this.setState({
-                            inputs: this.state.inputs,
-                        });
-                    },
-                    save: (data: any) => {
-                        this.setState({
-                            inputs: {
-                                ...this.state.inputs,
-                                [this.state.panelData.id]: data,
-                            }
-                        });
-                    },
-                    ...this.state,
-                }}
-            >
-                {this.props.children}
-            </FormContext.Provider>
-        );
-    }
-}
 
 export default FormProvider;
 
-export const FormConsumer = (Component: any): any => 
-    class extends React.Component<any, any> {
-        render() { 
-            return(<FormContext.Consumer>
-                {(context: any) => (
-                    <Component {...this.props} {...context} />
-                )}
-            </FormContext.Consumer>)
-        }
-    };
+export const useStateValue = () => useContext(FormContext);

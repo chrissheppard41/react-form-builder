@@ -5,21 +5,25 @@ import Select from '../../../formBuilder/elements/Select';
 import Required from '../validation/required/Required';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
+import {useStateValue} from '../../../context/FormContext';
 
 type Props = {
     panel: string,
-    save: (data: any) => void,
     panelData: any,
 };
 
-const TextPanel = ({panel, save, panelData}: Props): any => {
+const TextPanel = ({panel, panelData}: Props): any => {
+    const {actions}: any = useStateValue();
+
     return (
         <Fragment>
             {panel === ClassificationPanel.TEXTPANEL &&
                 <Panel
                     title="Text input panel"
-                    submit={save}
                     id={panelData.id}
+                    submit={actions.save}
+                    clearPanel={actions.clearPanel}
+                    setPanel={actions.setPanel}
                 >
                     <h5>Input fields</h5>
                     <Select 
