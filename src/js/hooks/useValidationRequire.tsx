@@ -19,13 +19,9 @@ const useValidationRequire = (
 
     if (!value) {
       message = validation.required.message;
-      if (validation.required.error === 'false' || !validation.required.error) {
-        actions.validation(id, 'required', true);
-      }
+      actions.addValidation(id, 'required');
     } else {
-      if (validation.required.error) {
-        actions.validation(id, 'required', false);
-      }
+      actions.removeValidation(id, 'required');
     }
   }
 

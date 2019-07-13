@@ -30,6 +30,7 @@ const FormView = () => {
             <div className="formBuilder">
                 <FormBuilderView 
                     inputs={state.inputs}
+                    validation={state.validation}
                 >
                 </FormBuilderView>
             </div>

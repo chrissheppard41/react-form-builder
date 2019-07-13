@@ -20,21 +20,17 @@ type Props = {
     panelData: {
         id: string,
     },
+    validation: {
+        [id: string]: Array<string>,
+    }
 };
 
 export const initialState: Props = {
     inputs: {},
     panel: "",
-    panelData: {id: ""}
+    panelData: {id: ""},
+    validation: {}
 };
-
-const validationRules = (input: any, validationType: string, error: boolean) => ({
-    ...input.validation,
-    [validationType]: {
-        ...input.validation[validationType],
-        error
-    }
-});
 
 const uuidv4 = () => {
     const s4 = () =>  {
@@ -103,12 +99,26 @@ export default (state: any, action: any) => {
     case Actions.SET_FORM_INPUT_ERROR:
         return {
             ...state,
-            inputs: {
-                ...state.inputs,
-                [action.payload.id]: {
-                    ...state.inputs[action.payload.id],
-                    validation: validationRules(state.inputs[action.payload.id], action.payload.validationType, action.payload.error)
-                },
+            validation: {
+                ...state.validation,
+                [action.payload.id]: [
+                    ...state.validation[action.payload.id] 
+                        ? state.validation[action.payload.id]
+                        : [],
+                    action.payload.validationRule
+                ],
+            }
+        };
+
+    case Actions.REMOVE_FORM_INPUT:
+        return {
+            ...state,
+            validation: {
+                ...state.validation,
+                [action.payload.id]: 
+                    state.validation[action.payload.id].filter((validationRule: string) => 
+                        validationRule !== action.payload.validationRule
+                    ),
             }
         };
         

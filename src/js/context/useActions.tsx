@@ -33,14 +33,29 @@ export default (state: any, dispatch: any) => {
         }
     });
 
-    const validation = (id: string, validationType: string, error: boolean) => dispatch({
-        type: Actions.SET_FORM_INPUT_ERROR,
-        payload: {
-            id,
-            validationType,
-            error,
+    const addValidation = (id: string, validationRule: string) => {
+      if (!state.validation[id] || !state.validation[id].includes(validationRule)) {
+        return dispatch({
+            type: Actions.SET_FORM_INPUT_ERROR,
+            payload: {
+                id,
+                validationRule,
+            }
+        });
+      }
+    };
+
+    const removeValidation = (id: string, validationRule: string) => {
+        if (state.validation[id] && state.validation[id].includes(validationRule)) {
+            return dispatch({
+                type: Actions.REMOVE_FORM_INPUT,
+                payload: {
+                    id,
+                    validationRule,
+                }
+            });
         }
-    });
+    };
 
     return {
         addInput,
@@ -49,6 +64,7 @@ export default (state: any, dispatch: any) => {
         deleteInput,
         clearPanel,
         setPanel,
-        validation
+        addValidation,
+        removeValidation
     };
 };
