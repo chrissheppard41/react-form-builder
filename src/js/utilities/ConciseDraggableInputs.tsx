@@ -5,7 +5,7 @@ export default (ComponentList: ComponentListType) => {
     
     return Object.keys(ComponentList).filter((key: any) => {
         const Component: any = ComponentList[key];
-    
+
         if(filterArray.includes(Component.Input.name)) {
             return false;
         }

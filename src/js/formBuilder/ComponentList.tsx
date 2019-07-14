@@ -1,8 +1,9 @@
 import Text from './elements/Text';
 import TextContainer from '../FormView/container/Text/TextContainer';
 import ClassificationInputs from '../constants/ClassificationInputs';
+import {ComponentListType} from '../types/ComponentListType';
 
-export default {
+const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
         Input: Text,
         Panel: TextContainer
@@ -16,3 +17,5 @@ export default {
         Panel: TextContainer
     }
 };
+
+export default Components;

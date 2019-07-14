@@ -1,3 +1,6 @@
 export type ComponentListType = {
-    [key: string]: any,
+    [key: string]: {
+        Input: any,
+        Panel: any,
+    },
 };

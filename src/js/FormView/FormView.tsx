@@ -22,6 +22,11 @@ const FormView = ({customComponents}: Props) => {
                     {ConsiseFraggableInputs(ComponentList).map((key: string) => {
                         const Component = ComponentList[key];
 
+                        if (!Component.Panel) {
+                            console.error(`Component ${key}: No panel Provided in object`);
+                            return null;
+                        }
+
                         return <Component.Panel key={key} />;
                     })}
                 </div>
