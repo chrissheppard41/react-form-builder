@@ -11,7 +11,9 @@ const App: React.FC = () => {
             Header
           </header>
           <section>
-            <FormView />
+            <FormView 
+              customComponents={{}}
+            />
           </section>
         </div>
       </FormProvider>

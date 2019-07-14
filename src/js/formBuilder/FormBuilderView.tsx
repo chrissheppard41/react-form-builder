@@ -1,5 +1,7 @@
 import React from 'react';
 import MapFormInputs from './MapFormInputs';
+import ComponentList from './ComponentList';
+import {ComponentListType} from '../types/ComponentListType';
 
 type Props = {
     children: Array<React.ReactNode>,
@@ -9,6 +11,7 @@ type Props = {
     validation: {
         [id: string] : Array<string>,
     },
+    customComponents: ComponentListType
 }
 
 type State = {
@@ -23,6 +26,7 @@ class FormBuilderView extends React.Component<Props, State> {
             error: false,
         };
     }
+
     anyErrors = () => {
         const {
             validation,
@@ -50,6 +54,7 @@ class FormBuilderView extends React.Component<Props, State> {
             children,
             inputs,
             validation,
+            customComponents,
         } = this.props;
         const {error} = this.state;
 
@@ -61,6 +66,7 @@ class FormBuilderView extends React.Component<Props, State> {
                     submit={this.submit}
                     error={error}
                     validation={validation}
+                    componentList={{...customComponents, ...ComponentList}}
                 />
             </div>
         );

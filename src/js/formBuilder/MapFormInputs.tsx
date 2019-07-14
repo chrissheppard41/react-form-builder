@@ -1,9 +1,8 @@
 import React from 'react';
-import ClassificationInputs from '../constants/ClassificationInputs';
 import {inputType} from '../types/inputType';
 import {inputRow} from '../Interfaces/inputSet';
-import Text from './elements/Text';
 import {ValidationType} from '../types/validationType';
+import {ComponentListType} from '../types/ComponentListType';
 import InputFormContainer from './InputFormContainer';
 
 interface Props {
@@ -11,10 +10,11 @@ interface Props {
     submit: (e: any) => void,
     error: boolean,
     validation: ValidationType,
+    componentList: ComponentListType
 };
 
 const MapFormInputs = (
-    {inputs, submit, error, validation}: Props,
+    {inputs, submit, error, validation, componentList}: Props,
 ) => 
     <form name="formBuilder" className={(error) ? 'error' : ''}>
         {Object.keys(inputs).map((index: string, key: number) => {
@@ -22,20 +22,21 @@ const MapFormInputs = (
                 parentClassName,
                 type,
             }: inputType = inputs[index];
+            const Component = componentList[type];
 
-            return <InputFormContainer 
+            if (Component === undefined) {
+                return <div>Error adding component</div>;
+            }
+
+            return <InputFormContainer
                 key={key} 
                 classes={parentClassName || ''}
                 validation={validation[index] || []}
             >
-                {(ClassificationInputs.TEXT === type ||
-                ClassificationInputs.EMAIL === type ||
-                ClassificationInputs.NUMBER === type) && (
-                    <Text
-                        id={index}
-                        {...inputs[index]}
-                    />
-                )}
+                <Component.Input
+                    id={index}
+                    {...inputs[index]}
+                />
             </InputFormContainer>;
         })}
         <input type="submit" value="Submit" onClick={submit} />

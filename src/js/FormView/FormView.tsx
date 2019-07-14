@@ -1,11 +1,17 @@
 import React from 'react';
 import Dropzone from './Dropzone';
-import TextContainer from './container/Text/TextContainer';
 import Inputs from './Inputs';
 import FormBuilderView from '../formBuilder/FormBuilderView';
 import {useStateValue} from '../context/FormContext';
+import {ComponentListType} from '../types/ComponentListType';
+import ComponentList from '../formBuilder/ComponentList';
+import ConsiseFraggableInputs from '../utilities/ConciseDraggableInputs';
 
-const FormView = () => {
+type Props = {
+    customComponents: ComponentListType,
+};
+
+const FormView = ({customComponents}: Props) => {
     const {state}: any = useStateValue();
 
     return (
@@ -13,7 +19,11 @@ const FormView = () => {
             <div className="formView-builder">
                 <div className="formView-draggable">
                     <h3>Dragable component</h3>
-                    <TextContainer name="Test Input text" />
+                    {ConsiseFraggableInputs(ComponentList).map((key: string) => {
+                        const Component = ComponentList[key];
+
+                        return <Component.Panel key={key} />;
+                    })}
                 </div>
                 <div className="formView-dropable">
                     <h3>Drop component</h3>
@@ -31,6 +41,7 @@ const FormView = () => {
                 <FormBuilderView 
                     inputs={state.inputs}
                     validation={state.validation}
+                    customComponents={customComponents}
                 >
                 </FormBuilderView>
             </div>
