@@ -2,6 +2,21 @@ import React, {useState} from 'react';
 import {inputType} from '../../types/inputType';
 import ValidationRules from '../ValidationRules';
 import useValidationRequire from '../../hooks/useValidationRequire';
+import styled from 'styled-components';
+
+const Div = styled.div`
+  width: 100%;
+`;
+const Label = styled.label`
+  width: 100%;
+  margin: 6px 0;
+  display: block;
+`;
+const Input = styled.input`
+  width: 60%;
+  margin: 6px 0;
+  display: block;
+`;
 
 const Text = ({
     label,
@@ -16,9 +31,9 @@ const Text = ({
     const {message, require} = useValidationRequire(validation, val, id);
 
     return (
-        <div className="textInput">
-            <label htmlFor={inputName}>{label}</label>
-            <input
+        <Div className="textInput">
+            <Label htmlFor={inputName}>{label}</Label>
+            <Input
                 type={type}
                 name={inputName}
                 className={inputClassName}
@@ -30,7 +45,7 @@ const Text = ({
             <ValidationRules 
                 validation={[message]}
             />
-        </div>
+        </Div>
     );
 }
 

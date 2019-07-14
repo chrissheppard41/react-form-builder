@@ -1,4 +1,5 @@
 import ClassificationPanel from '../constants/ClassificationPanel';
+import {ValidationType} from '../types/validationType';
 import Actions from '../constants/Actions';
 
 type InputType = {
@@ -20,9 +21,7 @@ type Props = {
     panelData: {
         id: string,
     },
-    validation: {
-        [id: string]: Array<string>,
-    }
+    validation: ValidationType
 };
 
 export const initialState: Props = {

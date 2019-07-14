@@ -1,47 +1,42 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ClassificationInputs from '../constants/ClassificationInputs';
 import {inputType} from '../types/inputType';
 import {inputRow} from '../Interfaces/inputSet';
 import Text from './elements/Text';
+import {ValidationType} from '../types/validationType';
+import InputFormContainer from './InputFormContainer';
 
 interface Props {
     inputs: inputRow,
     submit: (e: any) => void,
     error: boolean,
+    validation: ValidationType,
 };
 
 const MapFormInputs = (
-    {inputs, submit, error}: Props,
+    {inputs, submit, error, validation}: Props,
 ) => 
     <form name="formBuilder" className={(error) ? 'error' : ''}>
         {Object.keys(inputs).map((index: string, key: number) => {
             const {
                 parentClassName,
                 type,
-                label,
-                inputName,
-                inputValue,
-                inputClassName,
-                validation,
             }: inputType = inputs[index];
 
-            return <div key={key} className={`inputContainer${parentClassName ? ` ${parentClassName}` : ''}`}>
+            return <InputFormContainer 
+                key={key} 
+                classes={parentClassName || ''}
+                validation={validation[index] || []}
+            >
                 {(ClassificationInputs.TEXT === type ||
                 ClassificationInputs.EMAIL === type ||
                 ClassificationInputs.NUMBER === type) && (
-                    <Fragment>
-                        <Text 
-                            label={label}
-                            type={type}
-                            id={index}
-                            inputName={inputName}
-                            inputValue={inputValue}
-                            inputClassName={inputClassName}
-                            validation={validation}
-                        />
-                    </Fragment>
+                    <Text
+                        id={index}
+                        {...inputs[index]}
+                    />
                 )}
-            </div>;
+            </InputFormContainer>;
         })}
         <input type="submit" value="Submit" onClick={submit} />
     </form>

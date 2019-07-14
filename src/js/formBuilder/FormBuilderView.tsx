@@ -49,6 +49,7 @@ class FormBuilderView extends React.Component<Props, State> {
         const {
             children,
             inputs,
+            validation,
         } = this.props;
         const {error} = this.state;
 
@@ -59,6 +60,7 @@ class FormBuilderView extends React.Component<Props, State> {
                     inputs={inputs}
                     submit={this.submit}
                     error={error}
+                    validation={validation}
                 />
             </div>
         );
