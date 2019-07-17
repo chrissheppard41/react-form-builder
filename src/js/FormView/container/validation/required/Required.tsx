@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState} from 'react';
 import Text from '../../../../formBuilder/elements/Text';
 
 type validation = {
@@ -30,7 +30,7 @@ const Required = ({validation}: Props): any => {
                 defaultChecked={enabled}
             />
             {enabled && 
-            <Fragment>
+            <>
                 <Text 
                     label="Message"
                     type="text"
@@ -46,7 +46,7 @@ const Required = ({validation}: Props): any => {
                     id="error"
                     value="false"
                 />
-            </Fragment>
+            </>
             }
         </div>
     );

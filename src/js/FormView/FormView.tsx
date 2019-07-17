@@ -34,8 +34,9 @@ const FormView = ({customComponents}: Props) => {
                     <h3>Drop component</h3>
                     <Dropzone allowedDropEffect="copy">
                         <ul>
-                            {state.inputs && Object.keys(state.inputs).map((id: string) => <Inputs
-                                key={id}
+                            {state.inputs && Object.keys(state.inputs).map((id: string, key: number) => <Inputs
+                                key={key}
+                                index={key}
                                 inputFields={state.inputs[id]}
                             />)}
                         </ul>

@@ -2,6 +2,7 @@ import KeyMappings from '../utilities/KeyMappings';
 
 export default KeyMappings([
     'ADD_INPUT', 
+    'ALL_INPUT', 
     'SET_PANEL',
     'CLEAR_PANEL',
     'EDIT_PANEL',

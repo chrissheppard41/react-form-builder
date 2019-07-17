@@ -57,6 +57,12 @@ export default (state: any, action: any) => {
             },
         };
 
+    case Actions.ALL_INPUT:
+        return {
+            ...state,
+            inputs: action.payload.InputData,
+        };
+
     case Actions.SET_PANEL:
         return {
             ...state,

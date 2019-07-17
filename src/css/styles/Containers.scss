@@ -6,4 +6,19 @@
     margin-right: 24px;
     margin-bottom: 24px;
     text-align: center;
+    cursor: pointer;
+    position: relative;
+
+    div {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+    }
+}
+
+.form-dropzone {
+    .drag-element {
+        height: 50px;
+        padding: 16px;
+    }
 }
