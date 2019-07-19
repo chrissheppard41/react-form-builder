@@ -7,18 +7,23 @@
     margin-bottom: 24px;
     text-align: center;
     cursor: pointer;
-    position: relative;
+}
 
-    div {
-        position: absolute;
-        top: 2px;
-        right: 5px;
-    }
+.formView-draggable {
+    position: relative;
+    z-index: 501;
 }
 
 .form-dropzone {
     .drag-element {
+        position: relative;
         height: 50px;
         padding: 16px;
+
+        div {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+        }
     }
 }

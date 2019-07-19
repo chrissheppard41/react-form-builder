@@ -1,11 +1,11 @@
 import React from 'react';
 import Dropzone from './Dropzone';
-import Inputs from './Inputs';
+import Draggables from './Draggables';
 import FormBuilderView from '../formBuilder/FormBuilderView';
 import {useStateValue} from '../context/FormContext';
-import {ComponentListType} from '../types/ComponentListType';
 import ComponentList from '../formBuilder/ComponentList';
-import ConsiseFraggableInputs from '../utilities/ConciseDraggableInputs';
+import {ComponentListType} from '../types/ComponentListType';
+import Panels from './Panels';
 
 type Props = {
     customComponents: ComponentListType,
@@ -14,33 +14,32 @@ type Props = {
 const FormView = ({customComponents}: Props) => {
     const {state}: any = useStateValue();
 
+    const componentList = {
+        ...ComponentList,
+        ...customComponents,
+    };
+
     return (
         <div className="formView-container">
             <div className="formView-builder">
-                <div className="formView-draggable">
-                    <h3>Dragable component</h3>
-                    {ConsiseFraggableInputs(ComponentList).map((key: string) => {
-                        const Component = ComponentList[key];
-
-                        if (!Component.Panel) {
-                            console.error(`Component ${key}: No panel Provided in object`);
-                            return null;
-                        }
-
-                        return <Component.Panel key={key} />;
-                    })}
-                </div>
+                <Panels 
+                    componentList={componentList}
+                    state={state}
+                />
+                <Draggables 
+                    classNames="formView-draggable"
+                    componentList={componentList}
+                    connected={state.panelData.id}
+                />
                 <div className="formView-dropable">
                     <h3>Drop component</h3>
-                    <Dropzone allowedDropEffect="copy">
-                        <ul>
-                            {state.inputs && Object.keys(state.inputs).map((id: string, key: number) => <Inputs
-                                key={key}
-                                index={key}
-                                inputFields={state.inputs[id]}
-                            />)}
-                        </ul>
-                    </Dropzone>
+                    <div className="form-dropzone">
+                        <Dropzone
+                            allowedDropEffect="copy"
+                            classNames=""
+                            connected=''
+                        />
+                    </div>
                 </div>
             </div>
             <div className="formBuilder">

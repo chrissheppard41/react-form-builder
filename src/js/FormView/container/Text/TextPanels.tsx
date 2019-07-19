@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Panel from '../../Panel';
 import Text from '../../../formBuilder/elements/Text';
 import Select from '../../../formBuilder/elements/Select';
@@ -16,14 +16,13 @@ const TextPanel = ({panel, panelData}: Props): any => {
     const {actions}: any = useStateValue();
 
     return (
-        <Fragment>
+        <>
             {panel === ClassificationPanel.TEXTPANEL &&
                 <Panel
                     title="Text input panel"
                     id={panelData.id}
                     submit={actions.save}
                     clearPanel={actions.clearPanel}
-                    setPanel={actions.setPanel}
                 >
                     <h5>Input fields</h5>
                     <Select 
@@ -80,7 +79,7 @@ const TextPanel = ({panel, panelData}: Props): any => {
                         />
                     </div>
                 </Panel>}
-        </Fragment>
+        </>
     );
 };
 

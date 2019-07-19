@@ -2,6 +2,12 @@ import React, {useRef} from 'react';
 import {useStateValue} from '../context/FormContext';
 import {useDrag, useDrop} from 'react-dnd';
 import {XYCoord} from 'dnd-core';
+import styled from 'styled-components';
+
+const InputLi = styled.li`
+  width: calc(100% - 6px);
+  margin: 3px;
+`;
 
 interface Props {
     inputFields: any,
@@ -16,10 +22,11 @@ interface DragItem {
 
 const Inputs = ({index, inputFields}: Props) => {
     const {actions}: any = useStateValue();
-    
+    const group = (inputFields.connected) ? inputFields.connected : 'Card';
+
     const ref = useRef<HTMLScriptElement>(null);
     const [{hovered}, drop] = useDrop({
-      accept: 'Card',
+      accept: group,
       hover: (item: DragItem, monitor: any) => {
         if (!ref.current) {return;}
         const dragIndex = item.index;
@@ -49,7 +56,7 @@ const Inputs = ({index, inputFields}: Props) => {
     });
 
     const [{isDragging}, drag] = useDrag({
-        item: {type: 'Card', id: inputFields.id, index, lock: true},
+        item: {type: group, id: inputFields.id, index, lock: true},
         collect: (monitor: any) => ({
           isDragging: monitor.isDragging(),
         }),
@@ -62,13 +69,13 @@ const Inputs = ({index, inputFields}: Props) => {
     
     return (
         //@ts-ignore
-        <li className={`drag-element${isDragging ? ' isDragging' : ''}`} ref={ref} style={{opacity}}>
+        <InputLi className={`drag-element${isDragging ? ' isDragging' : ''}`} ref={ref} style={{opacity}}>
             {inputFields.label}
             <div>
                 <button onClick={() => actions.editInput(inputFields.id)}>Edit</button>
                 <button onClick={() => actions.deleteInput(inputFields.id)}>Delete</button>
             </div>
-        </li>
+        </InputLi>
     );
 };
 

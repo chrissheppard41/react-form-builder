@@ -6,7 +6,6 @@ type Props = {
     id: string,
     submit: (data: any) => void,
     clearPanel: () => void,
-    setPanel: (name: string) => void,
 }
 
 class Panel extends React.Component<Props> {
@@ -63,12 +62,12 @@ class Panel extends React.Component<Props> {
             children,
             title,
             id,
-            setPanel,
+            clearPanel,
         } = this.props;
 
         return (
             <div className="panel-container">
-                <div className="panel-overlay" />
+                <div className="panel-overlay" onClick={() => clearPanel()} />
                 <div className="panel-area">
                     <div className="header">
                         {title}
@@ -81,7 +80,7 @@ class Panel extends React.Component<Props> {
                             <div className="footer">
                                 <input type="hidden" name="id" value={id} />
                                 <button type="submit">Submit</button>
-                                <button onClick={() => setPanel("")}>Cancel</button>
+                                <button onClick={() => clearPanel()}>Cancel</button>
                             </div>
                         </form>
                     </div>

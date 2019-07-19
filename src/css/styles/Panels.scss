@@ -1,10 +1,18 @@
 .panel-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 500;
+
     .panel-overlay {
         width: 100%;
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
+        z-index: 500;
     }
 
     .panel-area {
@@ -14,6 +22,7 @@
         width: 500px;
         height: 100%;
         background-color: #666;
+        z-index: 501;
 
         .header {
             width: 100%;

@@ -3,12 +3,15 @@ import {ValidationType} from '../types/validationType';
 import Actions from '../constants/Actions';
 
 type InputType = {
+    connected: string,
+    id: string,
     inputName: string,
     validation: {
         error: boolean,
         mesage: string,
         enable: boolean,
-    }
+    },
+    inputs: IIndivualInput,
 };
 
 interface IIndivualInput {
@@ -97,7 +100,10 @@ export default (state: any, action: any) => {
             ...state,
             inputs: {
                 ...state.inputs,
-                [state.panelData.id]: action.payload.data,
+                [state.panelData.id]: {
+                    ...state.inputs[state.panelData.id],
+                    ...action.payload.data,
+                },
             }
         };
 
