@@ -1,5 +1,5 @@
 export type inputType = {
-    connected?: string,
+    connected: string,
     parentClassName?: string,
     type: string,
     label: string,

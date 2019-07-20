@@ -2,6 +2,7 @@ import React from 'react';
 import MapFormInputs from './MapFormInputs';
 import ComponentList from './ComponentList';
 import {ComponentListType} from '../types/ComponentListType';
+import {formSubmitType} from '../types/formSubmitType';
 
 type Props = {
     children: Array<React.ReactNode>,
@@ -11,7 +12,8 @@ type Props = {
     validation: {
         [id: string] : Array<string>,
     },
-    customComponents: ComponentListType
+    customComponents: ComponentListType,
+    submitTo: (formData: formSubmitType) => void
 }
 
 type State = {
@@ -47,6 +49,22 @@ class FormBuilderView extends React.Component<Props, State> {
     submit = (e: any) => {
         e.preventDefault();
         this.anyErrors();
+
+        let submitObject = {};
+        if (!this.state.error) {
+            for(const field in e.target) {
+                if (e.target[field] && e.target[field].value) {
+                    if(e.target[field].type !== 'submit') {
+                        submitObject = {
+                            ...submitObject,
+                            [e.target[field].name]: e.target[field].value,
+                        }
+                    }
+                }
+            }
+        }
+
+        this.props.submitTo(submitObject);
     }
 
     render() {
@@ -61,13 +79,15 @@ class FormBuilderView extends React.Component<Props, State> {
         return (
             <div className="formBuilder-container">
                 {children}
-                <MapFormInputs 
-                    inputs={inputs}
-                    submit={this.submit}
-                    error={error}
-                    validation={validation}
-                    componentList={{...customComponents, ...ComponentList}}
-                />
+                <form name="formBuilder" className={(error) ? 'error' : ''} onSubmit={this.submit}>
+                    <MapFormInputs 
+                        inputs={inputs}
+                        validation={validation}
+                        componentList={{...customComponents, ...ComponentList}}
+                        connected=''
+                    />
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         );
     }

@@ -32,7 +32,7 @@ const Text = ({
 
     return (
         <Div className="textInput">
-            <Label htmlFor={inputName}>{label}</Label>
+            <Label htmlFor={inputName}>{label}{require && ` *`}</Label>
             <Input
                 type={type}
                 name={inputName}
@@ -54,6 +54,7 @@ Text.defaultProps = {
     inputValue: '',
     inputClassName: '',
     validation: {},
+    connected: ''
 };
 
 export default Text;

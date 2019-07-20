@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {inputType} from '../types/inputType';
 import {inputRow} from '../Interfaces/inputSet';
 import {ValidationType} from '../types/validationType';
@@ -7,39 +7,47 @@ import InputFormContainer from './InputFormContainer';
 
 interface Props {
     inputs: inputRow,
-    submit: (e: any) => void,
-    error: boolean,
     validation: ValidationType,
-    componentList: ComponentListType
+    componentList: ComponentListType,
+    connected: string
 };
 
 const MapFormInputs = (
-    {inputs, submit, error, validation, componentList}: Props,
+    {inputs, validation, componentList, connected}: Props,
 ) => 
-    <form name="formBuilder" className={(error) ? 'error' : ''}>
-        {Object.keys(inputs).map((index: string, key: number) => {
-            const {
-                parentClassName,
-                type,
-            }: inputType = inputs[index];
-            const Component = componentList[type];
+    <>
+        {Object.keys(inputs)
+            .filter((key: string) => inputs[key].connected === connected)
+            .map((index: string, key: number) => {
+                const {
+                    parentClassName,
+                    type,
+                    id
+                }: inputType = inputs[index];
+                const Component = componentList[type];
 
-            if (Component === undefined) {
-                return <div>Error adding component</div>;
-            }
+                if (Component === undefined) {
+                    return <div>Error adding component</div>;
+                }
 
-            return <InputFormContainer
-                key={key} 
-                classes={parentClassName || ''}
-                validation={validation[index] || []}
-            >
-                <Component.Input
-                    id={index}
-                    {...inputs[index]}
-                />
-            </InputFormContainer>;
-        })}
-        <input type="submit" value="Submit" onClick={submit} />
-    </form>
+                return <Fragment key={key}>
+                    <InputFormContainer
+                        classes={parentClassName || ''}
+                        validation={validation[index] || []}
+                    >
+                        <Component.Input
+                            id={index}
+                            {...inputs[index]}
+                        />
+                    </InputFormContainer>
+                    <MapFormInputs 
+                        inputs={inputs}
+                        validation={validation}
+                        componentList={componentList}
+                        connected={id}
+                    />
+                </Fragment>;
+            })}
+    </>;
         
 export default MapFormInputs;

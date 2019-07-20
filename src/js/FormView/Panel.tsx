@@ -25,10 +25,11 @@ class Panel extends React.Component<Props> {
         let formData = {validation: {}};
         
         for(const field in event.target){
-            if (event.target[field] && event.target[field].value) {
+            if (event.target[field] && event.target[field].value !== undefined) {
                 const name = event.target[field].name || event.target[field].id;
 
-                if (event.target[field].className.includes('validation')) {
+                if (name === undefined || name === '') {continue;}
+                if (event.target[field].value && event.target[field].className.includes('validation')) {
                     formData = {
                         ...formData,
                         validation: {

@@ -92,7 +92,6 @@ export default (state: any, action: any) => {
         };
 
     case Actions.DELETE_INPUT:
-        //delete state.inputs[action.payload.id];
         DeleteRelatedInputs(state.inputs, action.payload.id);
         return {
             ...state,

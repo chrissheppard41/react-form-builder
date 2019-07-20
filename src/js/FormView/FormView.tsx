@@ -8,6 +8,7 @@ import {ComponentListType} from '../types/ComponentListType';
 import Panels from './Panels';
 import DeleteModal from './modals/DeleteModal';
 import ModalNames from '../constants/ModalNames';
+import {formSubmitType} from '../types/formSubmitType';
 
 type Props = {
     customComponents: ComponentListType,
@@ -20,6 +21,10 @@ const FormView = ({customComponents}: Props) => {
         ...ComponentList,
         ...customComponents,
     };
+
+    const submitTest = (formData: formSubmitType) => {
+        console.log('On submit', formData);
+    }
 
     return (
         <div className="formView-container">
@@ -50,6 +55,7 @@ const FormView = ({customComponents}: Props) => {
                     inputs={state.inputs}
                     validation={state.validation}
                     customComponents={customComponents}
+                    submitTo={submitTest}
                 >
                 </FormBuilderView>
             </div>
