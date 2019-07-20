@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useDrop } from 'react-dnd';
 import {useStateValue} from '../context/FormContext';
 import Inputs from './Inputs';
 import ListEmpty from '../utilities/ListEmpty';
 import styled from 'styled-components';
+import DragTypes from '../constants/DragTypes';
 
-const Ul = styled.div`
+const Ul = styled.ul`
   width: calc(100% - 6px);
   list-style-type: none;
   border: 2px solid #666;
@@ -29,18 +30,18 @@ export interface DustbinProps {
 
 function selectBackgroundColor(isActive: boolean, canDrop: boolean) {
   if (isActive) {
-    return '#00ab00'
+    return '#00ab00';
   } else if (canDrop) {
-    return 'darkkhaki'
+    return 'darkkhaki';
   } else {
-    return '#222'
+    return '#222';
   }
 }
 
 const Dropzone: React.FC<DustbinProps> = ({allowedDropEffect, classNames, connected}) => {
   const {state, actions}: any = useStateValue();
   const [{ canDrop, isOver }, drop] = useDrop({
-    accept: "box",
+    accept: DragTypes.BOX,
     drop: (item: any) => {
       actions.addInput({...item.data, connected});
 
@@ -63,7 +64,7 @@ const Dropzone: React.FC<DustbinProps> = ({allowedDropEffect, classNames, connec
     <Ul style={{borderColor}}>
       {!ListEmpty(state.inputs, connected) && <EmptyLi>List empty</EmptyLi>}
       {state.inputs && inputItems.map((id: string, key: number) =>
-        <>
+        <Fragment key={key}>
           {state.inputs[id].connected === connected &&
             <>
               <Inputs
@@ -71,7 +72,7 @@ const Dropzone: React.FC<DustbinProps> = ({allowedDropEffect, classNames, connec
                   index={key}
                   inputFields={state.inputs[id]}
               />
-              <li className={classNames}>
+              <li key={state.inputs[id].id} className={classNames}>
                 <Dropzone
                     allowedDropEffect="copy"
                     classNames="child-dropables"
@@ -80,7 +81,7 @@ const Dropzone: React.FC<DustbinProps> = ({allowedDropEffect, classNames, connec
               </li>
             </>
           }
-        </>
+        </Fragment>
         )}
       <DropLi ref={drop} style={{borderColor}}>
         <p>{isActive ? 'Release to drop' : 'Drag a box here'}</p>

@@ -81,6 +81,11 @@ export default (state: any, dispatch: any) => {
         }
     };
 
+    const manageModals = (modalName: string, data: any) => dispatch({
+        type: Actions.MANAGE_MODALS,
+        payload: {modalName, data}
+    });
+
     return {
         addInput,
         moveInput,
@@ -90,6 +95,7 @@ export default (state: any, dispatch: any) => {
         clearPanel,
         setPanel,
         addValidation,
-        removeValidation
+        removeValidation,
+        manageModals
     };
 };

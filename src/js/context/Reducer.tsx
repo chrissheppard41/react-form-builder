@@ -1,6 +1,7 @@
 import ClassificationPanel from '../constants/ClassificationPanel';
 import {ValidationType} from '../types/validationType';
 import Actions from '../constants/Actions';
+import DeleteRelatedInputs from '../utilities/DeleteRelatedInputs';
 
 type InputType = {
     connected: string,
@@ -24,6 +25,7 @@ type Props = {
     panelData: {
         id: string,
     },
+    modal: {name: string, data: any},
     validation: ValidationType
 };
 
@@ -31,6 +33,7 @@ export const initialState: Props = {
     inputs: {},
     panel: "",
     panelData: {id: ""},
+    modal: {name: "", data: {}},
     validation: {}
 };
 
@@ -89,10 +92,10 @@ export default (state: any, action: any) => {
         };
 
     case Actions.DELETE_INPUT:
-        delete state.inputs[action.payload.id];
+        //delete state.inputs[action.payload.id];
+        DeleteRelatedInputs(state.inputs, action.payload.id);
         return {
             ...state,
-            /*inputs: state.inputs,*/
         };
 
     case Actions.SAVE:
@@ -132,6 +135,16 @@ export default (state: any, action: any) => {
                     ),
             }
         };
+
+    case Actions.MANAGE_MODALS:
+        return {
+            ...state,
+            modal: {
+                ...state.modal,
+                name: action.payload.modalName,
+                data: action.payload.data,
+            },
+        }
         
       default:
         return state;

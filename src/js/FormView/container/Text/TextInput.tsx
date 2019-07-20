@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDrag } from 'react-dnd';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
+import Drag from '../Drag';
 
 export interface BoxProps {
   className: string,
@@ -8,28 +8,17 @@ export interface BoxProps {
 }
 
 const TextInput = ({className, connected}: any) => {
-  const name = "Test Input text";
-  const item = {
-    name, 
-    type: 'box',
-    data: {
-      type: ClassificationInputs.TEXT, 
-      label: 'text input', 
-      validation: {},
-      connected: connected,
-    }
-  };
-  const [{ opacity }, drag] = useDrag({
-    item,
-    collect: (monitor: any) => ({
-      opacity: monitor.isDragging() ? 0.4 : 1,
-    }),
-  })
+  const name = "Text input component";
 
   return (
-    <div className={className} ref={drag} style={{opacity}}>
+    <Drag 
+      className={className} 
+      name={name} 
+      connected={connected}
+      input={ClassificationInputs.TEXT}
+    >
       {name}
-    </div>
+    </Drag>
   )
 }
 

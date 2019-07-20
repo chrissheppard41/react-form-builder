@@ -1,4 +1,5 @@
 export type inputType = {
+    connected?: string,
     parentClassName?: string,
     type: string,
     label: string,
@@ -12,6 +13,10 @@ export type inputType = {
             message: string,
         },
     }
+};
+
+export type inputTypes = {
+    [id: string]: inputType,
 };
 
 export type selectType = {

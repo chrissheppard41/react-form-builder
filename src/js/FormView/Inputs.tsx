@@ -3,6 +3,7 @@ import {useStateValue} from '../context/FormContext';
 import {useDrag, useDrop} from 'react-dnd';
 import {XYCoord} from 'dnd-core';
 import styled from 'styled-components';
+import ModalNames from '../constants/ModalNames';
 
 const InputLi = styled.li`
   width: calc(100% - 6px);
@@ -73,7 +74,7 @@ const Inputs = ({index, inputFields}: Props) => {
             {inputFields.label}
             <div>
                 <button onClick={() => actions.editInput(inputFields.id)}>Edit</button>
-                <button onClick={() => actions.deleteInput(inputFields.id)}>Delete</button>
+                <button onClick={() => actions.manageModals(ModalNames.DELETE, {id: inputFields.id})}>Delete</button>
             </div>
         </InputLi>
     );

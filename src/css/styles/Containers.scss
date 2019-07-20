@@ -9,15 +9,9 @@
     cursor: pointer;
 }
 
-.formView-draggable {
-    position: relative;
-    z-index: 501;
-}
-
 .form-dropzone {
     .drag-element {
         position: relative;
-        height: 50px;
         padding: 16px;
 
         div {

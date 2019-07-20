@@ -1,3 +1,11 @@
+# React-Form-Builder
+
+More to come...
+
+## How to create input components
+
+More to come...
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

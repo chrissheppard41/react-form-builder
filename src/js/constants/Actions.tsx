@@ -9,5 +9,6 @@ export default KeyMappings([
     'DELETE_INPUT',
     'SAVE',
     'SET_FORM_INPUT_ERROR',
-    'REMOVE_FORM_INPUT'
+    'REMOVE_FORM_INPUT',
+    'MANAGE_MODALS'
 ]);

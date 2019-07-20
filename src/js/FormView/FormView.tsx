@@ -6,6 +6,8 @@ import {useStateValue} from '../context/FormContext';
 import ComponentList from '../formBuilder/ComponentList';
 import {ComponentListType} from '../types/ComponentListType';
 import Panels from './Panels';
+import DeleteModal from './modals/DeleteModal';
+import ModalNames from '../constants/ModalNames';
 
 type Props = {
     customComponents: ComponentListType,
@@ -32,6 +34,7 @@ const FormView = ({customComponents}: Props) => {
                     connected={state.panelData.id}
                 />
                 <div className="formView-dropable">
+                    {state.modal.name === ModalNames.DELETE && <DeleteModal />}
                     <h3>Drop component</h3>
                     <div className="form-dropzone">
                         <Dropzone
