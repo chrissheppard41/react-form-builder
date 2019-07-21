@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "tslint-react-a11y"
+    ],
+    "rules": {
+        "ordered-imports": [true, {
+            "import-sources-order": "any",
+            "named-imports-order": "case-insensitive"
+        }],
+        "trailing-comma": [
+            true,
+            {
+                "multiline": {
+                    "objects": "never",
+                    "arrays": "never",
+                    "functions": "never",
+                    "typeLiterals": "ignore"
+                },
+                "esSpecCompliant": true
+            }
+        ],
+        "interface-name": [false],
+        "member-access": [false],
+        "no-console": [false],
+        "no-unused-variable": true,
+        "object-literal-sort-keys": false,
+        "no-var-requires": false
+    }
+}

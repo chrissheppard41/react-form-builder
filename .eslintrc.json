@@ -1,0 +1,52 @@
+{
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "prettier/react"
+    ],
+    "globals": {
+        "document": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": ["prettier", "@typescript-eslint/eslint-plugin"],
+    "env": {
+        "jest": true
+    },
+    "rules": {
+        "@typescript-eslint/camelcase": 0,
+        "@typescript-eslint/no-unused-vars": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/explicit-member-accessibility": 0,
+        "@typescript-eslint/class-name-casing": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/indent": 0,
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/semi": 2,
+        "react/jsx-filename-extension": 0,
+        "react/prop-types": 0,
+        "no-empty-pattern": 0,
+        "no-unused-vars": 0,
+        "max-len": 0,
+        "import/no-self-import": 0,
+        "import/no-commonjs": 0,
+        "no-undef": 0,
+        "react/jsx-closing-bracket-location": 0,
+        "operator-linebreak": [
+            "error",
+            "after",
+            {
+                "overrides": {
+                    "&&": "after"
+                }
+            }
+        ]
+    }
+}

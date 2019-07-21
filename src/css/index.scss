@@ -1,0 +1,18 @@
+@import './mixins/reset.scss';
+@import './mixins/mixins.scss';
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  * {
+    @include box-sizing(border-box);
+  }
+}
+
+@import './styles/App.scss';
+@import './styles/FormView.scss';
+@import './styles/Panels.scss';
+@import './styles/Containers.scss';
