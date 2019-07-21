@@ -17,7 +17,13 @@ const MapFormInputs = (
 ) => 
     <>
         {Object.keys(inputs)
-            .filter((key: string) => inputs[key].connected === connected)
+            .filter((key: string) => 
+                inputs[key].connected === connected
+                && (
+                    (inputs[key].connected !== '' && inputs[inputs[key].connected].enableChildren)
+                    || inputs[key].connected === ''
+                )
+            )
             .map((index: string, key: number) => {
                 const {
                     parentClassName,

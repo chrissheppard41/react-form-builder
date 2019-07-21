@@ -7,8 +7,6 @@ import {inputType} from '../../types/inputType';
 const DeleteModal = () => {
     const {state, actions}: any = useStateValue();
 
-    console.log();
-
     return (
         <Modal
             submit={() => actions.deleteInput(state.modal.data.id)}

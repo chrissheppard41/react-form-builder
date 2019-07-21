@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {inputType} from '../../types/inputType';
 import ValidationRules from '../ValidationRules';
 import useValidationRequire from '../../hooks/useValidationRequire';
+import {useStateValue} from '../../context/FormContext';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -27,8 +28,10 @@ const Text = ({
     inputClassName,
     validation
 }: inputType) => {
+    const {actions}: any = useStateValue();
     const [val, setVal] = useState(inputValue);
     const {message, require} = useValidationRequire(validation, val, id);
+    actions.enableChildren(id, val);
 
     return (
         <Div className="textInput">
@@ -54,7 +57,8 @@ Text.defaultProps = {
     inputValue: '',
     inputClassName: '',
     validation: {},
-    connected: ''
+    connected: '',
+    enableChildren: false
 };
 
 export default Text;

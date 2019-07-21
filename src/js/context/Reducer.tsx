@@ -13,6 +13,7 @@ type InputType = {
         enable: boolean,
     },
     inputs: IIndivualInput,
+    enableChildren: boolean,
 };
 
 interface IIndivualInput {
@@ -144,6 +145,18 @@ export default (state: any, action: any) => {
                 data: action.payload.data,
             },
         }
+
+    case Actions.ENABLE_CHILDREN:
+        return {
+            ...state,
+            inputs: {
+                ...state.inputs,
+                [action.payload.id]: {
+                    ...state.inputs[action.payload.id],
+                    enableChildren: action.payload.enable
+                }
+            }
+        };
         
       default:
         return state;

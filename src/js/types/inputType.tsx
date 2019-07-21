@@ -1,6 +1,7 @@
 export type inputType = {
     connected: string,
     parentClassName?: string,
+    enableChildren: boolean,
     type: string,
     label: string,
     id: string,

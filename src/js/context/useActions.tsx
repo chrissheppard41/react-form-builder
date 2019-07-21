@@ -86,6 +86,25 @@ export default (state: any, dispatch: any) => {
         payload: {modalName, data}
     });
 
+    const enableChildren = (id: string, val: string) => {
+        if (id !== '') {
+            const enableChildren = state.inputs[id].enableChildren || false;
+            if (val && !enableChildren) {
+                //enable children
+                dispatch({
+                    type: Actions.ENABLE_CHILDREN,
+                    payload: {id, enable: true}
+                });
+            } else if (!val && enableChildren) {
+                //disable children
+                dispatch({
+                    type: Actions.ENABLE_CHILDREN,
+                    payload: {id, enable: false}
+                });
+            }
+        }
+    }
+
     return {
         addInput,
         moveInput,
@@ -96,6 +115,7 @@ export default (state: any, dispatch: any) => {
         setPanel,
         addValidation,
         removeValidation,
-        manageModals
+        manageModals,
+        enableChildren
     };
 };

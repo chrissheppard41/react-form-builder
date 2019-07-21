@@ -19,8 +19,10 @@ const Drag = ({children, className, input, name, connected}: any) => {
       label: name, 
       validation: {},
       connected: connected,
+      enableChildren: (connected === '')
     }
   };
+
   const [{ opacity }, drag] = useDrag({
     item,
     collect: (monitor: any) => ({

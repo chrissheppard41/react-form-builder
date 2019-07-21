@@ -10,5 +10,6 @@ export default KeyMappings([
     'SAVE',
     'SET_FORM_INPUT_ERROR',
     'REMOVE_FORM_INPUT',
-    'MANAGE_MODALS'
+    'MANAGE_MODALS',
+    'ENABLE_CHILDREN'
 ]);
