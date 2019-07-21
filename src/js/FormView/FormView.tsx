@@ -9,12 +9,28 @@ import Panels from './Panels';
 import DeleteModal from './modals/DeleteModal';
 import ModalNames from '../constants/ModalNames';
 import {formSubmitType} from '../types/formSubmitType';
+import styled from 'styled-components';
+import copy from 'copy-to-clipboard';
 
 type Props = {
     customComponents: ComponentListType,
+    editMode: boolean,
 };
 
-const FormView = ({customComponents}: Props) => {
+const FormIndexDisplay = styled.div`
+    width: 100%;
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+    font-family: monospace;
+`;
+
+const CopyButton = styled.button`
+    margin-top: 15px;
+`;
+
+const FormView = ({customComponents, editMode,}: Props) => {
     const {state}: any = useStateValue();
 
     const componentList = {
@@ -28,7 +44,7 @@ const FormView = ({customComponents}: Props) => {
 
     return (
         <div className="formView-container">
-            <div className="formView-builder">
+            {editMode && <div className="formView-builder">
                 <Panels 
                     componentList={componentList}
                     state={state}
@@ -38,6 +54,14 @@ const FormView = ({customComponents}: Props) => {
                     componentList={componentList}
                     connected={state.panelData.id}
                 />
+                <FormIndexDisplay>
+                    <pre>
+                        <code>
+                        {JSON.stringify(state.inputs)}
+                        </code>
+                    </pre>
+                    <CopyButton onClick={() => copy(JSON.stringify(state.inputs))}>Copy to clipboard</CopyButton>
+                </FormIndexDisplay>
                 <div className="formView-dropable">
                     {state.modal.name === ModalNames.DELETE && <DeleteModal />}
                     <h3>Drop component</h3>
@@ -49,7 +73,7 @@ const FormView = ({customComponents}: Props) => {
                         />
                     </div>
                 </div>
-            </div>
+            </div>}
             <div className="formBuilder">
                 <FormBuilderView 
                     inputs={state.inputs}
