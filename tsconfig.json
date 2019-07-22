@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,13 +22,21 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmitOnError": true,
+    "outDir": "./lib",
     "types": [
       "node",
       "react"
     ],
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
   },
-  "exclude": ["node_modules", "typings"],
+  "exclude": [
+    "node_modules",
+    "typings",
+    "__test__"
+  ],
   "include": [
     "./**/*"
   ]
