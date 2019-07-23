@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "target": "ES6",
+        "outDir": "../lib",
+        "rootDir": "../src",
+        "jsx": "react",
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
