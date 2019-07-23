@@ -8,3 +8,4 @@ jestconfig.json
 package.json
 tsconfig.json
 tslint.json
+.idea
