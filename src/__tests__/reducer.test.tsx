@@ -17,7 +17,7 @@ describe('Reducer tests', () => {
         const [state] = jooks.run();
         const test = Object.keys(state.inputs);
         expect(test.length).toEqual(1);
-        test.map((id: string) => {
+        test.map((id) => {
             const input = state.inputs[id];
             expect({...InputData, id}).toEqual(input);
         });
@@ -128,7 +128,7 @@ describe('Reducer tests', () => {
 
     it('Should set the error for an input', () => {
         let [state, dispatch] = jooks.run();
-        const createRule = (enabled: boolean) => {
+        const createRule = (enabled) => {
             const rule = {
                 lorem: {
                     enable: enabled,
