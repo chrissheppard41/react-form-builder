@@ -16,9 +16,9 @@ jest.mock('../js/context/FormContext', () => ({
 describe('useValidationRequire hook tests', () => {
   it('Should not recognise what this validation is and no nothing', () => {
     const jooks = init(() => useValidationRequire({}, '', ''));
-    const {message, require} = jooks.run();
+    const {requiredMessage, require} = jooks.run();
 
-    expect(message).toEqual('');
+    expect(requiredMessage).toEqual('');
     expect(require).toEqual(false);
   });
 
@@ -29,9 +29,9 @@ describe('useValidationRequire hook tests', () => {
         message: 'lorem ipsum'
       }
     }, '', ''));
-    const {message, require} = jooks.run();
+    const {requiredMessage, require} = jooks.run();
 
-    expect(message).toEqual('lorem ipsum');
+    expect(requiredMessage).toEqual('lorem ipsum');
     expect(require).toEqual(true);
   });
 
@@ -42,9 +42,9 @@ describe('useValidationRequire hook tests', () => {
         message: 'lorem ipsum'
       }
     }, 'lorem ipsum', ''));
-    const {message, require} = jooks.run();
+    const {requiredMessage, require} = jooks.run();
 
-    expect(message).toEqual('');
+    expect(requiredMessage).toEqual('');
     expect(require).toEqual(true);
   });
 
@@ -55,9 +55,9 @@ describe('useValidationRequire hook tests', () => {
         message: 'lorem ipsum'
       }
     }, '', ''));
-    const {message, require} = jooks.run();
+    const {requiredMessage, require} = jooks.run();
 
-    expect(message).toEqual('');
+    expect(requiredMessage).toEqual('');
     expect(require).toEqual(false);
   });
 
@@ -67,9 +67,9 @@ describe('useValidationRequire hook tests', () => {
         enabled: false
       }
     }, '', ''));
-    const {message, require} = jooks.run();
+    const {requiredMessage, require} = jooks.run();
 
-    expect(message).toEqual('');
+    expect(requiredMessage).toEqual('');
     expect(require).toEqual(false);
   });
 });

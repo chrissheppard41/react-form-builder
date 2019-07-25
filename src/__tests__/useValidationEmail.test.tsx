@@ -3,26 +3,26 @@ import useValidationEmail from "../js/hooks/useValidationEmail";
 
 const addValidation = jest.fn();
 const removeValidation = jest.fn();
-const emailCheck = (email: string, messageCompare: string, enabledCompare: boolean) => {
+const emailCheck = (emailRule: string, messageCompare: string, enabledCompare: boolean) => {
     const jooks = init(() => useValidationEmail({
         email: {
             enabled: true,
             message: 'lorem ipsum'
         }
-    }, email, 'id', addValidation, removeValidation));
-    const {message, enabled} = jooks.run();
+    }, emailRule, 'id', addValidation, removeValidation));
+    const {emailMessage, email} = jooks.run();
 
-    expect(message).toEqual(messageCompare);
-    expect(enabled).toEqual(enabledCompare);
+    expect(emailMessage).toEqual(messageCompare);
+    expect(email).toEqual(enabledCompare);
 };
 
 describe('useValidationEmail hook tests', () => {
     it('Should not recognise what this validation is and no nothing', () => {
         const jooks = init(() => useValidationEmail({}, '', '', addValidation, removeValidation));
-        const {message, enabled} = jooks.run();
+        const {emailMessage, email} = jooks.run();
 
-        expect(message).toEqual('');
-        expect(enabled).toEqual(false);
+        expect(emailMessage).toEqual('');
+        expect(email).toEqual(false);
     });
 
     it('Should be fine with a valid email :: test@test.com', () => {
