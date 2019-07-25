@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-cs",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "private": false,
   "dependencies": {
     "@types/node": "12.0.8",
@@ -35,6 +35,7 @@
     "build:old": "react-scripts build",
     "test": "react-scripts test --env=node",
     "test:single": "CI=true react-scripts test --env=node",
+    "test:coverage": "npm test -- --coverage --env=node",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -60,5 +61,12 @@
     "hooks": {
       "pre-push": "npm run test:single"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "js/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ]
   }
-}
+  }
