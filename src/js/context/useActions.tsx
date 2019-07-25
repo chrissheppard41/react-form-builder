@@ -1,7 +1,7 @@
 import Actions from '../constants/Actions';
 
 export default (state: any, dispatch: any) => {
-    console.log(state);
+    //console.log(state);
     const addInput = (InputData: any) => dispatch({
         type: Actions.ADD_INPUT,
         payload: {InputData}
@@ -11,19 +11,23 @@ export default (state: any, dispatch: any) => {
         const keys = Object.keys(state.inputs);
         let InputData = {};
 
-        keys.forEach((input, index: number) => {
-            let inputRow = state.inputs[input];
-            if (hoverIndex === index) {
-                inputRow = state.inputs[keys[dragIndex]];
-            } else if (dragIndex === index) {
-                inputRow = state.inputs[keys[hoverIndex]];
-            }
+        if (dragIndex !== hoverIndex) {
+          keys.forEach((input: string, index: number) => {
+              let inputRow = state.inputs[input];
+              if (hoverIndex === index) {
+                  inputRow = state.inputs[keys[dragIndex]];
+              } else if (dragIndex === index) {
+                  inputRow = state.inputs[keys[hoverIndex]];
+              }
 
-            InputData = {
-                ...InputData,
-                [inputRow.id]: inputRow,
-            };
-        });
+              InputData = {
+                  ...InputData,
+                  [inputRow.id]: inputRow,
+              };
+          });
+        } else {
+          InputData = state.inputs;
+        }
 
         return dispatch({
             type: Actions.ALL_INPUT,
@@ -91,13 +95,13 @@ export default (state: any, dispatch: any) => {
             const enableChildren = state.inputs[id].enableChildren || false;
             if (val && !enableChildren) {
                 //enable children
-                dispatch({
+                return dispatch({
                     type: Actions.ENABLE_CHILDREN,
                     payload: {id, enable: true}
                 });
             } else if (!val && enableChildren) {
                 //disable children
-                dispatch({
+                return dispatch({
                     type: Actions.ENABLE_CHILDREN,
                     payload: {id, enable: false}
                 });
