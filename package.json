@@ -21,6 +21,9 @@
     "@types/jest": "24.0.14",
     "@typescript-eslint/eslint-plugin": "1.10.2",
     "@typescript-eslint/parser": "1.10.2",
+    "husky": "3.0.1",
+    "jest": "^24.7.1",
+    "jooks": "1.0.0",
     "node-sass": "4.12.0",
     "prettier": "1.18.2",
     "rimraf": "2.6.3"
@@ -30,7 +33,8 @@
     "build": "tsc -p ./src/tsconfig.json",
     "start": "react-scripts start",
     "build:old": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=node",
+    "test:single": "CI=true react-scripts test --env=node",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,5 +55,10 @@
   "license": "MIT",
   "author": "Chris Sheppard",
   "main": "lib/build.js",
-  "types": "index.d.ts"
+  "types": "index.d.ts",
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:single"
+    }
+  }
 }
