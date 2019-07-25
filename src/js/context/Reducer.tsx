@@ -1,27 +1,12 @@
 import ClassificationPanel from '../constants/ClassificationPanel';
 import {ValidationType} from '../types/validationType';
+import {inputTypes} from '../types/inputType';
 import Actions from '../constants/Actions';
 import DeleteRelatedInputs from '../utilities/DeleteRelatedInputs';
-
-type InputType = {
-    connected: string,
-    id: string,
-    inputName: string,
-    validation: {
-        error: boolean,
-        mesage: string,
-        enable: boolean,
-    },
-    inputs: IIndivualInput,
-    enableChildren: boolean,
-};
-
-interface IIndivualInput {
-    [id: string]: InputType,
-}
+import uuidv4 from '../utilities/UUIDGeneration';
 
 type Props = {
-    inputs: IIndivualInput,
+    inputs: inputTypes,
     panel: string,
     panelData: {
         id: string,
@@ -37,16 +22,6 @@ export const initialState: Props = {
     modal: {name: "", data: {}},
     validation: {}
 };
-
-const uuidv4 = () => {
-    const s4 = () =>  {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-}
 
 export default (state: any, action: any) => {
     switch (action.type) {
@@ -81,7 +56,7 @@ export default (state: any, action: any) => {
             ...state,
             panel: '', 
             panelData: {id: ''},
-        }
+        };
         
     case Actions.EDIT_INPUT:
         return {
@@ -144,7 +119,8 @@ export default (state: any, action: any) => {
                 name: action.payload.modalName,
                 data: action.payload.data,
             },
-        }
+        };
+
 
     case Actions.ENABLE_CHILDREN:
         return {
