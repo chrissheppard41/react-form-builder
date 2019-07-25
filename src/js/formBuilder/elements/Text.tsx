@@ -4,6 +4,7 @@ import ValidationRules from '../ValidationRules';
 import useValidationRequire from '../../hooks/useValidationRequire';
 import {useStateValue} from '../../context/FormContext';
 import styled from 'styled-components';
+import useValidationEmail from '../../hooks/useValidationEmail';
 
 const Div = styled.div`
   width: 100%;
@@ -26,12 +27,16 @@ const Text = ({
     inputName,
     inputValue,
     inputClassName,
-    validation
+    validation,
+    disableChild
 }: inputType) => {
     const {actions}: any = useStateValue();
     const [val, setVal] = useState(inputValue);
-    const {message, require} = useValidationRequire(validation, val, id);
-    actions.enableChildren(id, val);
+    const {requiredMessage, require} = useValidationRequire(validation, val, id);
+    const {emailMessage, email} = useValidationEmail(validation, val, id, actions.addValidation, actions.removeValidation);
+    if(!disableChild) {
+        actions.enableChildren(id, val);
+    }
 
     return (
         <Div className="textInput">
@@ -39,14 +44,14 @@ const Text = ({
             <Input
                 type={type}
                 name={inputName}
-                className={inputClassName}
+                className={`${inputClassName} ${email}`}
                 id={id}
                 value={val}
                 onChange={e => setVal(e.target.value)}
                 required={require}
             />
             <ValidationRules 
-                validation={[message]}
+                validation={[requiredMessage, emailMessage]}
             />
         </Div>
     );
@@ -58,7 +63,8 @@ Text.defaultProps = {
     inputClassName: '',
     validation: {},
     connected: '',
-    enableChildren: false
+    enableChildren: false,
+    disableChild: false,
 };
 
 export default Text;

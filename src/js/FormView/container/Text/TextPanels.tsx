@@ -2,10 +2,11 @@ import React from 'react';
 import Panel from '../../Panel';
 import Text from '../../../formBuilder/elements/Text';
 import Select from '../../../formBuilder/elements/Select';
-import Required from '../validation/required/Required';
+import Required from '../validation/rules/Required';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
+import Email from '../validation/rules/Email';
 
 type Props = {
     panel: string,
@@ -75,6 +76,9 @@ const TextPanel = ({panel, panelData}: Props): any => {
                     <div className="validation">
                         <h5>Validation rules</h5>
                         <Required 
+                            validation={panelData.validation}
+                        />
+                        <Email 
                             validation={panelData.validation}
                         />
                     </div>

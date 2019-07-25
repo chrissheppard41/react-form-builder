@@ -8,6 +8,7 @@ export type inputType = {
     inputName: string,
     inputValue: string,
     inputClassName: string,
+    disableChild?: boolean,
     validation: {
         [key: string]: {
             enabled: boolean,

@@ -1,7 +1,7 @@
 import Actions from '../constants/Actions';
 
 export default (state: any, dispatch: any) => {
-    //console.log(state);
+    console.log(state);
     const addInput = (InputData: any) => dispatch({
         type: Actions.ADD_INPUT,
         payload: {InputData}
