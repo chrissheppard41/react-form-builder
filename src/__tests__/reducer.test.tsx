@@ -1,10 +1,29 @@
 import {useReducer} from 'react';
 import init from 'Jooks';
-import Reducer, {initialState} from '../js/context/Reducer';
+import Reducer, * as reducerData from '../js/context/Reducer';
 import Actions from '../js/constants/Actions';
 
+const createRule = (enabled) => {
+  const rule = {
+    lorem: {
+      enable: enabled,
+    },
+  };
+  const validationData = {
+    text: [rule],
+  };
+
+  return {
+    rule,
+    validationData
+  }
+};
+jest.mock('../js/utilities/UUIDGeneration', () => {
+  return (() => "test")
+});
+
 describe('Reducer tests', () => {
-    const jooks = init(() => useReducer(Reducer, initialState));
+    const jooks = init(() => useReducer(Reducer, reducerData.initialState));
 
     it('Should add an object to the input list', () => {
         const [, dispatch] = jooks.run();
@@ -126,23 +145,8 @@ describe('Reducer tests', () => {
         });
     });
 
-    it('Should set the error for an input', () => {
+    it.skip('Should set the error for an input', () => {
         let [state, dispatch] = jooks.run();
-        const createRule = (enabled) => {
-            const rule = {
-                lorem: {
-                    enable: enabled,
-                },
-            };
-            const validationData = {
-                text: [rule],
-            };
-
-            return {
-                rule,
-                validationData
-            }
-        };
         dispatch({type: Actions.SET_FORM_INPUT_ERROR, payload: {
             id: 'text',
             validationRule: createRule(true).rule
@@ -160,5 +164,68 @@ describe('Reducer tests', () => {
         //     validationRule: createRule(false).rule
         // });
         //console.log(state.validation.text);
+    });
+
+    it.skip('Should remove a validation rule from the list', () => {
+      let [state, dispatch] = jooks.run();
+      dispatch({type: Actions.SET_FORM_INPUT_ERROR, payload: {
+          id: 'text',
+          validationRule: createRule(true).rule
+        }});
+      ([state, dispatch] = jooks.run());
+      expect(state.validation).toEqual({
+        ...createRule(true).validationData,
+      });
+      ([, dispatch] = jooks.run());
+      dispatch({type: Actions.REMOVE_FORM_INPUT, payload: {
+          id: 'text',
+          validationRule: 'lorem'
+        }});
+      ([state] = jooks.run());
+      //console.log(state.validation);
+    });
+
+    it('Should set the modal and clear it', () => {
+      let [state, dispatch] = jooks.run();
+      const modal = {
+        modalName: 'text',
+        data: {rule: '1'}
+      };
+      dispatch({type: Actions.MANAGE_MODALS, payload: modal});
+
+      ([state, dispatch] = jooks.run());
+      expect(state.modal.name).toEqual(modal.modalName);
+      expect(state.modal.data).toEqual(modal.data);
+
+      dispatch({type: Actions.MANAGE_MODALS, payload: {modalName: "", data: {}}});
+      ([state] = jooks.run());
+      expect(state.modal.name).toEqual("");
+      expect(state.modal.data).toEqual({});
+    });
+
+    it('Should edit the enable child state within a input component', () => {
+      let [state, dispatch] = jooks.run();
+      const InputData = {
+        type: 'text',
+        label: 'lorem ipsum',
+        enableChildren: false,
+      };
+      dispatch({type: Actions.ADD_INPUT, payload: {InputData}});
+      ([state, dispatch] = jooks.run());
+      expect(state.inputs['test'].enableChildren).toBeFalsy();
+
+      dispatch({
+        type: Actions.ENABLE_CHILDREN,
+        payload: {id: 'test', enable: true}
+      });
+      ([state, dispatch] = jooks.run());
+      expect(state.inputs['test'].enableChildren).toBeTruthy();
+
+      dispatch({
+        type: Actions.ENABLE_CHILDREN,
+        payload: {id: 'test', enable: false}
+      });
+      ([state] = jooks.run());
+      expect(state.inputs['test'].enableChildren).toBeFalsy();
     });
 });
