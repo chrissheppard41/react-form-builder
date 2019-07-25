@@ -1,6 +1,6 @@
 import {useReducer} from 'react';
 import init from 'Jooks';
-import Reducer, * as reducerData from '../js/context/Reducer';
+import Reducer, {initialState} from '../js/context/Reducer';
 import Actions from '../js/constants/Actions';
 
 const createRule = (enabled) => {
@@ -23,7 +23,7 @@ jest.mock('../js/utilities/UUIDGeneration', () => {
 });
 
 describe('Reducer tests', () => {
-    const jooks = init(() => useReducer(Reducer, reducerData.initialState));
+    const jooks = init(() => useReducer(Reducer, initialState));
 
     it('Should add an object to the input list', () => {
         const [, dispatch] = jooks.run();
