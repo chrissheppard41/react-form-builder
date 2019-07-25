@@ -17,11 +17,13 @@ const useValidationRequire = (
   if (validation && validation.required) {
     require = validation.required.enabled;
 
-    if (!value) {
-      message = validation.required.message;
-      actions.addValidation(id, 'required');
-    } else {
-      actions.removeValidation(id, 'required');
+    if (require) {
+      if (!value) {
+        message = validation.required.message;
+        actions.addValidation(id, 'required');
+      } else {
+        actions.removeValidation(id, 'required');
+      }
     }
   }
 
