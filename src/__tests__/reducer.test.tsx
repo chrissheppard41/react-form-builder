@@ -85,9 +85,10 @@ describe('Reducer tests', () => {
     it('Should set the panel name to open', () => {
         let [state, dispatch] = jooks.run();
         const id = 'id';
-        dispatch({type: Actions.EDIT_INPUT, payload: {id}});
+        const panelName = 'name';
+        dispatch({type: Actions.EDIT_INPUT, payload: {id, panelName}});
         ([state, dispatch] = jooks.run());
-        expect(state.panel).toEqual('TEXTPANEL');
+        expect(state.panel).toEqual(panelName);
         expect(state.panelData.id).toEqual(id);
 
         dispatch({type: Actions.CLEAR_PANEL});
