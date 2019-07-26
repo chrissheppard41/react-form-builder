@@ -5,5 +5,6 @@ export default KeyMappings([
     'EMAIL', 
     'NUMBER', 
     'HR', 
-    'TITLE'
+    'TITLE', 
+    'SELECT'
 ]);

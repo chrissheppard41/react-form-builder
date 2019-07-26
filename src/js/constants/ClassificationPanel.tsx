@@ -2,5 +2,6 @@ import KeyMappings from '../utilities/KeyMappings';
 
 export default KeyMappings([
     'TEXTPANEL', 
-    'TITLEPANEL'
+    'TITLEPANEL',
+    'SELECTPANEL'
 ]);

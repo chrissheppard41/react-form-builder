@@ -29,7 +29,7 @@ export type selectType = {
     id: string,
     inputName: string,
     inputValue: string,
-    options: Array<string>,
+    options: Array<string> | string,
     validation: {
         [key: string]: Object,
     }

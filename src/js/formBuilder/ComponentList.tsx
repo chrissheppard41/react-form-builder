@@ -8,6 +8,9 @@ import HrDrag from '../FormView/container/generalElements/HrDrag';
 import TitlePanel from '../FormView/container/Titles/TitlePanels';
 import Title from './elements/Title';
 import TitleDrag from '../FormView/container/Titles/TitleDrag';
+import SelectPanel from '../FormView/container/Select/SelectPanels';
+import Select from './elements/Select';
+import SelectDrag from '../FormView/container/Select/SelectInput';
 
 const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
@@ -34,6 +37,11 @@ const Components: ComponentListType = {
         Input: Title,
         Draggable: TitleDrag,
         Panel: TitlePanel
+    },
+    [ClassificationInputs.SELECT]: {
+        Input: Select,
+        Draggable: SelectDrag,
+        Panel: SelectPanel
     }
 };
 

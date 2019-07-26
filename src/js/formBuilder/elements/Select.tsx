@@ -10,7 +10,13 @@ const Select = ({
     options
 }: selectType) => {
     const [val, setVal] = useState(inputValue);
-  
+    
+    const listOptions: string[] = (typeof options === 'object')
+        ? options
+        : (typeof options === 'string')
+            ? options.split(',')
+            : [];
+
     return (
         <div className="selectInput">
             <label htmlFor={inputName}>{label}</label>
@@ -20,7 +26,7 @@ const Select = ({
                 onChange={e => setVal(e.target.value)}
                 value={val}
             >
-                {options.map((option: string, i: number) =>
+                {listOptions && listOptions.map((option: string, i: number) =>
                     <option key={i} value={option}>{option}</option>
                 )}
             </select>
