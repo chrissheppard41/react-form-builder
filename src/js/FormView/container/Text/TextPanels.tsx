@@ -3,6 +3,7 @@ import Panel from '../../Panel';
 import Text from '../../../formBuilder/elements/Text';
 import Select from '../../../formBuilder/elements/Select';
 import Required from '../validation/rules/Required';
+import ClassificationPanel from '../../../constants/ClassificationPanel';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import {useStateValue} from '../../../context/FormContext';
 import Email from '../validation/rules/Email';
@@ -17,9 +18,7 @@ const TextPanel = ({panel, panelData}: Props): any => {
 
     return (
         <>
-            {(panel === ClassificationInputs.TEXT
-            || panel === ClassificationInputs.EMAIL
-            || panel === ClassificationInputs.NUMBER) &&
+            {panel === ClassificationPanel.TEXTPANEL &&
                 <Panel
                     title="Text input panel"
                     id={panelData.id}

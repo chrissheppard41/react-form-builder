@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
+import ClassificationPanel from '../../../constants/ClassificationPanel';
 import Drag from '../Drag';
 
 export interface BoxProps {
@@ -16,6 +17,7 @@ const TextInput = ({className, connected}: any) => {
       name={name} 
       connected={connected}
       input={ClassificationInputs.TEXT}
+      panelName={ClassificationPanel.TEXTPANEL}
     >
       {name}
     </Drag>

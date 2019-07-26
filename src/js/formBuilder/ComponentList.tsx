@@ -5,9 +5,9 @@ import {ComponentListType} from '../types/ComponentListType';
 import TextInput from '../FormView/container/Text/TextInput';
 import TextPanel from '../FormView/container/Text/TextPanels';
 import HrDrag from '../FormView/container/generalElements/HrDrag';
-import H3Panel from '../FormView/container/Titles/H3Panels';
-import H3 from './elements/H3';
-import H3Drag from '../FormView/container/Titles/H3Drag';
+import TitlePanel from '../FormView/container/Titles/TitlePanels';
+import Title from './elements/Title';
+import TitleDrag from '../FormView/container/Titles/TitleDrag';
 
 const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
@@ -30,10 +30,10 @@ const Components: ComponentListType = {
         Draggable: HrDrag,
         Panel: null
     },
-    [ClassificationInputs.H3]: {
-        Input: H3,
-        Draggable: H3Drag,
-        Panel: H3Panel
+    [ClassificationInputs.TITLE]: {
+        Input: Title,
+        Draggable: TitleDrag,
+        Panel: TitlePanel
     }
 };
 

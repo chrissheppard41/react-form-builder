@@ -9,10 +9,11 @@ export interface BoxProps {
   name: string,
   connected: string,
   overrideDropzone: boolean,
-  overridePanel: boolean
+  overridePanel: boolean,
+  panelName: string
 }
 
-const Drag = ({children, className, input, name, connected, overrideDropzone, overridePanel,}: any) => {
+const Drag = ({children, className, input, name, connected, overrideDropzone, overridePanel, panelName}: BoxProps) => {
   const item = {
     name, 
     type: DragTypes.BOX,
@@ -23,7 +24,8 @@ const Drag = ({children, className, input, name, connected, overrideDropzone, ov
       connected: connected,
       enableChildren: (connected === ''),
       overrideDropzone,
-      overridePanel
+      overridePanel,
+      panelName
     }
   };
 
@@ -43,7 +45,8 @@ const Drag = ({children, className, input, name, connected, overrideDropzone, ov
 
 Drag.defaultProps = {
   overrideDropzone: false,
-  overridePanel: false
+  overridePanel: false,
+  panelName: null
 };
 
 export default Drag;
