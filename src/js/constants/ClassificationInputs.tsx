@@ -1,3 +1,3 @@
 import KeyMappings from '../utilities/KeyMappings';
 
-export default KeyMappings(['TEXT', 'EMAIL', 'NUMBER']);
+export default KeyMappings(['TEXT', 'EMAIL', 'NUMBER', 'HR']);

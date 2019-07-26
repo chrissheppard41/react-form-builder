@@ -14,7 +14,7 @@ const Panels = ({state, componentList}: Props) => {
                 const Component = componentList[key];
 
                 if (!Component.Panel) {
-                    console.error(`Component ${key}: No panel Provided in object`);
+                    console.error(`Warn: Component ${key}: No panel Provided in object`);
                     return null;
                 }
 

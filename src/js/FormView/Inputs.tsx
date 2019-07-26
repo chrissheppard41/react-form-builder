@@ -73,7 +73,7 @@ const Inputs = ({index, inputFields}: Props) => {
         <InputLi className={`drag-element${isDragging ? ' isDragging' : ''}`} ref={ref} style={{opacity}}>
             {inputFields.label}
             <div>
-                <button onClick={() => actions.editInput(inputFields.id)}>Edit</button>
+                {!inputFields.overridePanel && <button onClick={() => actions.editInput(inputFields.id)}>Edit</button>}
                 <button onClick={() => actions.manageModals(ModalNames.DELETE, {id: inputFields.id})}>Delete</button>
             </div>
         </InputLi>

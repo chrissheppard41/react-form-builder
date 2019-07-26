@@ -72,13 +72,13 @@ const Dropzone: React.FC<DustbinProps> = ({allowedDropEffect, classNames, connec
                   index={key}
                   inputFields={state.inputs[id]}
               />
-              <li key={state.inputs[id].id} className={classNames}>
+              {!state.inputs[id].overrideDropzone && <li key={state.inputs[id].id} className={classNames}>
                 <Dropzone
                     allowedDropEffect="copy"
                     classNames="child-dropables"
                     connected={state.inputs[id].id}
                 />
-              </li>
+              </li>}
             </>
           }
         </Fragment>
