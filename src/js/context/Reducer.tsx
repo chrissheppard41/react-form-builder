@@ -1,4 +1,3 @@
-import ClassificationPanel from '../constants/ClassificationPanel';
 import {ValidationType} from '../types/validationType';
 import {inputTypes} from '../types/inputType';
 import Actions from '../constants/Actions';
@@ -61,7 +60,7 @@ export default (state: any, action: any) => {
     case Actions.EDIT_INPUT:
         return {
             ...state,
-            panel: ClassificationPanel.TEXTPANEL, 
+            panel: action.payload.panelName, 
             panelData: {
                 id: action.payload.id,
             }

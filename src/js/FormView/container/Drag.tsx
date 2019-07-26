@@ -12,7 +12,7 @@ export interface BoxProps {
   overridePanel: boolean
 }
 
-const Drag = ({children, className, input, name, connected, overrideDropzone, overridePanel}: any) => {
+const Drag = ({children, className, input, name, connected, overrideDropzone, overridePanel,}: any) => {
   const item = {
     name, 
     type: DragTypes.BOX,
@@ -43,7 +43,7 @@ const Drag = ({children, className, input, name, connected, overrideDropzone, ov
 
 Drag.defaultProps = {
   overrideDropzone: false,
-  overridePanel: false,
+  overridePanel: false
 };
 
 export default Drag;

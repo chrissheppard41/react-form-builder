@@ -4,7 +4,6 @@ import Text from '../../../formBuilder/elements/Text';
 import Select from '../../../formBuilder/elements/Select';
 import Required from '../validation/rules/Required';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
-import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
 import Email from '../validation/rules/Email';
 
@@ -18,7 +17,9 @@ const TextPanel = ({panel, panelData}: Props): any => {
 
     return (
         <>
-            {panel === ClassificationPanel.TEXTPANEL &&
+            {(panel === ClassificationInputs.TEXT
+            || panel === ClassificationInputs.EMAIL
+            || panel === ClassificationInputs.NUMBER) &&
                 <Panel
                     title="Text input panel"
                     id={panelData.id}

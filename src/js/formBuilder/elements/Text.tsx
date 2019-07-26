@@ -65,6 +65,7 @@ Text.defaultProps = {
     connected: '',
     enableChildren: false,
     disableChild: false,
+    panelName: ''
 };
 
 export default Text;

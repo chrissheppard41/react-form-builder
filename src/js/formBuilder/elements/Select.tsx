@@ -33,6 +33,7 @@ Select.defaultProps = {
     inputValue: '',
     inputClassName: '',
     validation: {},
+    panelName: ''
 };
 
 export default Select;

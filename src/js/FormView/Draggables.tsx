@@ -16,7 +16,7 @@ const Draggables = ({componentList, classNames, connected}: Props) =>
                 const Component = componentList[key];
 
                 if (!Component.Draggable) {
-                    console.error(`Component ${key}: No draggable Provided in object`);
+                    console.error(`Warn: Component ${key}: No draggable Provided in object`);
                     return null;
                 }
 

@@ -7,21 +7,20 @@ export interface BoxProps {
   connected: string,
 }
 
-const DivContainer = ({className, connected}: any) => {
-  const name = "Hr component";
+const H3Drag = ({className, connected}: any) => {
+  const name = "H3 component";
 
   return (
     <Drag 
       className={className} 
       name={name} 
       connected={connected}
-      input={ClassificationInputs.HR}
+      input={ClassificationInputs.H3}
       overrideDropzone={true}
-      overridePanel={true}
     >
       {name}
     </Drag>
   )
 }
 
-export default DivContainer;
+export default H3Drag;

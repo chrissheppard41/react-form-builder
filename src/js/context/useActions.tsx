@@ -40,9 +40,9 @@ export default (state: any, dispatch: any) => {
         payload: {data}
     });
 
-    const editInput = (id: string) => dispatch({
+    const editInput = (id: string, panelName: string) => dispatch({
         type: Actions.EDIT_INPUT,
-        payload: {id}
+        payload: {id, panelName}
     });
 
     const deleteInput = (id: string) => dispatch({

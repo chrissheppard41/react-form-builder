@@ -63,7 +63,7 @@ class Panel extends React.Component<Props> {
             children,
             title,
             id,
-            clearPanel,
+            clearPanel
         } = this.props;
 
         return (
