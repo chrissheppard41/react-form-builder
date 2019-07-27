@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {radioType} from '../../types/inputType';
 import Options from '../../types/Options';
-import {formatSingleOptions} from '../../utilities/OptionBuild';
+import {optionsList} from '../../utilities/OptionBuild';
 
 const Radio = ({
     label,
@@ -13,12 +13,7 @@ const Radio = ({
     options
 }: radioType) => {
     const [val, setVal] = useState(inputValue);
-    
-    const listOptions: Options[] = (typeof options === 'object')
-        ? formatSingleOptions(options)
-        : (typeof options === 'string')
-            ? JSON.parse(options)
-            : [];
+    const listOptions: Options[] = optionsList(options);
 
     return (
         <div className="radioInput">

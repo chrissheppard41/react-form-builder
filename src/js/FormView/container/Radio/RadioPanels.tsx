@@ -5,7 +5,6 @@ import Required from '../validation/rules/Required';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
 import AddOptions from '../../../formBuilder/elements/AddOptions';
-import Radio from '../../../formBuilder/elements/Radio';
 
 type Props = {
     panel: string,
@@ -52,14 +51,6 @@ const RadioPanel = ({panel, panelData}: Props): any => {
                         inputClassName="text"
                         inputName="inputClassName"
                         inputValue={panelData.inputClassName}
-                    />
-                    <Radio
-                        label="Enter radio test class name"
-                        type="radio"
-                        inputClassName="radio"
-                        inputName="inputClassNameRadio"
-                        inputValue={panelData.inputClassNameRadio}
-                        options={['test']}
                     />
                     <AddOptions 
                         inputValue={panelData.options ? JSON.parse(panelData.options) : []}
