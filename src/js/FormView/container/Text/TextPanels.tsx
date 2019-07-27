@@ -35,7 +35,8 @@ const TextPanel = ({panel, panelData}: Props): any => {
                         options={[
                             ClassificationInputs.TEXT, 
                             ClassificationInputs.EMAIL, 
-                            ClassificationInputs.NUMBER
+                            ClassificationInputs.NUMBER, 
+                            ClassificationInputs.FILE
                         ]}
                     />
                     <Text 

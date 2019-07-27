@@ -31,6 +31,11 @@ const Components: ComponentListType = {
         Draggable: TextInput,
         Panel: TextPanel
     },
+    [ClassificationInputs.FILE]: {
+        Input: Text,
+        Draggable: TextInput,
+        Panel: TextPanel
+    },
     [ClassificationInputs.HR]: {
         Input: Hr,
         Draggable: HrDrag,
