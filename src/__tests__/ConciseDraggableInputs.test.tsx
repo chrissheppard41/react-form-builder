@@ -1,5 +1,4 @@
 import ConiseDraggableInputs from '../js/utilities/ConciseDraggableInputs';
-//import console = require('console');
 
 describe('ConiseDraggableInputs unit tests', () => {
     it('Should return the name of the component', () => {
