@@ -29,7 +29,8 @@ export type selectType = {
     id: string,
     inputName: string,
     inputValue: string,
-    options: Array<string> | string,
+    options: string[] | string,
+    multiselect: string[] | boolean,
     validation: {
         [key: string]: Object,
     }
@@ -47,5 +48,27 @@ export type radioType = {
     fromPanel: boolean,
     validation: {
         [key: string]: Object,
+    }
+};
+
+export type textareaType = {
+    connected: string,
+    parentClassName?: string,
+    panelName: string,
+    enableChildren: boolean,
+    type: string,
+    label: string,
+    cols: number,
+    rows: number,
+    id: string,
+    inputName: string,
+    inputValue: string,
+    inputClassName: string,
+    disableChild?: boolean,
+    validation: {
+        [key: string]: {
+            enabled: boolean,
+            message: string,
+        },
     }
 };

@@ -4,6 +4,7 @@ import ClassificationInputs from '../constants/ClassificationInputs';
 interface Hook {
     array: string[], 
     check: (value: string) => void,
+    checkMultiple: (values: any) => void
 }; 
   
 const useMultiSelect = (
@@ -28,7 +29,19 @@ const useMultiSelect = (
         }
     }
 
-    return {array, check};
+    const checkMultiple = (values: any) => {
+        let selectedForArray = [];
+        
+        for (var i = 0, l = values.length; i < l; i++) {
+            if (values[i].selected) {
+                selectedForArray.push(values[i].value);
+            }
+        }
+
+        setArray(selectedForArray);
+    };
+
+    return {array, check, checkMultiple};
 };
   
 export default useMultiSelect;

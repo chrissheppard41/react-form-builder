@@ -4,22 +4,21 @@ import Text from '../../../formBuilder/elements/Text';
 import Required from '../validation/rules/Required';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
-import AddOptions from '../../../formBuilder/elements/AddOptions';
-import Checked from '../../../formBuilder/elements/Checked';
+import Email from '../validation/rules/Email';
 
 type Props = {
     panel: string,
     panelData: any,
 };
 
-const SelectPanel = ({panel, panelData}: Props): any => {
+const TextPanel = ({panel, panelData}: Props): any => {
     const {actions}: any = useStateValue();
 
     return (
         <>
-            {panel === ClassificationPanel.SELECTPANEL &&
+            {panel === ClassificationPanel.TEXTAREAPANEL &&
                 <Panel
-                    title="Select input panel"
+                    title="Textarea panel"
                     id={panelData.id}
                     submit={actions.save}
                     clearPanel={actions.clearPanel}
@@ -39,14 +38,12 @@ const SelectPanel = ({panel, panelData}: Props): any => {
                         inputName="inputName"
                         inputValue={panelData.inputName}
                     />
-                    <Checked
-                        label="Is this a multi select input"
-                        type="CHECKBOX"
-                        inputClassName="checkbox"
-                        inputName="multiselect"
-                        inputValue={panelData.multiselect || [] || ''}
-                        options={['Yes']}
-                        fromPanel={true}
+                    <Text 
+                        label="Enter default value"
+                        type="text"
+                        inputClassName="text"
+                        inputName="inputValue"
+                        inputValue={panelData.inputValue}
                     />
                     <Text 
                         label="Enter parent class name"
@@ -62,14 +59,26 @@ const SelectPanel = ({panel, panelData}: Props): any => {
                         inputName="inputClassName"
                         inputValue={panelData.inputClassName}
                     />
-                    <AddOptions 
-                        inputValue={panelData.options ? JSON.parse(panelData.options) : []}
-                        inputClassName="option"
-                        inputName="options"
+                    <Text 
+                        label="Enter cols"
+                        type="number"
+                        inputClassName="cols"
+                        inputName="cols"
+                        inputValue={panelData.cols}
+                    />
+                    <Text 
+                        label="Enter rows"
+                        type="number"
+                        inputClassName="rows"
+                        inputName="rows"
+                        inputValue={panelData.rows}
                     />
                     <div className="validation">
                         <h5>Validation rules</h5>
                         <Required 
+                            validation={panelData.validation}
+                        />
+                        <Email 
                             validation={panelData.validation}
                         />
                     </div>
@@ -78,4 +87,4 @@ const SelectPanel = ({panel, panelData}: Props): any => {
     );
 };
 
-export default SelectPanel;
+export default TextPanel;

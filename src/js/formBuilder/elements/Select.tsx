@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {selectType} from '../../types/inputType';
 import Options from '../../types/Options';
 import {optionsList} from '../../utilities/OptionBuild';
+import useMultiSelect from '../../hooks/useMultiSelect';
 
 const Select = ({
     label,
@@ -9,10 +10,14 @@ const Select = ({
     inputValue,
     id,
     inputClassName,
-    options
+    options,
+    multiselect
 }: selectType) => {
-    const [val, setVal] = useState(inputValue);
     const listOptions: Options[] = optionsList(options);
+    const mutliple: boolean = (typeof multiselect === 'object')
+        ? multiselect.includes("Yes")
+        : multiselect;
+    const {array, checkMultiple} = useMultiSelect(inputValue, '');
 
     return (
         <div className="selectInput">
@@ -21,11 +26,16 @@ const Select = ({
                 id={id}
                 className={`${inputName} ${inputClassName}`}
                 name={inputName}
-                onChange={e => setVal(e.target.value)}
-                value={val}
+                value={mutliple ? array : array[0]}
+                onChange={e => checkMultiple(e.target.options)}
+                multiple={mutliple}
             >
                 {listOptions && listOptions.map(({key, value}: Options, i: number) =>
-                    <option key={i} value={key}>{value}</option>
+                    <option 
+                        key={i} 
+                        value={key}
+                        selected={array.includes(key)}
+                    >{value}</option>
                 )}
             </select>
         </div>
@@ -37,7 +47,8 @@ Select.defaultProps = {
     inputValue: '',
     inputClassName: '',
     validation: {},
-    panelName: ''
+    panelName: '',
+    multiselect: false
 };
 
 export default Select;

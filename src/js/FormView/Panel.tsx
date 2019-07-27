@@ -71,8 +71,6 @@ class Panel extends React.Component<Props> {
                 }
             }
         }
-
-        console.log('formData', formData);
         
         submit(formData);
         clearPanel();

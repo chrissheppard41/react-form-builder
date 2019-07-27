@@ -5,5 +5,6 @@ export default KeyMappings([
     'TITLEPANEL',
     'SELECTPANEL',
     'RADIOPANEL',
-    'CHECKBOXPANEL'
+    'CHECKBOXPANEL',
+    'TEXTAREAPANEL'
 ]);

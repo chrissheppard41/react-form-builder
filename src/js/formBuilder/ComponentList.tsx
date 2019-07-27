@@ -14,6 +14,9 @@ import SelectDrag from '../FormView/container/Select/SelectInput';
 import Checked from './elements/Checked';
 import CheckedInput from '../FormView/container/Checked/CheckedInput';
 import CheckedPanel from '../FormView/container/Checked/CheckedPanel';
+import Textarea from './elements/Textarea';
+import TextareaInput from '../FormView/container/Textarea/TextareaInput';
+import TextareaPanel from '../FormView/container/Textarea/TextareaPanels';
 
 const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
@@ -60,6 +63,11 @@ const Components: ComponentListType = {
         Input: Checked,
         Draggable: CheckedInput,
         Panel: CheckedPanel
+    },
+    [ClassificationInputs.TEXTAREA]: {
+        Input: Textarea,
+        Draggable: TextareaInput,
+        Panel: TextareaPanel
     }
 };
 

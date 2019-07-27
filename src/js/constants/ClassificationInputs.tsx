@@ -9,5 +9,6 @@ export default KeyMappings([
     'TITLE', 
     'SELECT', 
     'RADIO', 
-    'CHECKBOX'
+    'CHECKBOX',
+    'TEXTAREA'
 ]);
