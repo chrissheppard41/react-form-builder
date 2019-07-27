@@ -4,9 +4,8 @@ import Options from '../../types/Options';
 import {optionsList} from '../../utilities/OptionBuild';
 import ClassificationInputs from '../../constants/ClassificationInputs';
 import useMultiSelect from '../../hooks/useMultiSelect';
-//import useAddToSet from '../../hooks/useAddToSet';
 
-const Radio = ({
+const Checked = ({
     label,
     type,
     inputName,
@@ -20,7 +19,7 @@ const Radio = ({
     const listOptions: Options[] = optionsList(options);
 
     return (
-        <div className="radioInput">
+        <div className="checkedInput">
             <label htmlFor={inputName}>{label}</label>
             {listOptions && listOptions.map(({key, value}: Options, i: number) =>
                 <Fragment key={i}>
@@ -39,7 +38,7 @@ const Radio = ({
     );
 }
 
-Radio.defaultProps = {
+Checked.defaultProps = {
     id: '',
     inputValue: '',
     inputClassName: '',
@@ -48,4 +47,4 @@ Radio.defaultProps = {
     fromPanel: false
 };
 
-export default Radio;
+export default Checked;

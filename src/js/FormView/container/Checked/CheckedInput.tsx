@@ -8,8 +8,8 @@ export interface BoxProps {
   connected: string,
 }
 
-const RadioInput = ({className, connected}: any) => {
-  const name = "Radio input component";
+const CheckedInput = ({className, connected}: any) => {
+  const name = "Radio/Checkbox input component";
   
   return (
     <Drag 
@@ -24,4 +24,4 @@ const RadioInput = ({className, connected}: any) => {
   )
 }
 
-export default RadioInput;
+export default CheckedInput;

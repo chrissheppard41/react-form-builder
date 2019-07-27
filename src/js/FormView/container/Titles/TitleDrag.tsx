@@ -9,7 +9,7 @@ export interface BoxProps {
 }
 
 const TitleDrag = ({className, connected}: any) => {
-  const name = "Title component";
+  const name = "General elements component";
 
   return (
     <Drag 

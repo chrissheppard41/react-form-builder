@@ -13,14 +13,14 @@ type Props = {
     panelData: any,
 };
 
-const RadioPanel = ({panel, panelData}: Props): any => {
+const CheckedPanel = ({panel, panelData}: Props): any => {
     const {actions}: any = useStateValue();
 
     return (
         <>
             {panel === ClassificationPanel.RADIOPANEL &&
                 <Panel
-                    title="Radio input panel"
+                    title="Radio/Checkbox input panel"
                     id={panelData.id}
                     submit={actions.save}
                     clearPanel={actions.clearPanel}
@@ -81,4 +81,4 @@ const RadioPanel = ({panel, panelData}: Props): any => {
     );
 };
 
-export default RadioPanel;
+export default CheckedPanel;

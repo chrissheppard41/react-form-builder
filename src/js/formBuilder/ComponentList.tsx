@@ -11,9 +11,9 @@ import TitleDrag from '../FormView/container/Titles/TitleDrag';
 import SelectPanel from '../FormView/container/Select/SelectPanels';
 import Select from './elements/Select';
 import SelectDrag from '../FormView/container/Select/SelectInput';
-import Radio from './elements/Radio';
-import RadioInput from '../FormView/container/Radio/RadioInput';
-import RadioPanel from '../FormView/container/Radio/RadioPanels';
+import Checked from './elements/Checked';
+import CheckedInput from '../FormView/container/Checked/CheckedInput';
+import CheckedPanel from '../FormView/container/Checked/CheckedPanel';
 
 const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
@@ -52,14 +52,14 @@ const Components: ComponentListType = {
         Panel: SelectPanel
     },
     [ClassificationInputs.RADIO]: {
-        Input: Radio,
-        Draggable: RadioInput,
-        Panel: RadioPanel
+        Input: Checked,
+        Draggable: CheckedInput,
+        Panel: CheckedPanel
     },
     [ClassificationInputs.CHECKBOX]: {
-        Input: Radio,
-        Draggable: RadioInput,
-        Panel: RadioPanel
+        Input: Checked,
+        Draggable: CheckedInput,
+        Panel: CheckedPanel
     }
 };
 

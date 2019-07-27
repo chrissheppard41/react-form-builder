@@ -8,6 +8,7 @@ export default KeyMappings([
     'H5', 
     'H6', 
     'SPAN', 
+    'p',
     'I', 
     'EM',
     'B', 
