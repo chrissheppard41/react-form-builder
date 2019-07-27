@@ -5,6 +5,8 @@ import Required from '../validation/rules/Required';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
 import AddOptions from '../../../formBuilder/elements/AddOptions';
+import Select from '../../../formBuilder/elements/Select';
+import ClassificationInputs from '../../../constants/ClassificationInputs';
 
 type Props = {
     panel: string,
@@ -24,6 +26,17 @@ const RadioPanel = ({panel, panelData}: Props): any => {
                     clearPanel={actions.clearPanel}
                 >
                     <h5>Input fields</h5>
+                    <Select 
+                        label="Enter type"
+                        inputClassName="select"
+                        id="type"
+                        inputName="type"
+                        inputValue={panelData.type}
+                        options={[
+                            ClassificationInputs.RADIO, 
+                            ClassificationInputs.CHECKBOX
+                        ]}
+                    />
                     <Text 
                         label="Enter label"
                         type="text"

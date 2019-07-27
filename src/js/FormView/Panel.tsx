@@ -22,13 +22,14 @@ class Panel extends React.Component<Props> {
             clearPanel,
         } = this.props;
         
-        let formData = {validation: {}};
+        let formData: any = {validation: {}};
         
         for(const field in event.target){
             if (event.target[field] && event.target[field].value !== undefined) {
                 const name = event.target[field].name || event.target[field].id;
 
                 if (name === undefined || name === '') {continue;}
+                if (!formData[name]) {formData[name] = undefined;}
                 if (event.target[field].value && event.target[field].className.includes('validation')) {
                     formData = {
                         ...formData,
@@ -44,15 +45,34 @@ class Panel extends React.Component<Props> {
                         },
                     };
                 } else {
-                    formData = {
-                        ...formData,
-                        [name]: event.target[field].value,
-                    };
+                    if (event.target[field].type === 'checkbox') {
+                        if (event.target[field].checked) {
+                            formData = {
+                                ...formData,
+                                [name]: [
+                                    ...(formData[name] || []),
+                                    event.target[field].value
+                                ],
+                            };
+                        }
+                    } else if (event.target[field].type === 'radio') {
+                        if (event.target[field].checked) {
+                            formData = {
+                                ...formData,
+                                [name]: event.target[field].value,
+                            };
+                        }
+                    } else {
+                        formData = {
+                            ...formData,
+                            [name]: event.target[field].value,
+                        };
+                    }
                 }
-
-                
             }
         }
+
+        console.log('formData', formData);
         
         submit(formData);
         clearPanel();

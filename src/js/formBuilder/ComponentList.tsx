@@ -55,6 +55,11 @@ const Components: ComponentListType = {
         Input: Radio,
         Draggable: RadioInput,
         Panel: RadioPanel
+    },
+    [ClassificationInputs.CHECKBOX]: {
+        Input: Radio,
+        Draggable: RadioInput,
+        Panel: RadioPanel
     }
 };
 

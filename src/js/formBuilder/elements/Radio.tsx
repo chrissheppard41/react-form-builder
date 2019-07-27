@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {Fragment} from 'react';
 import {radioType} from '../../types/inputType';
 import Options from '../../types/Options';
 import {optionsList} from '../../utilities/OptionBuild';
+import ClassificationInputs from '../../constants/ClassificationInputs';
+import useMultiSelect from '../../hooks/useMultiSelect';
+//import useAddToSet from '../../hooks/useAddToSet';
 
 const Radio = ({
     label,
@@ -10,27 +13,27 @@ const Radio = ({
     inputValue,
     id,
     inputClassName,
-    options
+    options,
+    fromPanel
 }: radioType) => {
-    const [val, setVal] = useState(inputValue);
+    const {array, check} = useMultiSelect(inputValue, type);
     const listOptions: Options[] = optionsList(options);
 
     return (
         <div className="radioInput">
             <label htmlFor={inputName}>{label}</label>
             {listOptions && listOptions.map(({key, value}: Options, i: number) =>
-                <>
+                <Fragment key={i}>
                     <input 
-                        key={i} 
                         type={type}
-                        name={inputName}
+                        name={`${inputName}${(!fromPanel && type === ClassificationInputs.CHECKBOX) ? i : ''}`}
                         className={`${inputClassName}`}
                         id={id}
                         value={key}
-                        checked={val === key}
-                        onChange={e => setVal(e.target.value)}
+                        checked={array.includes(key)}
+                        onChange={e => check(e.target.value)}
                     /> {value}
-                </>
+                </Fragment>
             )}
         </div>
     );
@@ -41,7 +44,8 @@ Radio.defaultProps = {
     inputValue: '',
     inputClassName: '',
     validation: {},
-    panelName: ''
+    panelName: '',
+    fromPanel: false
 };
 
 export default Radio;

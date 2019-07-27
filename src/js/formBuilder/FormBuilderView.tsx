@@ -55,9 +55,18 @@ class FormBuilderView extends React.Component<Props, State> {
             for(const field in e.target) {
                 if (e.target[field] && e.target[field].value) {
                     if(e.target[field].type !== 'submit') {
-                        submitObject = {
-                            ...submitObject,
-                            [e.target[field].name]: e.target[field].value,
+                        if (e.target[field].type === 'checkbox' || e.target[field].type === 'radio') {
+                            if (e.target[field].checked) {
+                                submitObject = {
+                                    ...submitObject,
+                                    [e.target[field].name]: e.target[field].value,
+                                }
+                            }
+                        } else {
+                            submitObject = {
+                                ...submitObject,
+                                [e.target[field].name]: e.target[field].value,
+                            }
                         }
                     }
                 }

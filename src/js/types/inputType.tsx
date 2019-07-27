@@ -42,8 +42,9 @@ export type radioType = {
     id: string,
     type: string,
     inputName: string,
-    inputValue: string,
-    options: Array<string> | string,
+    inputValue: string | string[],
+    options: string[] | string,
+    fromPanel: boolean,
     validation: {
         [key: string]: Object,
     }
