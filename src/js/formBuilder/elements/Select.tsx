@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {selectType} from '../../types/inputType';
+import Options from '../../types/Options';
+import {formatSingleOptions} from '../../utilities/OptionBuild';
 
 const Select = ({
     label,
@@ -11,10 +13,10 @@ const Select = ({
 }: selectType) => {
     const [val, setVal] = useState(inputValue);
     
-    const listOptions: string[] = (typeof options === 'object')
-        ? options
+    const listOptions: Options[] = (typeof options === 'object')
+        ? formatSingleOptions(options)
         : (typeof options === 'string')
-            ? options.split(',')
+            ? JSON.parse(options)
             : [];
 
     return (
@@ -23,11 +25,12 @@ const Select = ({
             <select 
                 id={id}
                 className={`${inputName} ${inputClassName}`}
+                name={inputName}
                 onChange={e => setVal(e.target.value)}
                 value={val}
             >
-                {listOptions && listOptions.map((option: string, i: number) =>
-                    <option key={i} value={option}>{option}</option>
+                {listOptions && listOptions.map(({key, value}: Options, i: number) =>
+                    <option key={i} value={key}>{value}</option>
                 )}
             </select>
         </div>

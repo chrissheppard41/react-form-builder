@@ -6,5 +6,7 @@ export default KeyMappings([
     'NUMBER', 
     'HR', 
     'TITLE', 
-    'SELECT'
+    'SELECT', 
+    'RADIO', 
+    'CHECKBOX'
 ]);

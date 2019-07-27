@@ -11,6 +11,9 @@ import TitleDrag from '../FormView/container/Titles/TitleDrag';
 import SelectPanel from '../FormView/container/Select/SelectPanels';
 import Select from './elements/Select';
 import SelectDrag from '../FormView/container/Select/SelectInput';
+import Radio from './elements/Radio';
+import RadioInput from '../FormView/container/Radio/RadioInput';
+import RadioPanel from '../FormView/container/Radio/RadioPanels';
 
 const Components: ComponentListType = {
     [ClassificationInputs.TEXT]: {
@@ -42,6 +45,11 @@ const Components: ComponentListType = {
         Input: Select,
         Draggable: SelectDrag,
         Panel: SelectPanel
+    },
+    [ClassificationInputs.RADIO]: {
+        Input: Radio,
+        Draggable: RadioInput,
+        Panel: RadioPanel
     }
 };
 

@@ -34,3 +34,17 @@ export type selectType = {
         [key: string]: Object,
     }
 };
+
+export type radioType = {
+    parentClassName?: string,
+    label: string,
+    inputClassName: string,
+    id: string,
+    type: string,
+    inputName: string,
+    inputValue: string,
+    options: Array<string> | string,
+    validation: {
+        [key: string]: Object,
+    }
+};
