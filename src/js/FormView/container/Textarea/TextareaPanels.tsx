@@ -4,10 +4,11 @@ import Text from '../../../formBuilder/elements/Text';
 import Required from '../validation/rules/Required';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
+import { panelData } from '../../../types/PanelDataType';
 
 type Props = {
     panel: string,
-    panelData: any,
+    panelData: panelData,
 };
 
 const TextPanel = ({panel, panelData}: Props): any => {

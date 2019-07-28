@@ -1,10 +1,11 @@
 import React from 'react';
+import { panelData } from '../types/PanelDataType';
 
 type Props = {
     children: Array<React.ReactNode>,
     title: string,
     id: string,
-    submit: (data: any) => void,
+    submit: (data: panelData) => void,
     clearPanel: () => void,
 }
 
@@ -22,7 +23,7 @@ class Panel extends React.Component<Props> {
             clearPanel,
         } = this.props;
         
-        let formData: any = {validation: {}};
+        let formData: panelData = {validation: {}};
         
         for(const field in event.target){
             if (event.target[field] && event.target[field].value !== undefined) {

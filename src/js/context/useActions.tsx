@@ -1,4 +1,5 @@
 import Actions from '../constants/Actions';
+import { panelData } from '../types/PanelDataType';
 
 export default (state: any, dispatch: any) => {
     //console.log(state);
@@ -35,7 +36,7 @@ export default (state: any, dispatch: any) => {
         });
     };
 
-    const save = (data: any) => dispatch({
+    const save = (data: panelData) => dispatch({
         type: Actions.SAVE,
         payload: {data}
     });

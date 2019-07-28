@@ -8,10 +8,11 @@ import ClassificationInputs from '../../../constants/ClassificationInputs';
 import {useStateValue} from '../../../context/FormContext';
 import Email from '../validation/rules/Email';
 import Number from '../validation/rules/Number';
+import { panelData } from '../../../types/PanelDataType';
 
 type Props = {
     panel: string,
-    panelData: any,
+    panelData: panelData,
 };
 
 const TextPanel = ({panel, panelData}: Props): any => {

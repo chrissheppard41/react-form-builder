@@ -7,10 +7,11 @@ import {useStateValue} from '../../../context/FormContext';
 import AddOptions from '../../../formBuilder/elements/AddOptions';
 import Checked from '../../../formBuilder/elements/Checked';
 import AtLeast from '../validation/rules/AtLeast';
+import { panelData } from '../../../types/PanelDataType';
 
 type Props = {
     panel: string,
-    panelData: any,
+    panelData: panelData,
 };
 
 const SelectPanel = ({panel, panelData}: Props): any => {

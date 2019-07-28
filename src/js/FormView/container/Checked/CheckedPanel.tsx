@@ -8,10 +8,11 @@ import AddOptions from '../../../formBuilder/elements/AddOptions';
 import Select from '../../../formBuilder/elements/Select';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import AtLeast from '../validation/rules/AtLeast';
+import {panelData} from '../../../types/PanelDataType';
 
 type Props = {
     panel: string,
-    panelData: any,
+    panelData: panelData,
 };
 
 const CheckedPanel = ({panel, panelData}: Props): any => {

@@ -5,10 +5,11 @@ import ClassificationPanel from '../../../constants/ClassificationPanel';
 import TitlesTypes from '../../../constants/TitlesTypes';
 import {useStateValue} from '../../../context/FormContext';
 import Select from '../../../formBuilder/elements/Select';
+import { panelData } from '../../../types/PanelDataType';
 
 type Props = {
     panel: string,
-    panelData: any,
+    panelData: panelData,
 };
 
 const TitlePanel = ({panel, panelData}: Props): any => {
