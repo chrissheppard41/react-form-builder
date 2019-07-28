@@ -2,7 +2,6 @@ import React from 'react';
 import FormView from './FormView/FormView';
 import FormProvider from './context/FormContext';
 import {ComponentListType} from './types/ComponentListType';
-//import {inputTypes} from './types/inputType';
 
 interface FormProp {
     editMode: boolean,

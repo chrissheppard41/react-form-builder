@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-cs",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "private": false,
   "dependencies": {
     "@types/node": "12.0.8",
@@ -9,8 +9,8 @@
     "@types/styled-components": "4.1.18",
     "copy-to-clipboard": "3.2.0",
     "react": "16.8.6",
-    "react-dnd": "^8.0.0",
-    "react-dnd-html5-backend": "8.0.0",
+    "react-dnd": "9.3.2",
+    "react-dnd-html5-backend": "9.3.2",
     "react-dom": "16.8.6",
     "react-scripts": "3.0.1",
     "styled-components": "4.3.2",
@@ -22,7 +22,7 @@
     "@typescript-eslint/eslint-plugin": "1.10.2",
     "@typescript-eslint/parser": "1.10.2",
     "husky": "3.0.1",
-    "jest": "^24.7.1",
+    "jest": "24.7.1",
     "jooks": "1.0.0",
     "node-sass": "4.12.0",
     "prettier": "1.18.2",
@@ -69,4 +69,4 @@
       "!<rootDir>/path/to/dir/"
     ]
   }
-  }
+}
