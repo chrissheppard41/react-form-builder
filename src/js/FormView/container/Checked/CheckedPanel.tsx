@@ -38,6 +38,7 @@ const CheckedPanel = ({panel, panelData}: Props): any => {
                             ClassificationInputs.RADIO, 
                             ClassificationInputs.CHECKBOX
                         ]}
+                        fromPanel={true}
                     />
                     <Text 
                         label="Enter label"

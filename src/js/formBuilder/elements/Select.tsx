@@ -18,7 +18,8 @@ const Select = ({
     options,
     multiselect,
     disableChild,
-    validation
+    validation,
+    fromPanel
 }: selectType) => {
     const {actions}: any = useStateValue();
     const listOptions: Options[] = optionsList(options);
@@ -29,8 +30,8 @@ const Select = ({
     const {requiredMessage, require} = useValidationRequire(validation, array.toString(), id, actions.addValidation, actions.removeValidation);
     const {atLeastMessage, atLeast} = useValidationAtLeast(validation, array, id, actions.addValidation, actions.removeValidation);
 
-    if(!disableChild) {
-        actions.enableChildren(id, array);
+    if(!disableChild && !fromPanel) {
+        actions.enableChildren(id, array[0]);
     }
 
     return (

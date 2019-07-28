@@ -14,4 +14,8 @@ const Title = ({
     );
 };
 
+Title.defaultProps = {
+    enableChildren: false,
+}
+
 export default Title;

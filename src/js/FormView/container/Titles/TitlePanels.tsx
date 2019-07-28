@@ -39,6 +39,7 @@ const TitlePanel = ({panel, panelData}: Props): any => {
                         inputName="inputName"
                         inputValue={panelData.inputName}
                         options={Object.keys(TitlesTypes).map((key: string) => TitlesTypes[key])}
+                        fromPanel={true}
                     />
                     <Text 
                         label="Enter parent class name"

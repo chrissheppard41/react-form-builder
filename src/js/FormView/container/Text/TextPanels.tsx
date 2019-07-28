@@ -40,6 +40,7 @@ const TextPanel = ({panel, panelData}: Props): any => {
                             ClassificationInputs.NUMBER, 
                             ClassificationInputs.FILE
                         ]}
+                        fromPanel={true}
                     />
                     <Text 
                         label="Enter label"
