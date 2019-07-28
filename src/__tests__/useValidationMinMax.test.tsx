@@ -7,9 +7,11 @@ const numberCheck = (value: string, messageCompare: string, min: number, max: nu
     const jooks = init(() => useValidationMinMax({
         number: {
             enabled: true,
-            message: 'lorem ipsum'
+            message: 'lorem ipsum',
+            min,
+            max
         }
-    }, value, 'id', min, max, addValidation, removeValidation));
+    }, value, 'id', addValidation, removeValidation));
     const {numberMessage, number} = jooks.run();
 
     expect(numberMessage).toEqual(messageCompare);
@@ -18,7 +20,7 @@ const numberCheck = (value: string, messageCompare: string, min: number, max: nu
 
 describe('useValidationEmail hook tests', () => {
     it('Should not recognise what this validation is and no nothing', () => {
-        const jooks = init(() => useValidationMinMax({}, '', '', 0, 0, addValidation, removeValidation));
+        const jooks = init(() => useValidationMinMax({}, '', '', addValidation, removeValidation));
         const {numberMessage, number} = jooks.run();
 
         expect(numberMessage).toEqual('');
@@ -57,8 +59,5 @@ describe('useValidationEmail hook tests', () => {
     });
     it('Should take an input of number 11 and fail', () => {
         numberCheck('11', 'lorem ipsum (max number of 10)', 5, 10, true);
-    });
-    it('Should take an input of number 10 and pass', () => {
-        numberCheck('10', '', 5, 10, true);
     });
 });

@@ -4,7 +4,6 @@ import Text from '../../../formBuilder/elements/Text';
 import Required from '../validation/rules/Required';
 import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
-import Email from '../validation/rules/Email';
 
 type Props = {
     panel: string,
@@ -76,9 +75,6 @@ const TextPanel = ({panel, panelData}: Props): any => {
                     <div className="validation">
                         <h5>Validation rules</h5>
                         <Required 
-                            validation={panelData.validation}
-                        />
-                        <Email 
                             validation={panelData.validation}
                         />
                     </div>

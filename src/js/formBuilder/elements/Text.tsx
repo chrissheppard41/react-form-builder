@@ -5,6 +5,7 @@ import useValidationRequire from '../../hooks/useValidationRequire';
 import {useStateValue} from '../../context/FormContext';
 import styled from 'styled-components';
 import useValidationEmail from '../../hooks/useValidationEmail';
+import useValidationMinMax from '../../hooks/useValidationMinMax';
 
 const Div = styled.div`
   width: 100%;
@@ -34,6 +35,7 @@ const Text = ({
     const [val, setVal] = useState(inputValue);
     const {requiredMessage, require} = useValidationRequire(validation, val, id);
     const {emailMessage, email} = useValidationEmail(validation, val, id, actions.addValidation, actions.removeValidation);
+    const {numberMessage, number} = useValidationMinMax(validation, val, id, actions.addValidation, actions.removeValidation);
     if(!disableChild) {
         actions.enableChildren(id, val);
     }
@@ -44,14 +46,14 @@ const Text = ({
             <Input
                 type={type}
                 name={inputName}
-                className={`${inputClassName} ${email}`}
+                className={`${inputClassName} ${email} ${number}`}
                 id={id}
                 value={val}
                 onChange={e => setVal(e.target.value)}
                 required={require}
             />
             <ValidationRules 
-                validation={[requiredMessage, emailMessage]}
+                validation={[requiredMessage, emailMessage, numberMessage]}
             />
         </Div>
     );

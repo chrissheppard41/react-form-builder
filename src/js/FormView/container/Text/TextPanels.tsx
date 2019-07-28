@@ -7,6 +7,7 @@ import ClassificationPanel from '../../../constants/ClassificationPanel';
 import ClassificationInputs from '../../../constants/ClassificationInputs';
 import {useStateValue} from '../../../context/FormContext';
 import Email from '../validation/rules/Email';
+import Number from '../validation/rules/Number';
 
 type Props = {
     panel: string,
@@ -80,6 +81,9 @@ const TextPanel = ({panel, panelData}: Props): any => {
                             validation={panelData.validation}
                         />
                         <Email 
+                            validation={panelData.validation}
+                        />
+                        <Number 
                             validation={panelData.validation}
                         />
                     </div>
