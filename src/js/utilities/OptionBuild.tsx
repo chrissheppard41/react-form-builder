@@ -12,6 +12,6 @@ export const formatSingleOptions = (arr: string[]): Options[] =>
 export const optionsList = (options: string | string[]): Options[] => 
     (typeof options === 'object')
         ? formatSingleOptions(options)
-        : (typeof options === 'string')
+        : (typeof options === 'string' && options !== '')
             ? JSON.parse(options)
             : [];

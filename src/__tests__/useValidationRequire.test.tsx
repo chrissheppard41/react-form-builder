@@ -13,9 +13,24 @@ jest.mock('../js/context/FormContext', () => ({
   }),
 }));
 
+const addValidation = jest.fn();
+const removeValidation = jest.fn();
+const requireCheck = (value: string, messageCompare: string, enabledCompare: boolean) => {
+    const jooks = init(() => useValidationRequire({
+        required: {
+            enabled: enabledCompare,
+            message: 'lorem ipsum'
+        }
+    }, value, 'id', addValidation, removeValidation));
+    const {requiredMessage, require} = jooks.run();
+
+    expect(requiredMessage).toEqual(messageCompare);
+    expect(require).toEqual(enabledCompare);
+};
+
 describe('useValidationRequire hook tests', () => {
   it('Should not recognise what this validation is and no nothing', () => {
-    const jooks = init(() => useValidationRequire({}, '', ''));
+    const jooks = init(() => useValidationRequire({}, '', '', addValidation, removeValidation));
     const {requiredMessage, require} = jooks.run();
 
     expect(requiredMessage).toEqual('');
@@ -23,29 +38,11 @@ describe('useValidationRequire hook tests', () => {
   });
 
   it('Should add the validation error to the list', () => {
-    const jooks = init(() => useValidationRequire({
-      required: {
-        enabled: true,
-        message: 'lorem ipsum'
-      }
-    }, '', ''));
-    const {requiredMessage, require} = jooks.run();
-
-    expect(requiredMessage).toEqual('lorem ipsum');
-    expect(require).toEqual(true);
+    requireCheck('', 'lorem ipsum', true);
   });
 
   it('Should remove the validation error to the list', () => {
-    const jooks = init(() => useValidationRequire({
-      required: {
-        enabled: true,
-        message: 'lorem ipsum'
-      }
-    }, 'lorem ipsum', ''));
-    const {requiredMessage, require} = jooks.run();
-
-    expect(requiredMessage).toEqual('');
-    expect(require).toEqual(true);
+    requireCheck('lorem ipsum', '', true);
   });
 
   it('Should not do anything if it can\'t find the component', () => {
@@ -54,7 +51,7 @@ describe('useValidationRequire hook tests', () => {
         enabled: true,
         message: 'lorem ipsum'
       }
-    }, '', ''));
+    }, '', '', addValidation, removeValidation));
     const {requiredMessage, require} = jooks.run();
 
     expect(requiredMessage).toEqual('');
@@ -62,14 +59,6 @@ describe('useValidationRequire hook tests', () => {
   });
 
   it('Should not do anything if the component is disabled', () => {
-    const jooks = init(() => useValidationRequire({
-      required: {
-        enabled: false
-      }
-    }, '', ''));
-    const {requiredMessage, require} = jooks.run();
-
-    expect(requiredMessage).toEqual('');
-    expect(require).toEqual(false);
+    requireCheck('', '', false);
   });
 });

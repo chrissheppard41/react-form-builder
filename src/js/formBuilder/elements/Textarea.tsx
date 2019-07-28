@@ -33,7 +33,7 @@ const Textarea = ({
 }: textareaType) => {
     const {actions}: any = useStateValue();
     const [val, setVal] = useState(inputValue);
-    const {requiredMessage, require} = useValidationRequire(validation, val, id);
+    const {requiredMessage, require} = useValidationRequire(validation, val, id, actions.addValidation, actions.removeValidation);
     if(!disableChild) {
         actions.enableChildren(id, val);
     }
@@ -60,6 +60,7 @@ const Textarea = ({
 
 Textarea.defaultProps = {
     id: '',
+    inputName: '',
     inputValue: '',
     inputClassName: '',
     validation: {},
@@ -67,7 +68,11 @@ Textarea.defaultProps = {
     enableChildren: false,
     disableChild: false,
     panelName: '',
-    type: ClassificationInputs.TEXTAREA
+    parentClassName: '',
+    label: '',
+    type: ClassificationInputs.TEXTAREA,
+    inputType: '',
+    fromPanel: false
 };
 
 export default Textarea;

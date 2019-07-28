@@ -33,7 +33,7 @@ const Text = ({
 }: inputType) => {
     const {actions}: any = useStateValue();
     const [val, setVal] = useState(inputValue);
-    const {requiredMessage, require} = useValidationRequire(validation, val, id);
+    const {requiredMessage, require} = useValidationRequire(validation, val, id, actions.addValidation, actions.removeValidation);
     const {emailMessage, email} = useValidationEmail(validation, val, id, actions.addValidation, actions.removeValidation);
     const {numberMessage, number} = useValidationMinMax(validation, val, id, actions.addValidation, actions.removeValidation);
     if(!disableChild) {
@@ -61,13 +61,19 @@ const Text = ({
 
 Text.defaultProps = {
     id: '',
+    inputName: '',
     inputValue: '',
     inputClassName: '',
     validation: {},
     connected: '',
     enableChildren: false,
     disableChild: false,
-    panelName: ''
+    panelName: '',
+    parentClassName: '',
+    label: '',
+    type: '',
+    inputType: '',
+    fromPanel: false
 };
 
 export default Text;

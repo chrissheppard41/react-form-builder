@@ -4,6 +4,10 @@ import Options from '../../types/Options';
 import {optionsList} from '../../utilities/OptionBuild';
 import ClassificationInputs from '../../constants/ClassificationInputs';
 import useMultiSelect from '../../hooks/useMultiSelect';
+import { useStateValue } from '../../context/FormContext';
+import ValidationRules from '../ValidationRules';
+import useValidationAtLeast from '../../hooks/useValidationAtLeast';
+import useValidationRequire from '../../hooks/useValidationRequire';
 
 const Checked = ({
     label,
@@ -13,20 +17,29 @@ const Checked = ({
     id,
     inputClassName,
     options,
-    fromPanel
+    fromPanel,
+    validation,
+    disableChild
 }: radioType) => {
+    const {actions}: any = useStateValue();
     const {array, check} = useMultiSelect(inputValue, type);
     const listOptions: Options[] = optionsList(options);
+    const {requiredMessage, require} = useValidationRequire(validation, array.toString(), id, actions.addValidation, actions.removeValidation);
+    const {atLeastMessage, atLeast} = useValidationAtLeast(validation, array, id, actions.addValidation, actions.removeValidation);
+
+    if(!disableChild) {
+        actions.enableChildren(id, array);
+    }
 
     return (
         <div className="checkedInput">
-            <label htmlFor={inputName}>{label}</label>
+            <label htmlFor={inputName}>{label}{require && ` *`}</label>
             {listOptions && listOptions.map(({key, value}: Options, i: number) =>
                 <Fragment key={i}>
                     <input 
                         type={type}
                         name={`${inputName}${(!fromPanel && type === ClassificationInputs.CHECKBOX) ? i : ''}`}
-                        className={`${inputClassName}`}
+                        className={`${inputClassName} ${require} ${atLeast}`}
                         id={id}
                         value={key}
                         checked={array.includes(key)}
@@ -34,17 +47,30 @@ const Checked = ({
                     /> {value}
                 </Fragment>
             )}
+            <ValidationRules 
+                validation={[requiredMessage, atLeastMessage]}
+            />
         </div>
     );
 }
 
 Checked.defaultProps = {
     id: '',
+    inputName: '',
     inputValue: '',
     inputClassName: '',
     validation: {},
+    connected: '',
+    enableChildren: false,
+    disableChild: false,
     panelName: '',
-    fromPanel: false
+    parentClassName: '',
+    label: '',
+    type: ClassificationInputs.SELECT,
+    inputType: '',
+    fromPanel: false,
+    options: '',
+    selectType: ''
 };
 
 export default Checked;

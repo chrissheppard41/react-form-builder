@@ -6,6 +6,7 @@ import ClassificationPanel from '../../../constants/ClassificationPanel';
 import {useStateValue} from '../../../context/FormContext';
 import AddOptions from '../../../formBuilder/elements/AddOptions';
 import Checked from '../../../formBuilder/elements/Checked';
+import AtLeast from '../validation/rules/AtLeast';
 
 type Props = {
     panel: string,
@@ -70,6 +71,9 @@ const SelectPanel = ({panel, panelData}: Props): any => {
                     <div className="validation">
                         <h5>Validation rules</h5>
                         <Required 
+                            validation={panelData.validation}
+                        />
+                        <AtLeast 
                             validation={panelData.validation}
                         />
                     </div>

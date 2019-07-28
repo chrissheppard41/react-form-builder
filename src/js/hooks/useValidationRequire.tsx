@@ -1,5 +1,3 @@
-import {useStateValue} from '../context/FormContext';
-
 interface ValidationHook {
   requiredMessage: string, 
   require: boolean
@@ -8,9 +6,10 @@ interface ValidationHook {
 const useValidationRequire = (
   validation: any, 
   value: string,
-  id: string
+  id: string,
+  addValidation: (id: string, validationRule: string) => void,
+  removeValidation: (id: string, validationRule: string) => void
 ): ValidationHook => {
-  const {actions}: any = useStateValue();
   let requiredMessage = '';
   let require = false;
 
@@ -20,9 +19,9 @@ const useValidationRequire = (
     if (require) {
       if (!value) {
         requiredMessage = validation.required.message;
-        actions.addValidation(id, 'required');
+        addValidation(id, 'required');
       } else {
-        actions.removeValidation(id, 'required');
+        removeValidation(id, 'required');
       }
     }
   }
