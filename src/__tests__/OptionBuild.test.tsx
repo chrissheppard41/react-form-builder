@@ -31,4 +31,8 @@ describe('OptionBuild tests', () => {
         const options = optionsList('[{"key": "test3", "value": "test3"}, {"key": "test4", "value": "test4"}]');
         expect(options).toEqual([{"key": "test3", "value": "test3"}, {"key": "test4", "value": "test4"}]);
     });
+    it('Should handle an input of empty string', () => {
+        const options = optionsList('');
+        expect(options).toEqual([]);
+    });
 });
