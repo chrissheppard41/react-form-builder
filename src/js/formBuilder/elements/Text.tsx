@@ -3,23 +3,11 @@ import {inputType} from '../../types/inputType';
 import ValidationRules from '../ValidationRules';
 import useValidationRequire from '../../hooks/useValidationRequire';
 import {useStateValue} from '../../context/FormContext';
-import styled from 'styled-components';
 import useValidationEmail from '../../hooks/useValidationEmail';
 import useValidationMinMax from '../../hooks/useValidationMinMax';
-
-const Div = styled.div`
-  width: 100%;
-`;
-const Label = styled.label`
-  width: 100%;
-  margin: 6px 0;
-  display: block;
-`;
-const Input = styled.input`
-  width: 60%;
-  margin: 6px 0;
-  display: block;
-`;
+import Label from '../styles/label';
+import Div from '../styles/div';
+import Input from '../styles/input';
 
 const Text = ({
     label,

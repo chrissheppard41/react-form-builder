@@ -8,6 +8,8 @@ import { useStateValue } from '../../context/FormContext';
 import ValidationRules from '../ValidationRules';
 import useValidationAtLeast from '../../hooks/useValidationAtLeast';
 import useValidationRequire from '../../hooks/useValidationRequire';
+import Label from '../styles/label';
+import Div from '../styles/div';
 
 const Checked = ({
     label,
@@ -32,8 +34,8 @@ const Checked = ({
     }
 
     return (
-        <div className="checkedInput">
-            <label htmlFor={inputName}>{label}{require && ` *`}</label>
+        <Div className="checkedInput">
+            <Label htmlFor={inputName}>{label}{require && ` *`}</Label>
             {listOptions && listOptions.map(({key, value}: Options, i: number) =>
                 <Fragment key={i}>
                     <input 
@@ -50,7 +52,7 @@ const Checked = ({
             <ValidationRules 
                 validation={[requiredMessage, atLeastMessage]}
             />
-        </div>
+        </Div>
     );
 }
 

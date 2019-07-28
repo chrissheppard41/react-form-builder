@@ -1,5 +1,51 @@
 import React from 'react';
 import { panelData } from '../types/PanelDataType';
+import styled from 'styled-components';
+import Div from '../formBuilder/styles/div';
+import Button from '../formBuilder/styles/button';
+
+const PanelContainer = styled.div`
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 500;
+`;
+const PanelOverlay = styled.div`
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 500;
+`;
+const PanelArea = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100%;
+    background-color: #666;
+    z-index: 501;
+    padding: 10px;
+`;
+const PanelHeader = styled.div`
+    width: 100%;
+    height: 30px;
+    @include font-size(16px, 20px);
+`;
+const PanelBody = styled.div`
+    width: 100%;
+    position: relative;
+    height: calc(100% - 30px);
+`;
+const PanelFooter = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+`;
 
 type Props = {
     children: Array<React.ReactNode>,
@@ -86,26 +132,26 @@ class Panel extends React.Component<Props> {
         } = this.props;
 
         return (
-            <div className="panel-container">
-                <div className="panel-overlay" onClick={() => clearPanel()} />
-                <div className="panel-area">
-                    <div className="header">
+            <PanelContainer className="panel-container">
+                <PanelOverlay className="panel-overlay" onClick={() => clearPanel()} />
+                <PanelArea className="panel-area">
+                    <PanelHeader className="header">
                         {title}
-                    </div>
-                    <div className="panel-body">
+                    </PanelHeader>
+                    <PanelBody className="panel-body">
                         <form onSubmit={this.submit}>
-                            <div className="inputs">
+                            <Div className="inputs">
                                 {children}
-                            </div>
-                            <div className="footer">
+                            </Div>
+                            <PanelFooter className="footer">
                                 <input type="hidden" name="id" value={id} />
-                                <button type="submit">Submit</button>
-                                <button onClick={() => clearPanel()}>Cancel</button>
-                            </div>
+                                <Button type="submit">Submit</Button>
+                                <Button onClick={() => clearPanel()}>Cancel</Button>
+                            </PanelFooter>
                         </form>
-                    </div>
-                </div>
-            </div>
+                    </PanelBody>
+                </PanelArea>
+            </PanelContainer>
         );
     }
 

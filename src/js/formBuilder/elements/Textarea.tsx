@@ -3,22 +3,10 @@ import {textareaType} from '../../types/inputType';
 import ValidationRules from '../ValidationRules';
 import useValidationRequire from '../../hooks/useValidationRequire';
 import {useStateValue} from '../../context/FormContext';
-import styled from 'styled-components';
 import ClassificationInputs from '../../constants/ClassificationInputs';
-
-const Div = styled.div`
-  width: 100%;
-`;
-const Label = styled.label`
-  width: 100%;
-  margin: 6px 0;
-  display: block;
-`;
-const Input = styled.textarea`
-  width: 60%;
-  margin: 6px 0;
-  display: block;
-`;
+import Label from '../styles/label';
+import Div from '../styles/div';
+import Textareas from '../styles/textarea';
 
 const Textarea = ({
     label,
@@ -41,7 +29,7 @@ const Textarea = ({
     return (
         <Div className="textareaInput">
             <Label htmlFor={inputName}>{label}{require && ` *`}</Label>
-            <Input
+            <Textareas
                 name={inputName}
                 className={`${inputClassName}`}
                 id={id}

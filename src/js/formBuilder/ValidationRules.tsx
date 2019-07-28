@@ -1,14 +1,15 @@
 import React from 'react';
+import Div from './styles/div';
 
 const ValidationRules = ({
     validation,
 }: any) =>
-    <div className="validationRules">
+    <Div className="validationRules">
         {validation.length !== 0 && 
             validation.map((val: string, key: number): any => 
-                <div key={key} className="rule">{val}</div>
+                <Div key={key} className="rule">{val}</Div>
             )
         }
-    </div>;
+    </Div>;
         
 export default ValidationRules;

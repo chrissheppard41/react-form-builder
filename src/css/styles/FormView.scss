@@ -1,15 +1,11 @@
 .formView-container {
     width: 100%;
 
-    .formView-builder,
-    .formBuilder {
-        width: 50%;
-        float: left;
-        padding: 10px;
-    }
-
     .formView-draggable,
     .formView-dropable {
+        width: 50%;
+        display: inline-block;
+
         h3 {
             margin-bottom: 10px;
         }

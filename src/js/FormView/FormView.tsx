@@ -54,14 +54,6 @@ const FormView = ({customComponents, editMode,}: Props) => {
                     componentList={componentList}
                     connected={state.panelData.id}
                 />
-                <FormIndexDisplay>
-                    <pre>
-                        <code>
-                        {JSON.stringify(state.inputs)}
-                        </code>
-                    </pre>
-                    <CopyButton onClick={() => copy(JSON.stringify(state.inputs))}>Copy to clipboard</CopyButton>
-                </FormIndexDisplay>
                 <div className="formView-dropable">
                     {state.modal.name === ModalNames.DELETE && <DeleteModal />}
                     <h3>Drop component</h3>
@@ -73,6 +65,14 @@ const FormView = ({customComponents, editMode,}: Props) => {
                         />
                     </div>
                 </div>
+                <FormIndexDisplay>
+                    <pre>
+                        <code>
+                        {JSON.stringify(state.inputs)}
+                        </code>
+                    </pre>
+                    <CopyButton onClick={() => copy(JSON.stringify(state.inputs))}>Copy to clipboard</CopyButton>
+                </FormIndexDisplay>
             </div>}
             <div className="formBuilder">
                 <FormBuilderView 

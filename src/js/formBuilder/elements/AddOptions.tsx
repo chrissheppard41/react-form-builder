@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import useAddToArray from '../../hooks/useAddToArray';
 import Options from '../../types/Options';
+import Label from '../styles/label';
+import Div from '../styles/div';
+import Input from '../styles/input';
 
 const AddOptions = ({
     inputName,
@@ -11,9 +14,9 @@ const AddOptions = ({
     const [val, setVal] = useState('');
   
     return (
-        <div className="selectInput">
-            <label htmlFor={inputName}>Options</label>
-            <div>
+        <Div className="selectInput">
+            <Label htmlFor={inputName}>Options</Label>
+            <Div>
                 <ul>
                     {array && array.map((option: Options, index: number) => 
                         <li key={index}>
@@ -21,7 +24,7 @@ const AddOptions = ({
                         </li>
                     )}
                 </ul>
-                <input
+                <Input
                     type='text'
                     className={inputClassName}
                     onChange={({target: {value}}: any) => setVal(value)}
@@ -30,8 +33,8 @@ const AddOptions = ({
                 <input type="hidden" name={inputName} value={JSON.stringify(array)} />
                 <span onClick={() => {setValue(val); setVal('')}}>+</span>
                 <p>Format: 'key, value' or simply 'value'</p>
-            </div>
-        </div>
+            </Div>
+        </Div>
     );
 }
 

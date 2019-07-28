@@ -8,6 +8,9 @@ import { useStateValue } from '../../context/FormContext';
 import useValidationRequire from '../../hooks/useValidationRequire';
 import useValidationAtLeast from '../../hooks/useValidationAtLeast';
 import ValidationRules from '../ValidationRules';
+import Label from '../styles/label';
+import Div from '../styles/div';
+import Selects from '../styles/select';
 
 const Select = ({
     label,
@@ -35,9 +38,9 @@ const Select = ({
     }
 
     return (
-        <div className="selectInput">
-            <label htmlFor={inputName}>{label}</label>
-            <select 
+        <Div className="selectInput">
+            <Label htmlFor={inputName}>{label}</Label>
+            <Selects 
                 id={id}
                 className={`${inputName} ${inputClassName} ${require} ${atLeast}`}
                 name={inputName}
@@ -53,11 +56,11 @@ const Select = ({
                         selected={array.includes(key)}
                     >{value}</option>
                 )}
-            </select>
+            </Selects>
             <ValidationRules 
                 validation={[requiredMessage, atLeastMessage]}
             />
-        </div>
+        </Div>
     );
 }
 
