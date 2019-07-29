@@ -4,7 +4,18 @@ import Options from "../../types/Options";
 import Label from "../styles/label";
 import Div from "../styles/div";
 import Input from "../styles/input";
+import styled from "styled-components";
 
+const Span = styled.span`
+  display: inline-block;
+`;
+const Ul = styled.ul`
+  list-style-type: none;
+  margin: 10px 0 10px 5px;
+`;
+const Li = styled.li`
+  margin: 10px 0;
+`;
 const AddOptions = ({ inputName, inputValue, inputClassName }: any) => {
   const { array, setValue, deleteValue } = useAddToArray(inputValue);
   const [val, setVal] = useState("");
@@ -13,15 +24,15 @@ const AddOptions = ({ inputName, inputValue, inputClassName }: any) => {
     <Div className="selectInput">
       <Label htmlFor={inputName}>Options</Label>
       <Div>
-        <ul>
+        <Ul>
           {array &&
             array.map((option: Options, index: number) => (
-              <li key={index}>
+              <Li key={index}>
                 key={option.key}, value={option.value}{" "}
                 <span onClick={() => deleteValue(option.key)}>x</span>
-              </li>
+              </Li>
             ))}
-        </ul>
+        </Ul>
         <Input
           type="text"
           className={inputClassName}
@@ -29,14 +40,14 @@ const AddOptions = ({ inputName, inputValue, inputClassName }: any) => {
           value={val}
         />
         <input type="hidden" name={inputName} value={JSON.stringify(array)} />
-        <span
+        <Span
           onClick={() => {
             setValue(val);
             setVal("");
           }}
         >
           +
-        </span>
+        </Span>
         <p>Format: 'key, value' or simply 'value'</p>
       </Div>
     </Div>

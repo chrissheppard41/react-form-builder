@@ -25,7 +25,6 @@ const DivModal = styled.div`
   margin-top: -100px;
   margin-left: -150px;
   width: 300px;
-  height: 200px;
   background-color: white;
   border: 1px solid #666;
   padding: 15px 15px 50px 15px;
