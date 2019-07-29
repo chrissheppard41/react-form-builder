@@ -3,12 +3,15 @@
 // Definitions by: Chris Sheppard <https://github.com/chrissheppard41>
 
 interface FormProp {
-    editMode: boolean,
-    customComponents: ComponentListType,
-    formData: inputTypes
+  editMode: boolean;
+  customComponents: ComponentListType;
+  formData: inputTypes;
 }
 
-declare function FormBuilder({editMode, customComponents, formData}: FormProp): any;
-declare namespace FormBuilder { }
+declare function FormBuilder({
+  editMode,
+  customComponents,
+  formData
+}: FormProp): any;
+declare namespace FormBuilder {}
 export = FormBuilder;
-  

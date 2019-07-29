@@ -19,6 +19,7 @@ const PanelOverlay = styled.div`
   left: 0;
   height: 100%;
   z-index: 500;
+  background-color: rgba(255, 255, 255, 0.5);
 `;
 const PanelArea = styled.div`
   position: absolute;

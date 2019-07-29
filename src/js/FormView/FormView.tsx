@@ -24,10 +24,26 @@ const FormIndexDisplay = styled.div`
   display: block;
   padding: 20px;
   font-family: monospace;
+  max-height: 200px;
+  overflow-x: scroll;
+`;
+
+const DivContainer = styled.div`
+  width: calc(100% - 20px);
+  margin: 10px;
+`;
+const DivBuild = styled.div`
+  margin-bottom: 10px;
 `;
 
 const CopyButton = styled.button`
   margin-top: 15px;
+`;
+
+const Code = styled.code`
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 `;
 
 const FormView = ({ customComponents, editMode }: Props) => {
@@ -43,9 +59,9 @@ const FormView = ({ customComponents, editMode }: Props) => {
   };
 
   return (
-    <div className="formView-container">
+    <DivContainer className="formView-container">
       {editMode && (
-        <div className="formView-builder">
+        <DivBuild className="formView-builder">
           <Panels componentList={componentList} state={state} />
           <Draggables
             classNames="formView-draggable"
@@ -61,13 +77,13 @@ const FormView = ({ customComponents, editMode }: Props) => {
           </div>
           <FormIndexDisplay>
             <pre>
-              <code>{JSON.stringify(state.inputs)}</code>
+              <Code>{JSON.stringify(state.inputs)}</Code>
             </pre>
             <CopyButton onClick={() => copy(JSON.stringify(state.inputs))}>
               Copy to clipboard
             </CopyButton>
           </FormIndexDisplay>
-        </div>
+        </DivBuild>
       )}
       <div className="formBuilder">
         <FormBuilderView
@@ -77,7 +93,7 @@ const FormView = ({ customComponents, editMode }: Props) => {
           submitTo={submitTest}
         />
       </div>
-    </div>
+    </DivContainer>
   );
 };
 
