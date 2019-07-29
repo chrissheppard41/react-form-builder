@@ -1,15 +1,15 @@
-type IndiviualType = {
-    [key: string]: string,
-};
+interface IndiviualType {
+  [key: string]: string;
+}
 
-const KeyMappings = (values: Array<string>): IndiviualType => {
-    var value: IndiviualType = {};
+const KeyMappings = (values: string[]): IndiviualType => {
+  var value: IndiviualType = {};
 
-    for (let key in values) {
-        value[values[key]] = values[key];
-    }
+  for (let key in values) {
+    value[values[key]] = values[key];
+  }
 
-    return value;
+  return value;
 };
 
 export default KeyMappings;

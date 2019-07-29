@@ -1,1 +1,1 @@
-declare module 'react-dnd';
+declare module "react-dnd";

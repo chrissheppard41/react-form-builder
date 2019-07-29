@@ -1,16 +1,16 @@
 interface ValidationHook {
-  requiredMessage: string, 
-  require: boolean
-};
+  requiredMessage: string;
+  require: boolean;
+}
 
 const useValidationRequire = (
-  validation: any, 
+  validation: any,
   value: string,
   id: string,
   addValidation: (id: string, validationRule: string) => void,
   removeValidation: (id: string, validationRule: string) => void
 ): ValidationHook => {
-  let requiredMessage = '';
+  let requiredMessage = "";
   let require = false;
 
   if (validation && validation.required) {
@@ -19,14 +19,14 @@ const useValidationRequire = (
     if (require) {
       if (!value) {
         requiredMessage = validation.required.message;
-        addValidation(id, 'required');
+        addValidation(id, "required");
       } else {
-        removeValidation(id, 'required');
+        removeValidation(id, "required");
       }
     }
   }
 
-  return {requiredMessage, require};
+  return { requiredMessage, require };
 };
 
 export default useValidationRequire;

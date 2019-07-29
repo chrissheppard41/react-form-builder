@@ -21,6 +21,8 @@
     "@types/jest": "24.0.14",
     "@typescript-eslint/eslint-plugin": "1.10.2",
     "@typescript-eslint/parser": "1.10.2",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "husky": "3.0.1",
     "jest": "24.7.1",
     "jooks": "1.0.0",
@@ -36,7 +38,8 @@
     "test": "react-scripts test --env=node",
     "test:single": "CI=true react-scripts test --env=node",
     "test:coverage": "npm test -- --coverage --env=node",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/eslint ./src/js/**/*.tsx --quiet --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

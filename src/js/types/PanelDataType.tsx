@@ -1,3 +1,3 @@
-export type panelData = {
-    [id: string]: any,
+export interface panelData {
+  [id: string]: any;
 }

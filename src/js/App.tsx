@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import '../css/index.scss';
-import FormBuilder from './FormBuilder';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import "../css/index.scss";
+import FormBuilder from "./FormBuilder";
+import styled from "styled-components";
 
 const Header = styled.header`
   width: 100%;
@@ -23,21 +23,19 @@ const SpanBtn = styled.span`
 const App: React.FC = () => {
   const [value, setValue] = useState(true);
 
-    return (
-      <div className="App">
-        <Header className="app-header">
-          React form builder cs
-          <SpanBtn onClick={() => setValue(!value)}>{value ? 'Disable' : 'Enable'} edit more</SpanBtn>
-        </Header>
-        <section>
-          <FormBuilder 
-            customComponents={{}}
-            editMode={value}
-            formData={{}}
-          />
-        </section>
-      </div>
-    );
-}
+  return (
+    <div className="App">
+      <Header className="app-header">
+        React form builder cs
+        <SpanBtn onClick={() => setValue(!value)}>
+          {value ? "Disable" : "Enable"} edit more
+        </SpanBtn>
+      </Header>
+      <section>
+        <FormBuilder customComponents={{}} editMode={value} formData={{}} />
+      </section>
+    </div>
+  );
+};
 
 export default App;

@@ -1,10 +1,10 @@
-import KeyMappings from '../utilities/KeyMappings';
+import KeyMappings from "../utilities/KeyMappings";
 
 export default KeyMappings([
-    'TEXTPANEL', 
-    'TITLEPANEL',
-    'SELECTPANEL',
-    'RADIOPANEL',
-    'CHECKBOXPANEL',
-    'TEXTAREAPANEL'
+  "TEXTPANEL",
+  "TITLEPANEL",
+  "SELECTPANEL",
+  "RADIOPANEL",
+  "CHECKBOXPANEL",
+  "TEXTAREAPANEL"
 ]);

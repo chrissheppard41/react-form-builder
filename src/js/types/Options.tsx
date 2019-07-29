@@ -1,6 +1,6 @@
-type Options = {
-    key: string,
-    value: string
-};
+interface Options {
+  key: string;
+  value: string;
+}
 
 export default Options;
