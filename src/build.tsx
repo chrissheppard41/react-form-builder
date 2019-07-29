@@ -1,14 +1,12 @@
 import FormBuilder from './js/FormBuilder';
 
-export default FormBuilder;
-
 // Elements
-import Checked from './js/FormBuilder/elements/Checked';
-import Hr from './js/FormBuilder/elements/Hr';
-import Select from './js/FormBuilder/elements/Select';
-import Text from './js/FormBuilder/elements/Text';
-import Textarea from './js/FormBuilder/elements/Textarea';
-import Title from './js/FormBuilder/elements/Title';
+import Checked from './js/formBuilder/elements/Checked';
+import Hr from './js/formBuilder/elements/Hr';
+import Select from './js/formBuilder/elements/Select';
+import Text from './js/formBuilder/elements/Text';
+import Textarea from './js/formBuilder/elements/Textarea';
+import Title from './js/formBuilder/elements/Title';
 
 // Types
 import {ComponentNameType, ComponentType, ComponentListType} from './js/types/ComponentListType';
@@ -71,6 +69,7 @@ import Label from './js/formBuilder/styles/label';
 import Selects from './js/formBuilder/styles/select';
 import Textareas from './js/formBuilder/styles/textarea';
 
+export default FormBuilder;
 export {
   Checked,
   Hr,
@@ -78,20 +77,6 @@ export {
   Text,
   Textarea,
   Title,
-  ComponentNameType,
-  ComponentType,
-  ComponentListType,
-  formSubmitType,
-  validationRule,
-  inputType,
-  inputTypes,
-  selectType,
-  radioType,
-  textareaType,
-  Options,
-  panelData,
-  ValidationIssues,
-  ValidationType,
   useActions,
   Inputs,
   Panel,
@@ -132,3 +117,17 @@ export {
   Selects,
   Textareas
 };
+export type ComponentNameType = ComponentNameType;
+export type ComponentType = ComponentType;
+export type ComponentListType = ComponentListType;
+export type formSubmitType = formSubmitType;
+export type validationRule = validationRule;
+export type inputType = inputType;
+export type inputTypes = inputTypes;
+export type selectType = selectType;
+export type radioType = radioType;
+export type textareaType = textareaType;
+export type Options = Options;
+export type panelData = panelData;
+export type ValidationIssues = ValidationIssues;
+export type ValidationType = ValidationType;
