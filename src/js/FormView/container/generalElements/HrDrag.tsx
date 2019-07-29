@@ -1,19 +1,19 @@
-import React from 'react';
-import ClassificationInputs from '../../../constants/ClassificationInputs';
-import Drag from '../Drag';
+import React from "react";
+import ClassificationInputs from "../../../constants/ClassificationInputs";
+import Drag from "../Drag";
 
 export interface BoxProps {
-  className: string,
-  connected: string,
+  className: string;
+  connected: string;
 }
 
-const HrDrag = ({className, connected}: any) => {
+const HrDrag = ({ className, connected }: any) => {
   const name = "Hr component";
 
   return (
-    <Drag 
-      className={className} 
-      name={name} 
+    <Drag
+      className={className}
+      name={name}
       connected={connected}
       input={ClassificationInputs.HR}
       overrideDropzone={true}
@@ -21,7 +21,7 @@ const HrDrag = ({className, connected}: any) => {
     >
       {name}
     </Drag>
-  )
-}
+  );
+};
 
 export default HrDrag;

@@ -1,20 +1,20 @@
-import React from 'react';
-import ClassificationInputs from '../../../constants/ClassificationInputs';
-import ClassificationPanel from '../../../constants/ClassificationPanel';
-import Drag from '../Drag';
+import React from "react";
+import ClassificationInputs from "../../../constants/ClassificationInputs";
+import ClassificationPanel from "../../../constants/ClassificationPanel";
+import Drag from "../Drag";
 
 export interface BoxProps {
-  className: string,
-  connected: string,
+  className: string;
+  connected: string;
 }
 
-const TitleDrag = ({className, connected}: any) => {
+const TitleDrag = ({ className, connected }: any) => {
   const name = "General elements component";
 
   return (
-    <Drag 
-      className={className} 
-      name={name} 
+    <Drag
+      className={className}
+      name={name}
       connected={connected}
       input={ClassificationInputs.TITLE}
       overrideDropzone={true}
@@ -22,7 +22,7 @@ const TitleDrag = ({className, connected}: any) => {
     >
       {name}
     </Drag>
-  )
-}
+  );
+};
 
 export default TitleDrag;

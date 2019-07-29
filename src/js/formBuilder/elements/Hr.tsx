@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Hr = () => {
-    return (
-        <hr className="hrLine" />
-    );
+  return <hr className="hrLine" />;
 };
 
 export default Hr;

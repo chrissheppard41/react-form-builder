@@ -2,7 +2,7 @@ import Actions from "../constants/Actions";
 import { panelData } from "../types/PanelDataType";
 
 export default (state: any, dispatch: any) => {
-  console.log(state);
+  //console.log(state);
   const addInput = (InputData: any) =>
     dispatch({
       type: Actions.ADD_INPUT,

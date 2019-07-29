@@ -1,7 +1,7 @@
-import UUIDGeneration from '../js/utilities/UUIDGeneration';
+import UUIDGeneration from "../js/utilities/UUIDGeneration";
 
-describe('ListEmpty tests', () => {
-    it('Should generate the correct format', () => {
-        expect(UUIDGeneration().length).toEqual(36);
-    });
+describe("ListEmpty tests", () => {
+  it("Should generate the correct format", () => {
+    expect(UUIDGeneration().length).toEqual(36);
+  });
 });
