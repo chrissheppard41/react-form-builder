@@ -1,3 +1,14 @@
-import KeyMappings from '../utilities/KeyMappings';
+import KeyMappings from "../utilities/KeyMappings";
 
-export default KeyMappings(['TEXT', 'EMAIL', 'NUMBER']);
+export default KeyMappings([
+  "TEXT",
+  "EMAIL",
+  "NUMBER",
+  "FILE",
+  "HR",
+  "TITLE",
+  "SELECT",
+  "RADIO",
+  "CHECKBOX",
+  "TEXTAREA"
+]);

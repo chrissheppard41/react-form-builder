@@ -1,9 +1,9 @@
-import {inputType} from '../types/inputType';
+import { inputType } from "../types/inputType";
 
-export type inputRow = {
-    [id: string]: inputType,
-};
+export interface inputRow {
+  [id: string]: inputType;
+}
 
 export interface IInputSet {
-    inputs: inputRow,
-};
+  inputs: inputRow;
+}

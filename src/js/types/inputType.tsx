@@ -1,34 +1,85 @@
-export type inputType = {
-    connected: string,
-    parentClassName?: string,
-    enableChildren: boolean,
-    type: string,
-    label: string,
-    id: string,
-    inputName: string,
-    inputValue: string,
-    inputClassName: string,
-    validation: {
-        [key: string]: {
-            enabled: boolean,
-            message: string,
-        },
-    }
-};
+export interface validationRule {
+  enabled: boolean;
+  message: string;
+}
 
-export type inputTypes = {
-    [id: string]: inputType,
-};
+export interface inputType {
+  connected: string;
+  parentClassName?: string;
+  panelName: string;
+  enableChildren: boolean;
+  type: string;
+  label: string;
+  id: string;
+  inputName: string;
+  inputValue: string;
+  inputClassName: string;
+  disableChild?: boolean;
+  validation: {
+    [key: string]: validationRule;
+  };
+  fromPanel: boolean;
+}
 
-export type selectType = {
-    parentClassName?: string,
-    label: string,
-    inputClassName: string,
-    id: string,
-    inputName: string,
-    inputValue: string,
-    options: Array<string>,
-    validation: {
-        [key: string]: Object,
-    }
-};
+export interface inputTypes {
+  [id: string]: inputType;
+}
+
+export interface selectType {
+  connected: string;
+  parentClassName?: string;
+  panelName: string;
+  enableChildren: boolean;
+  type: string;
+  label: string;
+  id: string;
+  inputName: string;
+  inputValue: string;
+  inputClassName: string;
+  disableChild?: boolean;
+  multiselect: string[] | boolean;
+  validation: {
+    [key: string]: validationRule;
+  };
+  options: string[] | string;
+  fromPanel: boolean;
+}
+
+export interface radioType {
+  connected: string;
+  parentClassName?: string;
+  panelName: string;
+  enableChildren: boolean;
+  type: string;
+  label: string;
+  id: string;
+  inputName: string;
+  inputClassName: string;
+  disableChild?: boolean;
+  validation: {
+    [key: string]: validationRule;
+  };
+  inputValue: string | string[];
+  options: string[] | string;
+  fromPanel: boolean;
+}
+
+export interface textareaType {
+  connected: string;
+  parentClassName?: string;
+  panelName: string;
+  enableChildren: boolean;
+  type: string;
+  label: string;
+  cols: number;
+  rows: number;
+  id: string;
+  inputName: string;
+  inputValue: string;
+  inputClassName: string;
+  disableChild?: boolean;
+  validation: {
+    [key: string]: validationRule;
+  };
+  fromPanel: boolean;
+}

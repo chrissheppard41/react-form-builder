@@ -1,6 +1,7 @@
 {
     "extends": [
         "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
         "prettier",
         "prettier/react"
     ],
@@ -20,6 +21,7 @@
         "jest": true
     },
     "rules": {
+        "prettier/prettier": "error",
         "@typescript-eslint/camelcase": 0,
         "@typescript-eslint/no-unused-vars": 0,
         "@typescript-eslint/no-var-requires": 0,
@@ -39,14 +41,6 @@
         "import/no-commonjs": 0,
         "no-undef": 0,
         "react/jsx-closing-bracket-location": 0,
-        "operator-linebreak": [
-            "error",
-            "after",
-            {
-                "overrides": {
-                    "&&": "after"
-                }
-            }
-        ]
+        "arrow-parens": 0
     }
 }

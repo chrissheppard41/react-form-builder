@@ -1,27 +1,23 @@
-import React from 'react';
-import {ValidationIssues} from '../types/validationType';
+import React from "react";
+import { ValidationIssues } from "../types/validationType";
 
-type Props = {
-    children: any,
-    classes: string,
-    validation: ValidationIssues
-};
+interface Props {
+  children: any;
+  classes: string;
+  validation: ValidationIssues;
+}
 
-const InputFormContainer = ({children, classes, validation}: Props) => {
-    const buildClasses = `inputContainer ${classes} ${validation.length !== 0 ? ' error' : ''}`;
-    
-    return (
-        <div
-            className={buildClasses}
-        >
-            {children}
-        </div>
-    );
+const InputFormContainer = ({ children, classes, validation }: Props) => {
+  const buildClasses = `inputContainer ${classes} ${
+    validation.length !== 0 ? " error" : ""
+  }`;
+
+  return <div className={buildClasses}>{children}</div>;
 };
 
 InputFormContainer.defaultProps = {
-    className: '',
-    validation: []
+  className: "",
+  validation: []
 };
 
 export default InputFormContainer;

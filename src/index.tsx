@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/index.scss';
-import App from './js/App';
-import * as serviceWorker from './serviceWorker';
-import {DndProvider} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./css/index.scss";
+import App from "./js/App";
+import * as serviceWorker from "./serviceWorker";
+import { DndProvider } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
 
 ReactDOM.render(
-    <DndProvider backend={HTML5Backend}>
-        <App />
-    </DndProvider>
-, document.getElementById('root'));
+  <DndProvider backend={HTML5Backend}>
+    <App />
+  </DndProvider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

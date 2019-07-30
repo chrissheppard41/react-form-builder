@@ -1,7 +1,11 @@
-export type ComponentListType = {
-    [key: string]: {
-        Input: any,
-        Draggable: any,
-        Panel: any,
-    },
-};
+export type ComponentNameType = string[];
+
+export interface ComponentType {
+  Input: any;
+  Draggable: any;
+  Panel: any;
+}
+
+export interface ComponentListType {
+  [key: string]: ComponentType;
+}

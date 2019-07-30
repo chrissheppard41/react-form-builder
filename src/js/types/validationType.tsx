@@ -1,5 +1,5 @@
-export type ValidationIssues = Array<string>;
+export type ValidationIssues = string[];
 
-export type ValidationType = {
-    [id: string]: ValidationIssues,
-};
+export interface ValidationType {
+  [id: string]: ValidationIssues;
+}

@@ -1,3 +1,3 @@
-export type formSubmitType = {
-    [name: string]: string,
-};
+export interface formSubmitType {
+  [name: string]: string;
+}
