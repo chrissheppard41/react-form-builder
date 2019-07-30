@@ -8,14 +8,30 @@ import styled from "styled-components";
 
 const Span = styled.span`
   display: inline-block;
+  width: 30px;
+  height: 28px;
+  border-radius: 3px;
+  background-color: #eee;
+  border: 1px solid #666;
+  line-height: 24px;
+  margin-left: 10px;
+  text-align: center;
+  margin-top: -5px;
+  cursor: pointer;
 `;
 const Ul = styled.ul`
   list-style-type: none;
   margin: 10px 0 10px 5px;
 `;
+const InputOptins = styled(Input)`
+  width: calc(60% - 40px);
+  display: inline-block;
+`;
 const Li = styled.li`
   margin: 10px 0;
+  line-height: 30px;
 `;
+
 const AddOptions = ({ inputName, inputValue, inputClassName }: any) => {
   const { array, setValue, deleteValue } = useAddToArray(inputValue);
   const [val, setVal] = useState("");
@@ -29,11 +45,11 @@ const AddOptions = ({ inputName, inputValue, inputClassName }: any) => {
             array.map((option: Options, index: number) => (
               <Li key={index}>
                 key={option.key}, value={option.value}{" "}
-                <span onClick={() => deleteValue(option.key)}>x</span>
+                <Span onClick={() => deleteValue(option.key)}>x</Span>
               </Li>
             ))}
         </Ul>
-        <Input
+        <InputOptins
           type="text"
           className={inputClassName}
           onChange={({ target: { value } }: any) => setVal(value)}

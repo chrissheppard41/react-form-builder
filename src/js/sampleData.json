@@ -1,0 +1,51 @@
+{
+    "fb52eb7e-342a-d603-062d-5450806e3a32": {
+        "id": "fb52eb7e-342a-d603-062d-5450806e3a32",
+        "type": "TITLE",
+        "label": "My new form!",
+        "validation": {},
+        "connected": "",
+        "enableChildren": true,
+        "overrideDropzone": true,
+        "overridePanel": false,
+        "panelName": "TITLEPANEL",
+        "inputName": "H1",
+        "parentClassName": "",
+        "inputClassName": ""
+    },
+    "3d559509-2129-2727-d7e1-14388142095f": {
+        "id": "3d559509-2129-2727-d7e1-14388142095f",
+        "type": "HR",
+        "label": "Hr component",
+        "validation": {},
+        "connected": "",
+        "enableChildren": true,
+        "overrideDropzone": true,
+        "overridePanel": true,
+        "panelName": null
+    },
+    "ecfcadb2-edc4-dc31-eb7c-e46cb36c815f": {
+        "id": "ecfcadb2-edc4-dc31-eb7c-e46cb36c815f",
+        "type": "SELECT",
+        "label": "Select input component",
+        "validation": {
+            "required": {
+                "enabled": true,
+                "message": "Error",
+                "error": "false"
+            },
+            "atLeast": {
+                "enabled": false
+            }
+        },
+        "connected": "",
+        "enableChildren": true,
+        "overrideDropzone": false,
+        "overridePanel": false,
+        "panelName": "SELECTPANEL",
+        "inputName": "name",
+        "parentClassName": "parent class",
+        "inputClassName": "",
+        "options": "[{\"key\":\"Test\",\"value\":\"Test\"}]"
+    }
+}

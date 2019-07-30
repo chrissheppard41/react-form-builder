@@ -1,4 +1,4 @@
-import { inputTypes, inputType } from "../types/inputType";
+import { inputType, inputTypes } from "../types/inputType";
 
 const relatedInputs = (inputs: inputTypes, relatedId: string): any[] => {
   let arr: any[] = [];

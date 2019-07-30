@@ -1,4 +1,4 @@
-import { inputTypes, inputType } from "../types/inputType";
+import { inputType, inputTypes } from "../types/inputType";
 
 const recursiveDelete = (inputs: inputTypes, idToDelete: string): void => {
   delete inputs[idToDelete];

@@ -29,7 +29,7 @@ const useValidationAtLeast = (
     }
   }
 
-  return { atLeastMessage, atLeast };
+  return { atLeast, atLeastMessage };
 };
 
 export default useValidationAtLeast;

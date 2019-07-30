@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import useActions from "../context/useActions";
 import Reducer, { initialState } from "./Reducer";
 import { inputTypes } from "../types/inputType";
@@ -22,7 +22,7 @@ const FormProvider = ({ children, formData }: Props) => {
   const actions = useActions(state, dispatch);
 
   return (
-    <FormContext.Provider value={{ state, dispatch, actions }}>
+    <FormContext.Provider value={{ actions, dispatch, state }}>
       {children}
     </FormContext.Provider>
   );

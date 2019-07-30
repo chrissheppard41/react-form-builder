@@ -20,53 +20,53 @@ import TextareaPanel from "../FormView/container/Textarea/TextareaPanels";
 
 const Components: ComponentListType = {
   [ClassificationInputs.TEXT]: {
-    Input: Text,
     Draggable: TextInput,
+    Input: Text,
     Panel: TextPanel
   },
   [ClassificationInputs.EMAIL]: {
-    Input: Text,
     Draggable: TextInput,
+    Input: Text,
     Panel: TextPanel
   },
   [ClassificationInputs.NUMBER]: {
-    Input: Text,
     Draggable: TextInput,
+    Input: Text,
     Panel: TextPanel
   },
   [ClassificationInputs.FILE]: {
-    Input: Text,
     Draggable: TextInput,
+    Input: Text,
     Panel: TextPanel
   },
   [ClassificationInputs.HR]: {
-    Input: Hr,
     Draggable: HrDrag,
+    Input: Hr,
     Panel: null
   },
   [ClassificationInputs.TITLE]: {
-    Input: Title,
     Draggable: TitleDrag,
+    Input: Title,
     Panel: TitlePanel
   },
   [ClassificationInputs.SELECT]: {
-    Input: Select,
     Draggable: SelectDrag,
+    Input: Select,
     Panel: SelectPanel
   },
   [ClassificationInputs.RADIO]: {
-    Input: Checked,
     Draggable: CheckedInput,
+    Input: Checked,
     Panel: CheckedPanel
   },
   [ClassificationInputs.CHECKBOX]: {
-    Input: Checked,
     Draggable: CheckedInput,
+    Input: Checked,
     Panel: CheckedPanel
   },
   [ClassificationInputs.TEXTAREA]: {
-    Input: Textarea,
     Draggable: TextareaInput,
+    Input: Textarea,
     Panel: TextareaPanel
   }
 };

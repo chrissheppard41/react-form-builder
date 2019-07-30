@@ -16,9 +16,9 @@ interface Props {
 
 export const initialState: Props = {
   inputs: {},
+  modal: { data: {}, name: "" },
   panel: "",
   panelData: { id: "" },
-  modal: { name: "", data: {} },
   validation: {}
 };
 
@@ -115,8 +115,8 @@ export default (state: any, action: any) => {
         ...state,
         modal: {
           ...state.modal,
-          name: action.payload.modalName,
-          data: action.payload.data
+          data: action.payload.data,
+          name: action.payload.modalName
         }
       };
 

@@ -9,7 +9,6 @@ import Panels from "./Panels";
 import DeleteModal from "./modals/DeleteModal";
 import ModalNames from "../constants/ModalNames";
 import { formSubmitType } from "../types/formSubmitType";
-import styled from "styled-components";
 import copy from "copy-to-clipboard";
 
 interface Props {
@@ -18,35 +17,6 @@ interface Props {
   submitFunc: (data: formSubmitType) => void;
   canelFunc: (e: any) => void | boolean;
 }
-
-const FormIndexDisplay = styled.div`
-  width: 100%;
-  background-color: #eee;
-  border: 1px solid #999;
-  display: block;
-  padding: 20px;
-  font-family: monospace;
-  max-height: 200px;
-  overflow-x: scroll;
-`;
-
-const DivContainer = styled.div`
-  width: calc(100% - 20px);
-  margin: 10px;
-`;
-const DivBuild = styled.div`
-  margin-bottom: 10px;
-`;
-
-const CopyButton = styled.button`
-  margin-top: 15px;
-`;
-
-const Code = styled.code`
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-`;
 
 const FormView = ({
   customComponents,
@@ -62,9 +32,9 @@ const FormView = ({
   };
 
   return (
-    <DivContainer className="formView-container">
+    <div className="formView-container">
       {editMode && (
-        <DivBuild className="formView-builder">
+        <div className="formView-builder">
           <Panels componentList={componentList} state={state} />
           <Draggables
             classNames="formView-draggable"
@@ -78,15 +48,15 @@ const FormView = ({
               <Dropzone allowedDropEffect="copy" classNames="" connected="" />
             </div>
           </div>
-          <FormIndexDisplay>
+          <div className="clipboard">
             <pre>
-              <Code>{JSON.stringify(state.inputs)}</Code>
+              <code>{JSON.stringify(state.inputs)}</code>
             </pre>
-            <CopyButton onClick={() => copy(JSON.stringify(state.inputs))}>
+            <button onClick={() => copy(JSON.stringify(state.inputs))}>
               Copy to clipboard
-            </CopyButton>
-          </FormIndexDisplay>
-        </DivBuild>
+            </button>
+          </div>
+        </div>
       )}
       <div className="formBuilder">
         <FormBuilderView
@@ -97,13 +67,13 @@ const FormView = ({
           canelFunc={canelFunc}
         />
       </div>
-    </DivContainer>
+    </div>
   );
 };
 
 FormView.defaultProps = {
-  editMode: false,
-  customComponents: {}
+  customComponents: {},
+  editMode: false
 };
 
 export default FormView;
