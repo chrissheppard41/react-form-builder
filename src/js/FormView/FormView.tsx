@@ -15,6 +15,8 @@ import copy from "copy-to-clipboard";
 interface Props {
   customComponents: ComponentListType;
   editMode: boolean;
+  submitFunc: (data: formSubmitType) => void;
+  canelFunc: (e: any) => void | boolean;
 }
 
 const FormIndexDisplay = styled.div`
@@ -46,16 +48,17 @@ const Code = styled.code`
   white-space: pre-wrap;
 `;
 
-const FormView = ({ customComponents, editMode }: Props) => {
+const FormView = ({
+  customComponents,
+  editMode,
+  submitFunc,
+  canelFunc
+}: Props) => {
   const { state }: any = useStateValue();
 
   const componentList = {
     ...ComponentList,
     ...customComponents
-  };
-
-  const submitTest = (formData: formSubmitType) => {
-    console.log("On submit", formData);
   };
 
   return (
@@ -90,11 +93,17 @@ const FormView = ({ customComponents, editMode }: Props) => {
           inputs={state.inputs}
           validation={state.validation}
           customComponents={customComponents}
-          submitTo={submitTest}
+          submitTo={submitFunc}
+          canelFunc={canelFunc}
         />
       </div>
     </DivContainer>
   );
+};
+
+FormView.defaultProps = {
+  editMode: false,
+  customComponents: {}
 };
 
 export default FormView;

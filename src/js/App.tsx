@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/index.scss";
 import FormBuilder from "./FormBuilder";
 import styled from "styled-components";
+import { formSubmitType } from "./types/formSubmitType";
 
 const Header = styled.header`
   width: 100%;
@@ -32,7 +33,14 @@ const App: React.FC = () => {
         </SpanBtn>
       </Header>
       <section>
-        <FormBuilder customComponents={{}} editMode={value} formData={{}} />
+        <FormBuilder
+          customComponents={{}}
+          editMode={value}
+          formData={{}}
+          submitFunc={(data: formSubmitType) => {
+            console.log("submitted", data);
+          }}
+        />
       </section>
     </div>
   );

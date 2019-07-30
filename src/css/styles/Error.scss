@@ -1,0 +1,27 @@
+.validationRules {
+    display: none;
+}
+
+.formBuilder.error {
+    .error {
+
+        input,
+        select,
+        textarea {
+            border: 1px solid red;
+            color: red;
+        }
+
+        label {
+            color: red;
+        }
+
+        .validationRules {
+            color: red;
+        }
+    }
+
+    .validationRules {
+        display: block;
+    }
+}
