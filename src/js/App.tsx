@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/index.scss";
 import FormBuilder from "./FormBuilder";
 import { formSubmitType } from "./types/formSubmitType";
-const json = require("./sampleData.json");
+//const json = require("./sampleData.json");
 
 const App: React.FC = () => {
   const [value, setValue] = useState(true);
@@ -19,7 +19,7 @@ const App: React.FC = () => {
         <FormBuilder
           customComponents={{}}
           editMode={value}
-          formData={json}
+          formData={{}}
           submitFunc={(data: formSubmitType) => {
             console.log("submitted", data);
           }}
