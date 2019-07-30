@@ -25,6 +25,8 @@ Then to use put this anywhere on your dom (remember if you have editMore to true
   editMode={}
   customComponents={}
   formData={}
+  submitFunc={}
+  cancelFunc={}
 />
 ```
 
@@ -37,6 +39,12 @@ Allows you to add your own custom components. Find out how to create your own co
 
 `formData` - Object (default {}):\
 This is where you'd pass in your form structure. You generate this via `editMode`, it will generate a JSON Object. You copy that object into this input
+
+`submitFunc` - Function:\
+This is the callback function that the data of the end form gets submitted to.
+
+`cancelFunc` - (Optional) Function or Boolean:\
+This is the callback function that the any cancel operation you want to perform gets sent to. It's a function to do an operation or a boolean (false) to disable. This is an optional call. You don't need to include it.
 
 Other useful information regarding how to use go here: [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/HowToUse/README.md).
 
