@@ -33,18 +33,18 @@ true to enable edit more, this is were you'd build your form.\
 false - display the output form to the dom.
 
 `customComponents` - Object (default {}):\
-Allows you to add your own custom components. Find out how to create your own components [here](./examples/NewComponents).
+Allows you to add your own custom components. Find out how to create your own components [here](https://github.com/chrissheppard41/react-form-builder/examples/NewComponents).
 
 `formData` - Object (default {}):\
 This is where you'd pass in your form structure. You generate this via `editMode`, it will generate a JSON Object. You copy that object into this input
 
 ## How to create input components
 
-To create custom inputs and to add them in go [here](./examples/NewComponents).
+To create custom inputs and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/examples/NewComponents).
 
 ## How to create validations for inputs
 
-To create custom validation and to add them in go [here](./examples/NewValidation).
+To create custom validation and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/examples/NewValidation).
 
 ## Available Scripts
 
