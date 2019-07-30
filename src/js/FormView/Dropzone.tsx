@@ -3,24 +3,7 @@ import { useDrop } from "react-dnd";
 import { useStateValue } from "../context/FormContext";
 import Inputs from "./Inputs";
 import ListEmpty from "../utilities/ListEmpty";
-import styled from "styled-components";
 import DragTypes from "../constants/DragTypes";
-
-const Ul = styled.ul`
-  width: calc(100% - 6px);
-  list-style-type: none;
-  border: 2px solid #666;
-  border-radius: 3px;
-  margin: 3px;
-`;
-
-const DropLi = styled.li`
-  border-top: 2px dashed #666;
-`;
-
-const EmptyLi = styled.li`
-  padding: 10px;
-`;
 
 export interface DustbinProps {
   allowedDropEffect: string;
@@ -46,18 +29,18 @@ const Dropzone: React.FC<DustbinProps> = ({
   const { state, actions }: any = useStateValue();
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: DragTypes.BOX,
+    collect: (monitor: any) => ({
+      canDrop: monitor.canDrop(),
+      isOver: monitor.isOver()
+    }),
     drop: (item: any) => {
       actions.addInput({ ...item.data, connected });
 
       return {
-        name: `${allowedDropEffect} Dustbin`,
-        allowedDropEffect
+        allowedDropEffect,
+        name: `${allowedDropEffect} Dustbin`
       };
-    },
-    collect: (monitor: any) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
-    })
+    }
   });
 
   const isActive = canDrop && isOver;
@@ -65,8 +48,10 @@ const Dropzone: React.FC<DustbinProps> = ({
   const inputItems = Object.keys(state.inputs);
 
   return (
-    <Ul style={{ borderColor }}>
-      {!ListEmpty(state.inputs, connected) && <EmptyLi>List empty</EmptyLi>}
+    <ul className="dropzoneUl" style={{ borderColor }}>
+      {!ListEmpty(state.inputs, connected) && (
+        <li className="empty">List empty</li>
+      )}
       {state.inputs &&
         inputItems.map((id: string, key: number) => (
           <Fragment key={key}>
@@ -86,10 +71,10 @@ const Dropzone: React.FC<DustbinProps> = ({
             )}
           </Fragment>
         ))}
-      <DropLi ref={drop} style={{ borderColor }}>
+      <li className="dropzoneLi" ref={drop} style={{ borderColor }}>
         <p>{isActive ? "Release to drop" : "Drag a box here"}</p>
-      </DropLi>
-    </Ul>
+      </li>
+    </ul>
   );
 };
 export default Dropzone;

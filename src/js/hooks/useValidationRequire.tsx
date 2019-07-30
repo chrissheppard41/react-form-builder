@@ -26,7 +26,7 @@ const useValidationRequire = (
     }
   }
 
-  return { requiredMessage, require };
+  return { require, requiredMessage };
 };
 
 export default useValidationRequire;

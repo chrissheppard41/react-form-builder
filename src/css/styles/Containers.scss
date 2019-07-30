@@ -1,3 +1,20 @@
+header.app-header {
+    width: 100%;
+    height: 55px;
+    color: white;
+    background-color: grey;
+    padding: 10px;
+    line-height: 35px;
+    position: relative;
+
+    span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
 .drag-element {
     width: calc(100% - 24px);
     border: 1px dashed gray;
@@ -19,5 +36,45 @@
             top: 2px;
             right: 5px;
         }
+    }
+}
+
+.dropzoneUl {
+    width: calc(100% - 6px);
+    list-style-type: none;
+    border: 2px solid #666;
+    border-radius: 3px;
+    margin: 3px;
+
+    li {
+        &.dropzoneLi {
+            border-top: 2px dashed #666;
+        }
+
+        &.empty {
+            padding: 10px;
+        }
+    }
+}
+
+.clipboard {
+    width: 100%;
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+    font-family: monospace;
+    max-height: 200px;
+    overflow-x: scroll;
+
+    code {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 5px;
     }
 }

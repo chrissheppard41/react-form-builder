@@ -13,6 +13,7 @@ interface Props {
   };
   customComponents: ComponentListType;
   submitTo: (formData: formSubmitType) => void;
+  canelFunc: (e: any) => void | boolean;
 }
 
 interface State {
@@ -41,6 +42,11 @@ class FormBuilderView extends React.Component<Props, State> {
     } else {
       this.setState({ error: false });
     }
+  };
+
+  cancel = (e: any) => {
+    e.preventDefault();
+    this.props.canelFunc(e);
   };
 
   submit = (e: any) => {
@@ -77,7 +83,13 @@ class FormBuilderView extends React.Component<Props, State> {
   };
 
   render() {
-    const { children, inputs, validation, customComponents } = this.props;
+    const {
+      children,
+      inputs,
+      validation,
+      customComponents,
+      canelFunc
+    } = this.props;
     const { error } = this.state;
 
     return (
@@ -85,8 +97,9 @@ class FormBuilderView extends React.Component<Props, State> {
         {children}
         <form
           name="formBuilder"
-          className={error ? "error" : ""}
+          className={`formBuilder ${error ? "error" : ""}`}
           onSubmit={this.submit}
+          noValidate
         >
           <MapFormInputs
             inputs={inputs}
@@ -95,6 +108,9 @@ class FormBuilderView extends React.Component<Props, State> {
             connected=""
           />
           <input type="submit" value="Submit" />
+          {canelFunc && (
+            <button onClick={(e: any) => this.cancel(e)}>Cancel</button>
+          )}
         </form>
       </div>
     );

@@ -32,7 +32,7 @@ const useValidationEmail = (
     }
   }
 
-  return { emailMessage, email };
+  return { email, emailMessage };
 };
 
 export default useValidationEmail;

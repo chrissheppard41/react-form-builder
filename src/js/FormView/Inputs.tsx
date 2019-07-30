@@ -28,6 +28,16 @@ const Inputs = ({ index, inputFields }: Props) => {
   const ref = useRef<HTMLScriptElement>(null);
   const [{ hovered }, drop] = useDrop({
     accept: group,
+    collect: (monitor: any) => ({
+      getDropItem: monitor.getItem(),
+      hovered: monitor.isOver()
+    }),
+    drop: (item: DragItem) => {
+      if (item.index === index) {
+        return;
+      }
+      actions.moveInput(item.index, index);
+    },
     hover: (item: DragItem, monitor: any) => {
       if (!ref.current) {
         return;
@@ -53,24 +63,14 @@ const Inputs = ({ index, inputFields }: Props) => {
       }
 
       item.index = hoverIndex;
-    },
-    drop: (item: DragItem) => {
-      if (item.index === index) {
-        return;
-      }
-      actions.moveInput(item.index, index);
-    },
-    collect: (monitor: any) => ({
-      getDropItem: monitor.getItem(),
-      hovered: monitor.isOver()
-    })
+    }
   });
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: group, id: inputFields.id, index, lock: true },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging()
-    })
+    }),
+    item: { id: inputFields.id, index, lock: true, type: group }
   });
 
   drag(drop(ref));

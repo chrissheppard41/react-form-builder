@@ -33,18 +33,20 @@ true to enable edit more, this is were you'd build your form.\
 false - display the output form to the dom.
 
 `customComponents` - Object (default {}):\
-Allows you to add your own custom components. Find out how to create your own components [here](https://github.com/chrissheppard41/react-form-builder/examples/NewComponents).
+Allows you to add your own custom components. Find out how to create your own components [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewComponent/README.md).
 
 `formData` - Object (default {}):\
 This is where you'd pass in your form structure. You generate this via `editMode`, it will generate a JSON Object. You copy that object into this input
 
+Other useful information regarding how to use go here: [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/HowToUse/README.md).
+
 ## How to create input components
 
-To create custom inputs and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/examples/NewComponents).
+To create custom inputs and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewComponent/README.md).
 
 ## How to create validations for inputs
 
-To create custom validation and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/examples/NewValidation).
+To create custom validation and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewValidation/README.md).
 
 ## Available Scripts
 

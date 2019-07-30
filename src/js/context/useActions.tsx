@@ -5,8 +5,8 @@ export default (state: any, dispatch: any) => {
   //console.log(state);
   const addInput = (InputData: any) =>
     dispatch({
-      type: Actions.ADD_INPUT,
-      payload: { InputData }
+      payload: { InputData },
+      type: Actions.ADD_INPUT
     });
 
   const moveInput = (dragIndex: number, hoverIndex: number) => {
@@ -32,27 +32,27 @@ export default (state: any, dispatch: any) => {
     }
 
     return dispatch({
-      type: Actions.ALL_INPUT,
-      payload: { InputData }
+      payload: { InputData },
+      type: Actions.ALL_INPUT
     });
   };
 
   const save = (data: panelData) =>
     dispatch({
-      type: Actions.SAVE,
-      payload: { data }
+      payload: { data },
+      type: Actions.SAVE
     });
 
   const editInput = (id: string, panelName: string) =>
     dispatch({
-      type: Actions.EDIT_INPUT,
-      payload: { id, panelName }
+      payload: { id, panelName },
+      type: Actions.EDIT_INPUT
     });
 
   const deleteInput = (id: string) =>
     dispatch({
-      type: Actions.DELETE_INPUT,
-      payload: { id }
+      payload: { id },
+      type: Actions.DELETE_INPUT
     });
 
   const clearPanel = () =>
@@ -62,10 +62,10 @@ export default (state: any, dispatch: any) => {
 
   const setPanel = (panelName: string) =>
     dispatch({
-      type: Actions.SET_PANEL,
       payload: {
         panelName
-      }
+      },
+      type: Actions.SET_PANEL
     });
 
   const addValidation = (id: string, validationRule: string) => {
@@ -74,11 +74,11 @@ export default (state: any, dispatch: any) => {
       !state.validation[id].includes(validationRule)
     ) {
       return dispatch({
-        type: Actions.SET_FORM_INPUT_ERROR,
         payload: {
           id,
           validationRule
-        }
+        },
+        type: Actions.SET_FORM_INPUT_ERROR
       });
     }
   };
@@ -86,19 +86,19 @@ export default (state: any, dispatch: any) => {
   const removeValidation = (id: string, validationRule: string) => {
     if (state.validation[id] && state.validation[id].includes(validationRule)) {
       return dispatch({
-        type: Actions.REMOVE_FORM_INPUT,
         payload: {
           id,
           validationRule
-        }
+        },
+        type: Actions.REMOVE_FORM_INPUT
       });
     }
   };
 
   const manageModals = (modalName: string, data: any) =>
     dispatch({
-      type: Actions.MANAGE_MODALS,
-      payload: { modalName, data }
+      payload: { data, modalName },
+      type: Actions.MANAGE_MODALS
     });
 
   const enableChildren = (id: string, val: string) => {
@@ -107,14 +107,14 @@ export default (state: any, dispatch: any) => {
       if (val && !enableChildren) {
         //enable children
         return dispatch({
-          type: Actions.ENABLE_CHILDREN,
-          payload: { id, enable: true }
+          payload: { enable: true, id },
+          type: Actions.ENABLE_CHILDREN
         });
       } else if (!val && enableChildren) {
         //disable children
         return dispatch({
-          type: Actions.ENABLE_CHILDREN,
-          payload: { id, enable: false }
+          payload: { enable: false, id },
+          type: Actions.ENABLE_CHILDREN
         });
       }
     }
@@ -122,15 +122,15 @@ export default (state: any, dispatch: any) => {
 
   return {
     addInput,
-    moveInput,
-    save,
-    editInput,
-    deleteInput,
-    clearPanel,
-    setPanel,
     addValidation,
-    removeValidation,
+    clearPanel,
+    deleteInput,
+    editInput,
+    enableChildren,
     manageModals,
-    enableChildren
+    moveInput,
+    removeValidation,
+    save,
+    setPanel
   };
 };

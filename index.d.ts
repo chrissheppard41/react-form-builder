@@ -6,12 +6,16 @@ interface FormProp {
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
+  submitFunc: (data: formSubmitType) => void;
+  canelFunc: (e: any) => void | boolean;
 }
 
 declare function FormBuilder({
   editMode,
   customComponents,
-  formData
+  formData,
+  submitFunc,
+  canelFunc
 }: FormProp): any;
 declare namespace FormBuilder {}
 export = FormBuilder;

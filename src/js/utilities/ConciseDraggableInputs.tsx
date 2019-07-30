@@ -1,7 +1,7 @@
 import {
   ComponentListType,
-  ComponentType,
-  ComponentNameType
+  ComponentNameType,
+  ComponentType
 } from "../types/ComponentListType";
 
 export default (ComponentList: ComponentListType): ComponentNameType => {

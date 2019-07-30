@@ -50,7 +50,7 @@ const useValidationMinMax = (
     }
   }
 
-  return { numberMessage, number };
+  return { number, numberMessage };
 };
 
 export default useValidationMinMax;

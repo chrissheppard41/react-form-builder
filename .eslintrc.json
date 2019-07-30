@@ -36,7 +36,11 @@
         "react/prop-types": 0,
         "no-empty-pattern": 0,
         "no-unused-vars": 0,
-        "max-len": 0,
+        "sort-keys": 2,
+        "max-len": ["error", {
+            "code": 120
+        }],
+        "comma-dangle": [0, "always"],
         "import/no-self-import": 0,
         "import/no-commonjs": 0,
         "no-undef": 0,

@@ -57,13 +57,6 @@ const TextPanel = ({ panel, panelData }: Props): any => {
             inputValue={panelData.inputName}
           />
           <Text
-            label="Enter default value"
-            type="text"
-            inputClassName="text"
-            inputName="inputValue"
-            inputValue={panelData.inputValue}
-          />
-          <Text
             label="Enter parent class name"
             type="text"
             inputClassName="text"

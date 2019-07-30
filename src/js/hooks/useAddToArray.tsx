@@ -23,7 +23,7 @@ const useAddToArray = (arr: Options[]): Hook => {
     setArray(array.filter((arrValue: Options) => key !== arrValue.key));
   };
 
-  return { array, setValue, deleteValue };
+  return { array, deleteValue, setValue };
 };
 
 export default useAddToArray;
