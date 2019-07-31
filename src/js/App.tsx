@@ -20,8 +20,8 @@ const App: React.FC = () => {
           customComponents={{}}
           editMode={value}
           formData={{}}
-          submitFunc={(data: formSubmitType) => {
-            console.log("submitted", data);
+          submitFunc={(data: formSubmitType, error: boolean) => {
+            console.log("submitted", data, error);
           }}
         />
       </section>
