@@ -9,7 +9,7 @@ interface FormProp {
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
-  submitFunc: (data: formSubmitType) => void;
+  submitFunc: (data: formSubmitType, error: boolean) => void;
   canelFunc: (e: any) => void | boolean;
 }
 
