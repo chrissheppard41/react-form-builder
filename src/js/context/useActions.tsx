@@ -120,6 +120,12 @@ export default (state: any, dispatch: any) => {
     }
   };
 
+  const setFormError = (error: boolean) =>
+    dispatch({
+      payload: error,
+      type: Actions.FORM_ERROR
+    });
+
   return {
     addInput,
     addValidation,
@@ -131,6 +137,7 @@ export default (state: any, dispatch: any) => {
     moveInput,
     removeValidation,
     save,
+    setFormError,
     setPanel
   };
 };
