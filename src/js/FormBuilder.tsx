@@ -4,6 +4,7 @@ import FormProvider from "./context/FormContext";
 import { ComponentListType } from "./types/ComponentListType";
 import { formSubmitType } from "./types/formSubmitType";
 import { inputTypes } from "./types/inputType";
+import "./css/index.scss";
 
 interface FormProp {
   editMode: boolean;
