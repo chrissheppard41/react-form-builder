@@ -154,19 +154,28 @@ import Title from "./js/formBuilder/elements/Title";
 // Types
 // @ts-ignore
 import {
+  // @ts-ignore
   ComponentListType,
+  // @ts-ignore
   ComponentNameType,
+  // @ts-ignore
   ComponentType
 } from "./js/types/ComponentListType";
 // @ts-ignore
 import { formSubmitType } from "./js/types/formSubmitType";
 // @ts-ignore
 import {
+  // @ts-ignore
   inputType,
+  // @ts-ignore
   inputTypes,
+  // @ts-ignore
   radioType,
+  // @ts-ignore
   selectType,
+  // @ts-ignore
   textareaType,
+  // @ts-ignore
   validationRule
 } from "./js/types/inputType";
 // @ts-ignore
@@ -227,7 +236,9 @@ import KeyMappings from "./js/utilities/KeyMappings";
 import ListEmpty from "./js/utilities/ListEmpty";
 // @ts-ignore
 import OptionBuild, {
+  // @ts-ignore
   optionsList,
+  // @ts-ignore
   formatSingleOptions
 } from "./js/utilities/OptionBuild";
 // @ts-ignore
