@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-cs",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "private": false,
   "dependencies": {
     "@types/node": "12.0.8",
@@ -40,7 +40,7 @@
     "test:coverage": "npm test -- --coverage --env=node",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint ./src/js/**/*.tsx --quiet --fix",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run clean && npm run build && npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
