@@ -15,7 +15,7 @@ declare function FormBuilder({
   customComponents,
   formData,
   submitFunc,
-  canelFunc
+  cancelFunc
 }: FormProp): any;
 declare namespace FormBuilder {}
 export = FormBuilder;
