@@ -40,7 +40,7 @@
     "test:coverage": "npm test -- --coverage --env=node",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint ./src/js/**/*.tsx --quiet --fix",
-    "publish": "npm run clean && npm run build && npm publish"
+    "publish:push": "npm run clean && npm run build && npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
