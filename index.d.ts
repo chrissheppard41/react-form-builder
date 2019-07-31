@@ -7,7 +7,7 @@ interface FormProp {
   customComponents: ComponentListType;
   formData: inputTypes;
   submitFunc: (data: formSubmitType, error: boolean) => void;
-  canelFunc?: (e: any) => void | boolean;
+  cancelFunc?: (e: any) => void | boolean;
 }
 
 declare function FormBuilder({

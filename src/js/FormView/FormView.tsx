@@ -15,14 +15,14 @@ interface Props {
   customComponents: ComponentListType;
   editMode: boolean;
   submitFunc: (data: formSubmitType, error: boolean) => void;
-  canelFunc: (e: any) => void | boolean;
+  cancelFunc: (e: any) => void | boolean;
 }
 
 const FormView = ({
   customComponents,
   editMode,
   submitFunc,
-  canelFunc
+  cancelFunc
 }: Props) => {
   const { state, actions }: any = useStateValue();
 
@@ -64,7 +64,7 @@ const FormView = ({
           validation={state.validation}
           customComponents={customComponents}
           submitTo={submitFunc}
-          canelFunc={canelFunc}
+          cancelFunc={cancelFunc}
           setFormError={actions.setFormError}
           formError={state.formError}
         />

@@ -10,7 +10,7 @@ interface FormProp {
   customComponents: ComponentListType;
   formData: inputTypes;
   submitFunc: (data: formSubmitType, error: boolean) => void;
-  canelFunc: (e: any) => void | boolean;
+  cancelFunc: (e: any) => void | boolean;
 }
 
 const FormBuilder = ({
@@ -18,7 +18,7 @@ const FormBuilder = ({
   customComponents,
   formData,
   submitFunc,
-  canelFunc
+  cancelFunc
 }: FormProp) => {
   return (
     <FormProvider formData={formData}>
@@ -26,7 +26,7 @@ const FormBuilder = ({
         customComponents={customComponents}
         editMode={editMode}
         submitFunc={submitFunc}
-        canelFunc={canelFunc}
+        cancelFunc={cancelFunc}
       />
     </FormProvider>
   );
