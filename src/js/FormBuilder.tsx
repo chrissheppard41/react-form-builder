@@ -33,7 +33,7 @@ const FormBuilder = ({
 };
 
 FormBuilder.defaultProps = {
-  canelFunc: false
+  cancelFunc: false
 };
 
 export default FormBuilder;
