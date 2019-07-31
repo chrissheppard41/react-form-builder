@@ -12,7 +12,7 @@ interface Props {
     [id: string]: string[];
   };
   customComponents: ComponentListType;
-  submitTo: (formData: formSubmitType) => void;
+  submitTo: (formData: formSubmitType, error: boolean) => void;
   canelFunc: (e: any) => void | boolean;
 }
 
@@ -29,7 +29,7 @@ class FormBuilderView extends React.Component<Props, State> {
     };
   }
 
-  anyErrors = () => {
+  anyErrors = (): boolean => {
     const { validation } = this.props;
     let errors = 0;
 
@@ -37,11 +37,8 @@ class FormBuilderView extends React.Component<Props, State> {
       errors += validation[key].length;
     });
 
-    if (errors > 0) {
-      this.setState({ error: true });
-    } else {
-      this.setState({ error: false });
-    }
+    this.setState({ error: (errors > 0) });
+    return errors > 0;
   };
 
   cancel = (e: any) => {
@@ -51,10 +48,10 @@ class FormBuilderView extends React.Component<Props, State> {
 
   submit = (e: any) => {
     e.preventDefault();
-    this.anyErrors();
+    const error = this.anyErrors();
 
     let submitObject = {};
-    if (!this.state.error) {
+    if (!error) {
       for (const field in e.target) {
         if (e.target[field] && e.target[field].value) {
           if (e.target[field].type !== "submit") {
@@ -79,7 +76,7 @@ class FormBuilderView extends React.Component<Props, State> {
       }
     }
 
-    this.props.submitTo(submitObject);
+    this.props.submitTo(submitObject, error);
   };
 
   render() {
