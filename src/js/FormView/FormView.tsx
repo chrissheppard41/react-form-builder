@@ -14,7 +14,7 @@ import copy from "copy-to-clipboard";
 interface Props {
   customComponents: ComponentListType;
   editMode: boolean;
-  submitFunc: (data: formSubmitType) => void;
+  submitFunc: (data: formSubmitType, error: boolean) => void;
   canelFunc: (e: any) => void | boolean;
 }
 
