@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-cs",
-  "version": "0.7.0",
+  "version": "0.7.5",
   "private": false,
   "dependencies": {
     "@types/node": "12.0.8",
@@ -21,8 +21,8 @@
     "@types/jest": "24.0.14",
     "@typescript-eslint/eslint-plugin": "1.10.2",
     "@typescript-eslint/parser": "1.10.2",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-prettier": "3.1.0",
     "husky": "3.0.1",
     "jest": "24.7.1",
     "jooks": "1.0.0",
@@ -39,7 +39,8 @@
     "test:single": "CI=true react-scripts test --env=node",
     "test:coverage": "npm test -- --coverage --env=node",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint ./src/js/**/*.tsx --quiet --fix"
+    "lint": "./node_modules/.bin/eslint ./src/js/**/*.tsx --quiet --fix",
+    "publish:push": "npm run clean && npm run build && npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
