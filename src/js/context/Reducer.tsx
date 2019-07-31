@@ -12,9 +12,11 @@ interface Props {
   };
   modal: { name: string; data: any };
   validation: ValidationType;
+  formError: boolean;
 }
 
 export const initialState: Props = {
+  formError: false,
   inputs: {},
   modal: { data: {}, name: "" },
   panel: "",
@@ -130,6 +132,12 @@ export default (state: any, action: any) => {
             enableChildren: action.payload.enable
           }
         }
+      };
+
+    case Actions.FORM_ERROR:
+      return {
+        ...state,
+        formError: action.payload
       };
 
     default:

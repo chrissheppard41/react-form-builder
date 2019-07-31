@@ -5,22 +5,20 @@ import { ComponentListType } from "../types/ComponentListType";
 import { formSubmitType } from "../types/formSubmitType";
 
 interface Props {
+  customComponents: ComponentListType;
+  formError: boolean;
   inputs: {
     [id: string]: any;
   };
   validation: {
     [id: string]: string[];
   };
-  customComponents: ComponentListType;
+  setFormError: (error: boolean) => void;
   submitTo: (formData: formSubmitType, error: boolean) => void;
   canelFunc: (e: any) => void | boolean;
 }
 
-interface State {
-  error: boolean;
-}
-
-class FormBuilderView extends React.Component<Props, State> {
+class FormBuilderView extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
@@ -30,14 +28,14 @@ class FormBuilderView extends React.Component<Props, State> {
   }
 
   anyErrors = (): boolean => {
-    const { validation } = this.props;
+    const { validation, setFormError } = this.props;
     let errors = 0;
 
     Object.keys(validation).forEach((key: string) => {
       errors += validation[key].length;
     });
 
-    this.setState({ error: (errors > 0) });
+    setFormError(errors > 0);
     return errors > 0;
   };
 
@@ -54,22 +52,24 @@ class FormBuilderView extends React.Component<Props, State> {
     if (!error) {
       for (const field in e.target) {
         if (e.target[field] && e.target[field].value) {
-          if (e.target[field].type !== "submit") {
-            if (
-              e.target[field].type === "checkbox" ||
-              e.target[field].type === "radio"
-            ) {
-              if (e.target[field].checked) {
+          if (e.target[field].type !== undefined) {
+            if (e.target[field].type !== "submit") {
+              if (
+                e.target[field].type === "checkbox" ||
+                e.target[field].type === "radio"
+              ) {
+                if (e.target[field].checked) {
+                  submitObject = {
+                    ...submitObject,
+                    [e.target[field].name]: e.target[field].value
+                  };
+                }
+              } else {
                 submitObject = {
                   ...submitObject,
                   [e.target[field].name]: e.target[field].value
                 };
               }
-            } else {
-              submitObject = {
-                ...submitObject,
-                [e.target[field].name]: e.target[field].value
-              };
             }
           }
         }
@@ -85,16 +85,16 @@ class FormBuilderView extends React.Component<Props, State> {
       inputs,
       validation,
       customComponents,
-      canelFunc
+      canelFunc,
+      formError
     } = this.props;
-    const { error } = this.state;
 
     return (
       <div className="formBuilder-container">
         {children}
         <form
           name="formBuilder"
-          className={`formBuilder ${error ? "error" : ""}`}
+          className={`formBuilder ${formError ? "error" : ""}`}
           onSubmit={this.submit}
           noValidate
         >

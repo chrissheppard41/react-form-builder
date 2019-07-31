@@ -5,22 +5,22 @@ import Actions from "../js/constants/Actions";
 
 const inputs = {
   idOne: {
+    enableChildren: false,
     id: "idOne",
     label: "lorem ipsum",
-    type: "lorem ispum",
-    enableChildren: false
+    type: "lorem ispum"
   },
   idTwo: {
+    enableChildren: true,
     id: "idTwo",
     label: "lorem ipsum",
-    type: "lorem ispum",
-    enableChildren: true
+    type: "lorem ispum"
   },
   idThree: {
+    enableChildren: false,
     id: "idThree",
     label: "lorem ipsum",
-    type: "lorem ispum",
-    enableChildren: false
+    type: "lorem ispum"
   }
 };
 
@@ -41,8 +41,8 @@ describe("Reducer tests", () => {
     const { addInput } = jooks.run();
 
     expect(addInput({ lorem: "ipsum" })).toEqual({
-      type: Actions.ADD_INPUT,
-      payload: { InputData: { lorem: "ipsum" } }
+      payload: { InputData: { lorem: "ipsum" } },
+      type: Actions.ADD_INPUT
     });
   });
 
@@ -50,8 +50,8 @@ describe("Reducer tests", () => {
     const { moveInput } = jooks.run();
 
     expect(moveInput(0, 0)).toEqual({
-      type: Actions.ALL_INPUT,
-      payload: { InputData: inputs }
+      payload: { InputData: inputs },
+      type: Actions.ALL_INPUT
     });
   });
 
@@ -59,14 +59,14 @@ describe("Reducer tests", () => {
     const { moveInput } = jooks.run();
 
     expect(moveInput(0, 1)).toEqual({
-      type: Actions.ALL_INPUT,
       payload: {
         InputData: {
           idTwo: inputs.idTwo,
           idOne: inputs.idOne,
           idThree: inputs.idThree
         }
-      }
+      },
+      type: Actions.ALL_INPUT
     });
   });
 
@@ -74,17 +74,17 @@ describe("Reducer tests", () => {
     const { save } = jooks.run();
 
     expect(save({ lorem: "ipsum" })).toEqual({
-      type: Actions.SAVE,
-      payload: { data: { lorem: "ipsum" } }
+      payload: { data: { lorem: "ipsum" } },
+      type: Actions.SAVE
     });
   });
 
   it("Should save the id of the input field", () => {
     const { editInput } = jooks.run();
 
-    expect(editInput("ipsum")).toEqual({
-      type: Actions.EDIT_INPUT,
-      payload: { id: "ipsum" }
+    expect(editInput("ipsum", "lorem")).toEqual({
+      payload: { id: "ipsum", panelName: "lorem" },
+      type: Actions.EDIT_INPUT
     });
   });
 
@@ -92,8 +92,8 @@ describe("Reducer tests", () => {
     const { deleteInput } = jooks.run();
 
     expect(deleteInput("ipsum")).toEqual({
-      type: Actions.DELETE_INPUT,
-      payload: { id: "ipsum" }
+      payload: { id: "ipsum" },
+      type: Actions.DELETE_INPUT
     });
   });
 
@@ -107,8 +107,8 @@ describe("Reducer tests", () => {
     const { setPanel } = jooks.run();
 
     expect(setPanel("lorem")).toEqual({
-      type: Actions.SET_PANEL,
-      payload: { panelName: "lorem" }
+      payload: { panelName: "lorem" },
+      type: Actions.SET_PANEL
     });
   });
 
@@ -116,8 +116,8 @@ describe("Reducer tests", () => {
     const { addValidation } = jooks.run();
 
     expect(addValidation("lorems", "ipsum")).toEqual({
-      type: Actions.SET_FORM_INPUT_ERROR,
-      payload: { id: "lorems", validationRule: "ipsum" }
+      payload: { id: "lorems", validationRule: "ipsum" },
+      type: Actions.SET_FORM_INPUT_ERROR
     });
   });
 
@@ -131,8 +131,8 @@ describe("Reducer tests", () => {
     const { removeValidation } = jooks.run();
 
     expect(removeValidation("lorem", "ipsum")).toEqual({
-      type: Actions.REMOVE_FORM_INPUT,
-      payload: { id: "lorem", validationRule: "ipsum" }
+      payload: { id: "lorem", validationRule: "ipsum" },
+      type: Actions.REMOVE_FORM_INPUT
     });
   });
 
@@ -146,8 +146,8 @@ describe("Reducer tests", () => {
     const { manageModals } = jooks.run();
     const data = { data: "ipsum" };
     expect(manageModals("lorem", data)).toEqual({
-      type: Actions.MANAGE_MODALS,
-      payload: { modalName: "lorem", data }
+      payload: { data, modalName: "lorem" },
+      type: Actions.MANAGE_MODALS
     });
   });
 
@@ -155,8 +155,8 @@ describe("Reducer tests", () => {
     const { enableChildren } = jooks.run();
 
     expect(enableChildren("idOne", "value")).toEqual({
-      type: Actions.ENABLE_CHILDREN,
-      payload: { id: "idOne", enable: true }
+      payload: { enable: true, id: "idOne" },
+      type: Actions.ENABLE_CHILDREN
     });
   });
 
@@ -164,13 +164,23 @@ describe("Reducer tests", () => {
     const { enableChildren } = jooks.run();
 
     expect(enableChildren("idTwo", "")).toEqual({
-      type: Actions.ENABLE_CHILDREN,
-      payload: { id: "idTwo", enable: false }
+      payload: { enable: false, id: "idTwo" },
+      type: Actions.ENABLE_CHILDREN
     });
   });
   it("Should not perform enabling or disabling children", () => {
     const { enableChildren } = jooks.run();
 
     expect(enableChildren("", "")).toEqual(undefined);
+  });
+  it("Should set the form state to error", () => {
+    const { setFormError } = jooks.run();
+
+    expect(setFormError(true)).toEqual({ payload: true, type: "FORM_ERROR" });
+  });
+  it("Should set the form state to valid", () => {
+    const { setFormError } = jooks.run();
+
+    expect(setFormError(false)).toEqual({ payload: false, type: "FORM_ERROR" });
   });
 });

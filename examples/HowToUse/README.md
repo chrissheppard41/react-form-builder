@@ -32,6 +32,23 @@ This is the callback function that the data of the end form gets submitted to.
 `cancelFunc` - (Optional) Function or Boolean:\
 This is the callback function that the any cancel operation you want to perform gets sent to. It's a function to do an operation or a boolean (false) to disable. This is an optional call. You don't need to include it.
 
+ Note: one thing you will need to be made aware is when you put it into edit mode. 
+
+```
+import { DndProvider } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+
+...
+
+<DndProvider backend={HTML5Backend}>
+  <FormBuilder />
+</DndProvider>
+
+...
+```
+
+For react-dnd to work properly you need to include this. One thing about this is that you need to ensure this only excutes once else it will error. I put this in the `index.jsx/tsx`. an example of this can be located [here](https://github.com/chrissheppard41/react-form-builder/blob/master/src/index.tsx).
+
 ### Key information:
 
 How this works is you submit your formData object into the Form Builder component and it'll store and then render the form. This will allow usage of the form from a basic point. 

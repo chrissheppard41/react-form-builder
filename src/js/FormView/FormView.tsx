@@ -24,7 +24,7 @@ const FormView = ({
   submitFunc,
   canelFunc
 }: Props) => {
-  const { state }: any = useStateValue();
+  const { state, actions }: any = useStateValue();
 
   const componentList = {
     ...ComponentList,
@@ -65,6 +65,8 @@ const FormView = ({
           customComponents={customComponents}
           submitTo={submitFunc}
           canelFunc={canelFunc}
+          setFormError={actions.setFormError}
+          formError={state.formError}
         />
       </div>
     </div>
