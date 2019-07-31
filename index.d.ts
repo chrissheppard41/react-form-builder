@@ -6,8 +6,8 @@ interface FormProp {
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
-  submitFunc: (data: formSubmitType) => void;
-  canelFunc: (e: any) => void | boolean;
+  submitFunc: (data: formSubmitType, error: boolean) => void;
+  canelFunc?: (e: any) => void | boolean;
 }
 
 declare function FormBuilder({

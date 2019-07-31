@@ -48,6 +48,23 @@ This is the callback function that the any cancel operation you want to perform 
 
 Other useful information regarding how to use go here: [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/HowToUse/README.md).
 
+ Note: one thing you will need to be made aware is when you put it into edit mode. 
+
+```
+import { DndProvider } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+
+...
+
+<DndProvider backend={HTML5Backend}>
+  <FormBuilder />
+</DndProvider>
+
+...
+```
+
+For react-dnd to work properly you need to include this. One thing about this is that you need to ensure this only excutes once else it will error. I put this in the `index.jsx/tsx`. an example of this can be located [here](https://github.com/chrissheppard41/react-form-builder/blob/master/src/index.tsx).
+
 ## How to create input components
 
 To create custom inputs and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewComponent/README.md).
