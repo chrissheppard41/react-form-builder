@@ -12,15 +12,19 @@ import { formSubmitType } from "../types/formSubmitType";
 import copy from "copy-to-clipboard";
 
 interface Props {
+  action: string;
   customComponents: ComponentListType;
   editMode: boolean;
+  method: string;
   submitFunc: (data: formSubmitType, error: boolean) => void;
   cancelFunc: (e: any) => void | boolean;
 }
 
 const FormView = ({
+  action,
   customComponents,
   editMode,
+  method,
   submitFunc,
   cancelFunc
 }: Props) => {
@@ -67,6 +71,8 @@ const FormView = ({
           cancelFunc={cancelFunc}
           setFormError={actions.setFormError}
           formError={state.formError}
+          action={action}
+          method={method}
         />
       </div>
     </div>

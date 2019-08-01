@@ -5,6 +5,7 @@ import { ComponentListType } from "../types/ComponentListType";
 import { formSubmitType } from "../types/formSubmitType";
 
 interface Props {
+  action: string;
   customComponents: ComponentListType;
   formError: boolean;
   inputs: {
@@ -13,6 +14,7 @@ interface Props {
   validation: {
     [id: string]: string[];
   };
+  method: string;
   setFormError: (error: boolean) => void;
   submitTo: (formData: formSubmitType, error: boolean) => void;
   cancelFunc: (e: any) => void | boolean;
@@ -86,7 +88,9 @@ class FormBuilderView extends React.Component<Props> {
       validation,
       customComponents,
       cancelFunc,
-      formError
+      formError,
+      action,
+      method
     } = this.props;
 
     return (
@@ -94,6 +98,8 @@ class FormBuilderView extends React.Component<Props> {
         {children}
         <form
           name="formBuilder"
+          action={action}
+          method={method}
           className={`formBuilder ${formError ? "error" : ""}`}
           onSubmit={this.submit}
           noValidate

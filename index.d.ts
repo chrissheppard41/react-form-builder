@@ -3,17 +3,21 @@
 // Definitions by: Chris Sheppard <https://github.com/chrissheppard41>
 
 interface FormProp {
+  action: string;
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
+  method: string;
   submitFunc: (data: formSubmitType, error: boolean) => void;
   cancelFunc?: (e: any) => void | boolean;
 }
 
 declare function FormBuilder({
+  action,
   editMode,
   customComponents,
   formData,
+  method,
   submitFunc,
   cancelFunc
 }: FormProp): any;

@@ -39,7 +39,7 @@
             }
         },
         "connected": "",
-        "enableChildren": true,
+        "enableChildren": false,
         "overrideDropzone": false,
         "overridePanel": false,
         "panelName": "SELECTPANEL",
@@ -47,5 +47,31 @@
         "parentClassName": "parent class",
         "inputClassName": "",
         "options": "[{\"key\":\"Test\",\"value\":\"Test\"}]"
+    },
+    "abb212b9-a481-bcd8-fa02-ecbbbeab44b7": {
+        "id": "abb212b9-a481-bcd8-fa02-ecbbbeab44b7",
+        "type": "TEXT",
+        "label": "Text input component",
+        "validation": {
+            "required": {
+                "enabled": true,
+                "message": "Error 2",
+                "error": "false"
+            },
+            "email": {
+                "enabled": false
+            },
+            "number": {
+                "enabled": false
+            }
+        },
+        "connected": "ecfcadb2-edc4-dc31-eb7c-e46cb36c815f",
+        "enableChildren": true,
+        "overrideDropzone": false,
+        "overridePanel": false,
+        "panelName": "TEXTPANEL",
+        "inputName": "childtext",
+        "parentClassName": "some_parent",
+        "inputClassName": "input_class"
     }
 }
