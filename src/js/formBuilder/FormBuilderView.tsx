@@ -5,6 +5,7 @@ import { ComponentListType } from "../types/ComponentListType";
 import { formSubmitType } from "../types/formSubmitType";
 
 interface Props {
+  action: string;
   customComponents: ComponentListType;
   formError: boolean;
   inputs: {
@@ -13,9 +14,10 @@ interface Props {
   validation: {
     [id: string]: string[];
   };
+  method: string;
   setFormError: (error: boolean) => void;
   submitTo: (formData: formSubmitType, error: boolean) => void;
-  canelFunc: (e: any) => void | boolean;
+  cancelFunc: (e: any) => void | boolean;
 }
 
 class FormBuilderView extends React.Component<Props> {
@@ -41,7 +43,7 @@ class FormBuilderView extends React.Component<Props> {
 
   cancel = (e: any) => {
     e.preventDefault();
-    this.props.canelFunc(e);
+    this.props.cancelFunc(e);
   };
 
   submit = (e: any) => {
@@ -85,8 +87,10 @@ class FormBuilderView extends React.Component<Props> {
       inputs,
       validation,
       customComponents,
-      canelFunc,
-      formError
+      cancelFunc,
+      formError,
+      action,
+      method
     } = this.props;
 
     return (
@@ -94,6 +98,8 @@ class FormBuilderView extends React.Component<Props> {
         {children}
         <form
           name="formBuilder"
+          action={action}
+          method={method}
           className={`formBuilder ${formError ? "error" : ""}`}
           onSubmit={this.submit}
           noValidate
@@ -105,7 +111,7 @@ class FormBuilderView extends React.Component<Props> {
             connected=""
           />
           <input type="submit" value="Submit" />
-          {canelFunc && (
+          {cancelFunc && (
             <button onClick={(e: any) => this.cancel(e)}>Cancel</button>
           )}
         </form>

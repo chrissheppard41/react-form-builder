@@ -6,19 +6,23 @@ import { formSubmitType } from "./types/formSubmitType";
 import { inputTypes } from "./types/inputType";
 
 interface FormProp {
+  action: string;
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
+  method: string;
   submitFunc: (data: formSubmitType, error: boolean) => void;
-  canelFunc: (e: any) => void | boolean;
+  cancelFunc: (e: any) => void | boolean;
 }
 
 const FormBuilder = ({
+  action,
   editMode,
   customComponents,
   formData,
+  method,
   submitFunc,
-  canelFunc
+  cancelFunc
 }: FormProp) => {
   return (
     <FormProvider formData={formData}>
@@ -26,14 +30,18 @@ const FormBuilder = ({
         customComponents={customComponents}
         editMode={editMode}
         submitFunc={submitFunc}
-        canelFunc={canelFunc}
+        cancelFunc={cancelFunc}
+        action={action}
+        method={method}
       />
     </FormProvider>
   );
 };
 
 FormBuilder.defaultProps = {
-  canelFunc: false
+  action: "",
+  cancelFunc: false,
+  method: ""
 };
 
 export default FormBuilder;

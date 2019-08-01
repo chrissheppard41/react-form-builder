@@ -139,107 +139,132 @@ import Textareas from "./js/formBuilder/styles/textarea";
 
 // Elements
 // @ts-ignore
-import Checked from './js/formBuilder/elements/Checked';
+import Checked from "./js/formBuilder/elements/Checked";
 // @ts-ignore
-import Hr from './js/formBuilder/elements/Hr';
+import Hr from "./js/formBuilder/elements/Hr";
 // @ts-ignore
-import Select from './js/formBuilder/elements/Select';
+import Select from "./js/formBuilder/elements/Select";
 // @ts-ignore
-import Text from './js/formBuilder/elements/Text';
+import Text from "./js/formBuilder/elements/Text";
 // @ts-ignore
-import Textarea from './js/formBuilder/elements/Textarea';
+import Textarea from "./js/formBuilder/elements/Textarea";
 // @ts-ignore
-import Title from './js/formBuilder/elements/Title';
+import Title from "./js/formBuilder/elements/Title";
 
 // Types
 // @ts-ignore
-import {ComponentNameType, ComponentType, ComponentListType} from './js/types/ComponentListType';
+import {
+  // @ts-ignore
+  ComponentListType,
+  // @ts-ignore
+  ComponentNameType,
+  // @ts-ignore
+  ComponentType
+} from "./js/types/ComponentListType";
 // @ts-ignore
-import {formSubmitType} from './js/types/formSubmitType';
+import { formSubmitType } from "./js/types/formSubmitType";
 // @ts-ignore
-import {validationRule, inputType, inputTypes, selectType, radioType, textareaType} from './js/types/inputType';
+import {
+  // @ts-ignore
+  inputType,
+  // @ts-ignore
+  inputTypes,
+  // @ts-ignore
+  radioType,
+  // @ts-ignore
+  selectType,
+  // @ts-ignore
+  textareaType,
+  // @ts-ignore
+  validationRule
+} from "./js/types/inputType";
 // @ts-ignore
-import Options from './js/types/Options';
+import Options from "./js/types/Options";
 // @ts-ignore
-import {panelData} from './js/types/PanelDataType';
+import { panelData } from "./js/types/PanelDataType";
 // @ts-ignore
-import {ValidationIssues, ValidationType} from './js/types/validationType';
+import { ValidationIssues, ValidationType } from "./js/types/validationType";
 
 // Context
 // @ts-ignore
-import useActions from './js/context/useActions';
+import useActions from "./js/context/useActions";
 
 // Drag, panels etc
 // @ts-ignore
-import Inputs from './js/FormView/Inputs';
+import Inputs from "./js/FormView/Inputs";
 // @ts-ignore
-import Panel from './js/FormView/Panel';
+import Panel from "./js/FormView/Panel";
 // @ts-ignore
-import Drag from './js/FormView/container/Drag';
+import Drag from "./js/FormView/container/Drag";
 
 // Validations
 // @ts-ignore
-import Validation from './js/FormView/container/validation/Validation';
+import Validation from "./js/FormView/container/validation/Validation";
 // @ts-ignore
-import AtLeast from './js/FormView/container/validation/rules/AtLeast';
+import AtLeast from "./js/FormView/container/validation/rules/AtLeast";
 // @ts-ignore
-import Email from './js/FormView/container/validation/rules/Email';
+import Email from "./js/FormView/container/validation/rules/Email";
 // @ts-ignore
-import Number from './js/FormView/container/validation/rules/Number';
+import Number from "./js/FormView/container/validation/rules/Number";
 // @ts-ignore
-import Required from './js/FormView/container/validation/rules/Required';
+import Required from "./js/FormView/container/validation/rules/Required";
 
 // Constants
 // @ts-ignore
-import Actions from './js/constants/Actions';
+import Actions from "./js/constants/Actions";
 // @ts-ignore
-import ClassificationInputs from './js/constants/ClassificationInputs';
+import ClassificationInputs from "./js/constants/ClassificationInputs";
 // @ts-ignore
-import ClassificationPanel from './js/constants/ClassificationPanel';
+import ClassificationPanel from "./js/constants/ClassificationPanel";
 // @ts-ignore
-import DragTypes from './js/constants/DragTypes';
+import DragTypes from "./js/constants/DragTypes";
 // @ts-ignore
-import ModalNames from './js/constants/ModalNames';
+import ModalNames from "./js/constants/ModalNames";
 // @ts-ignore
-import TitlesTypes from './js/constants/TitlesTypes';
+import TitlesTypes from "./js/constants/TitlesTypes";
 
 // Helpers
 // @ts-ignore
-import UUIDGeneration from './js/utilities/UUIDGeneration';
+import UUIDGeneration from "./js/utilities/UUIDGeneration";
 // @ts-ignore
-import ConciseDraggableInputs from './js/utilities/ConciseDraggableInputs';
+import ConciseDraggableInputs from "./js/utilities/ConciseDraggableInputs";
 // @ts-ignore
-import DeleteRelatedInputs from './js/utilities/DeleteRelatedInputs';
+import DeleteRelatedInputs from "./js/utilities/DeleteRelatedInputs";
 // @ts-ignore
-import KeyMappings from './js/utilities/KeyMappings';
+import KeyMappings from "./js/utilities/KeyMappings";
 // @ts-ignore
-import ListEmpty from './js/utilities/ListEmpty';
+import ListEmpty from "./js/utilities/ListEmpty";
 // @ts-ignore
-import OptionBuild, {formatSingleOptions, optionsList} from './js/utilities/OptionBuild';
+import OptionBuild, {
+  // @ts-ignore
+  optionsList,
+  // @ts-ignore
+  formatSingleOptions
+} from "./js/utilities/OptionBuild";
 // @ts-ignore
-import RelatedInputs from './js/utilities/RelatedInputs';
+import RelatedInputs from "./js/utilities/RelatedInputs";
 
 // Hooks
 // @ts-ignore
-import useValidationRequire from './js/hooks/useValidationRequire';
+import useValidationRequire from "./js/hooks/useValidationRequire";
 // @ts-ignore
-import useAddToArray from './js/hooks/useAddToArray';
+import useAddToArray from "./js/hooks/useAddToArray";
 // @ts-ignore
-import useMultiSelect from './js/hooks/useMultiSelect';
+import useMultiSelect from "./js/hooks/useMultiSelect";
 // @ts-ignore
-import useValidationAtLeast from './js/hooks/useValidationAtLeast';
+import useValidationAtLeast from "./js/hooks/useValidationAtLeast";
 // @ts-ignore
-import useValidationEmail from './js/hooks/useValidationEmail';
+import useValidationEmail from "./js/hooks/useValidationEmail";
 // @ts-ignore
-import useValidationMinMax from './js/hooks/useValidationMinMax';
+import useValidationMinMax from "./js/hooks/useValidationMinMax";
 // @ts-ignore
-import useValueSet from './js/hooks/useValueSet';
+import useValueSet from "./js/hooks/useValueSet";
 
 // Modals
 // @ts-ignore
-import DeleteModal from './js/FormView/modals/DeleteModal';
+import DeleteModal from "./js/FormView/modals/DeleteModal";
 // @ts-ignore
-import Modal from './js/FormView/modals/Modal';
+import Modal from "./js/FormView/modals/Modal";
 // @ts-ignore
 
 export default FormBuilder;
