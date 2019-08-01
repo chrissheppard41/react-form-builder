@@ -77,4 +77,4 @@ You can also, in the panel, add validation if they are enabled in the component.
 - Min/max for text types. Meaning:
  
    - if it's a number inputted the min max you set will dictate the value
-   - More to come
+   - if a string it's the length of the string
