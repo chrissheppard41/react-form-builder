@@ -32,6 +32,12 @@ This is the callback function that the data of the end form gets submitted to.
 `cancelFunc` - (Optional) Function or Boolean:\
 This is the callback function that the any cancel operation you want to perform gets sent to. It's a function to do an operation or a boolean (false) to disable. This is an optional call. You don't need to include it.
 
+`action` - (Optional) String:\
+This allows you to specify a action url path as a backup if you wish.
+
+`method` - (Optional) String:\
+This allows you to put in a method call, GET or POST
+
  Note: one thing you will need to be made aware is when you put it into edit mode. 
 
 ```

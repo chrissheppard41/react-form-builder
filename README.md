@@ -27,6 +27,8 @@ Then to use put this anywhere on your dom (remember if you have editMore to true
   formData={}
   submitFunc={}
   cancelFunc={}
+  action={}
+  method={}
 />
 ```
 
@@ -45,6 +47,12 @@ This is the callback function that the data of the end form gets submitted to.
 
 `cancelFunc` - (Optional) Function or Boolean:\
 This is the callback function that the any cancel operation you want to perform gets sent to. It's a function to do an operation or a boolean (false) to disable. This is an optional call. You don't need to include it.
+
+`action` - (Optional) String:\
+This allows you to specify a action url path as a backup if you wish.
+
+`method` - (Optional) String:\
+This allows you to put in a method call, GET or POST
 
 Other useful information regarding how to use go here: [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/HowToUse/README.md).
 
@@ -124,8 +132,6 @@ This section is the JSON you'll need to pass into your `FormBuilder` `formData` 
 #### Live view
 
 When you drag a component into the drop zone it will render what it will look like in the live view. This will allow you to test out your forms at any time, test the way it looks, the validation, the submit functionality etc. before so you can test out the features first.
-
-
 
 ## How to create input components
 
