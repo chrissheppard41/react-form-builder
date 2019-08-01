@@ -65,6 +65,68 @@ import HTML5Backend from "react-dnd-html5-backend";
 
 For react-dnd to work properly you need to include this. One thing about this is that you need to ensure this only excutes once else it will error. I put this in the `index.jsx/tsx`. an example of this can be located [here](https://github.com/chrissheppard41/react-form-builder/blob/master/src/index.tsx).
 
+## Cloning the project and create the json for your form
+
+To create your form the best thing to do is to clone the project into your projects folder:
+
+`git clone git@github.com:chrissheppard41/react-form-builder.git`
+
+CD into the form builder:
+
+`cd react-form-builder`
+
+Pull in the packages:
+
+`yarn install` or `npm i`
+
+Once done we can start up the project
+
+`yarn run start` or `npm run start`
+
+It should open in your favourite browser but if it doesn't, go here `http://localhost:3000`
+
+And that's it, you are now ready to create your form. This is the best way to create the json for the form. 
+
+### What do I see when I start the project
+
+This screen that you see can be broken down into 2 parts, the form creation view and the form live view.
+
+#### Form creation view
+
+This is 2 column section, it has components on the left which you can drag into the drop zones on the right.
+
+There are default components you can use at the beginning and this can be expanded by you by passing in [custom components](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewComponent/README.md).
+
+- Text input component - Will output an input of type text (can be updated to email, number or file)
+- Hr component - Will output a `< hr / >` tag
+- General elements component - Will output general HTML elements like H1-6, paragraphs, spans etc
+- Select input component - Will output a select option list (can be upgraded to multiple select)
+- Radio/Checkbox input component - Will output radio or checkboxes
+- Textarea component - will output a textarea
+
+When you drag one of this components into the dropzone 2 things will happen:
+
+- The ability to edit (a panel will open which will allow you to customize your input) and delete this component
+- The ability to drag a child input (with the exclusion of hr components) into a sub paragraph. This means that all children will remain hidden until the parent component has an input value. This allows you to hide inputs to be displayed later.
+
+##### Deleting components from the drop zone
+
+Simple operation, once dragged you can delete any components. A modal will pop up when you click delete, it will outline what components will be deleted, please note that if you delete a parent component the children will also be removed.
+
+##### Edit and panels
+
+The operation to allow you to customize the inputs. When you click edit a panel will appear, this panel will allow you to tweak the input by assigning name, class names, parent class names, *validation*. Explore these panels in more detail, it's quite self explanatory.
+
+##### Copy to clipboard
+
+This section is the JSON you'll need to pass into your `FormBuilder` `formData` component outlined above. You can copy it at any time by pressing the `Copy to clipboard`, pass it into the formData. Test out your functionality on your live form.
+
+#### Live view
+
+When you drag a component into the drop zone it will render what it will look like in the live view. This will allow you to test out your forms at any time, test the way it looks, the validation, the submit functionality etc. before so you can test out the features first.
+
+
+
 ## How to create input components
 
 To create custom inputs and to add them in go [here](https://github.com/chrissheppard41/react-form-builder/blob/master/examples/NewComponent/README.md).
