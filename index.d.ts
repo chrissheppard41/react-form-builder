@@ -3,11 +3,11 @@
 // Definitions by: Chris Sheppard <https://github.com/chrissheppard41>
 
 interface FormProp {
-  action: string;
+  action?: string;
   editMode: boolean;
   customComponents: ComponentListType;
   formData: inputTypes;
-  method: string;
+  method?: string;
   submitFunc: (data: formSubmitType, error: boolean) => void;
   cancelFunc?: (e: any) => void | boolean;
 }
