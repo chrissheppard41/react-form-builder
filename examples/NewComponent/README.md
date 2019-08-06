@@ -157,7 +157,7 @@ export default TogglePanel;
 3. Create the input
 
 ```
-import {Div, Label, Input, useStateValue} from "react-form-builder";
+import {Div, Label, Input, useStateValue, inputType} from "react-form-builder";
 
 const Toggle = ({
   label,
