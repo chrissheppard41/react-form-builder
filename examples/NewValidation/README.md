@@ -147,7 +147,7 @@ import useValidationRequire from 'useValidationRequire';
 const { actions }: any = useStateValue();
 const [val, setVal] = useState(inputValue);
   
-const { requiredMessage, require } = useValidationRequire(
+const { selectedMessage, selected } = useValidationSelect(
     validation,
     val,
     id,
