@@ -141,6 +141,7 @@ Now we need to add this to our form view input. Opening the `Toggle.tsx` file cr
 ```
 Import the hook above
 import {...ValidationRules...} from "react-form-builder-cs";
+import useValidationRequire from 'useValidationRequire';
 
 ...
 const { actions }: any = useStateValue();
