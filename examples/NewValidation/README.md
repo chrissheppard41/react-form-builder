@@ -19,7 +19,7 @@ const useValidationSelect = (
   addValidation: (id: string, validationRule: string) => void,
   removeValidation: (id: string, validationRule: string) => void
 ): ValidationHook => {
-  let selecteddMessage = "";
+  let selectedMessage = "";
   let selected = false;
 
   if (validation && validation.required) {
@@ -27,7 +27,7 @@ const useValidationSelect = (
 
     if (selected) {
       if (!value) {
-        requiredMessage = validation.selected.message;
+        selectedMessage = validation.selected.message;
         addValidation(id, "selected");
       } else {
         removeValidation(id, "selected");
