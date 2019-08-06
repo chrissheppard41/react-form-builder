@@ -121,7 +121,8 @@ We import the `Validation` and everything else outlines how it's going to be dis
 We need to now display this into the panel. Lets extend the toggle component. Underneath the inputs
 
 ```
-import the Selected validation file above
+//import the Selected validation file above like this:
+import Selected from "./Selected";
 
 ...
 
