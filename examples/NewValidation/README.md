@@ -74,7 +74,7 @@ const Selected = ({ validation }: Props): any => {
   const selected: validation = validation.selected
     ? validation.selected
     : { enabled: false, message: "" };
-  const [enabled, setEnabled] = useState(required.enabled);
+  const [enabled, setEnabled] = useState(selected.enabled);
 
   return (
     <Validation
@@ -141,7 +141,7 @@ Now we need to add this to our form view input. Opening the `Toggle.tsx` file cr
 ```
 Import the hook above
 import {...ValidationRules...} from "react-form-builder-cs";
-import useValidationRequire from 'useValidationRequire';
+import useValidationRequire from './useValidationRequire';
 
 ...
 const { actions }: any = useStateValue();
