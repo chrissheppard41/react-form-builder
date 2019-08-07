@@ -188,6 +188,7 @@ import { ValidationIssues, ValidationType } from "./js/types/validationType";
 // Context
 // @ts-ignore
 import useActions from "./js/context/useActions";
+import FormProvider, {FormContext, useStateValue} from "./js/context/FormContext";
 
 // Drag, panels etc
 // @ts-ignore
@@ -208,6 +209,7 @@ import Email from "./js/FormView/container/validation/rules/Email";
 import Number from "./js/FormView/container/validation/rules/Number";
 // @ts-ignore
 import Required from "./js/FormView/container/validation/rules/Required";
+import ValidationRules from "./js/formBuilder/ValidationRules";
 
 // Constants
 // @ts-ignore
@@ -313,7 +315,11 @@ export {
   Input,
   Label,
   Selects,
-  Textareas
+  Textareas,
+  FormProvider,
+  FormContext,
+  useStateValue,
+  ValidationRules
 };
 export type ComponentNameType = ComponentNameType;
 export type ComponentType = ComponentType;
