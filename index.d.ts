@@ -2,6 +2,7 @@
 // Project: https://github.com/chrissheppard41/react-form-builder
 // Definitions by: Chris Sheppard <https://github.com/chrissheppard41>
 
+/*
 interface FormProp {
   action?: string;
   editMode: boolean;
@@ -23,3 +24,6 @@ declare function FormBuilder({
 }: FormProp): any;
 declare namespace FormBuilder {}
 export = FormBuilder;
+*/
+
+import FormBuilder from "./src/js/FormBuilder";

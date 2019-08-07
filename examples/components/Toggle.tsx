@@ -1,4 +1,4 @@
-import {Div, Label, Input, useStateValue, inputType, ValidationRules} from "react-form-builder";
+import {Div, Label, Input, useStateValue, inputType, ValidationRules} from "react-form-builder-cs";
 import useValidationSelect from './useValidationSelect';
 import React, {useState} from "react";
 
