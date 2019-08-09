@@ -132,6 +132,13 @@ const TogglePanel = ({ panel, panelData }: Props): any => {
             inputValue={panelData.inputName}
           />
           <Text
+            label="Enter input value"
+            type="text"
+            inputClassName="toggle"
+            inputName="inputValue"
+            inputValue={panelData.inputValue}
+          />
+          <Text
             label="Enter parent class name"
             type="text"
             inputClassName="toggle"
@@ -154,10 +161,28 @@ const TogglePanel = ({ panel, panelData }: Props): any => {
 export default TogglePanel;
 ```
 
+These values will be used to set the props of the input that is dragged in. Taking a look at this:
+
+```
+<Text
+    label="Enter parent class name"
+    type="text"
+    inputClassName="toggle"
+    inputName="parentClassName"
+    inputValue={panelData.parentClassName}
+/>
+```
+
+- Label is the text that appears next to the input
+- Type is the input type eg text, checkbox etc
+- inputClassName is what we use to identify all the inputs for this panel. Keep them all the same
+- inputName is the name of the component
+- inputValue is the returned value from the panel data. This should be the same as the name of the component shown above, but with `panelData.<name>`. 
+
 3. Create the input
 
 ```
-import {Div, Label, Input, useStateValue} from "react-form-builder";
+import {Div, Label, Input, useStateValue, inputType} from "react-form-builder";
 
 const Toggle = ({
   label,
@@ -169,7 +194,7 @@ const Toggle = ({
   disableChild
 }: inputType) => {
   const { actions }: any = useStateValue();
-  const [val, setVal] = useState(inputValue);
+  const [val, setVal] = useState(false);
   if (!disableChild) {
     actions.enableChildren(id, val);
   }
@@ -184,8 +209,8 @@ const Toggle = ({
         name={inputName}
         className={`${inputClassName}`}
         id={id}
-        value={val}
-        onChange={e => setVal(e.target.value)}
+        value={inputValue}
+        onChange={e => setVal(!val)}
       />
     </Div>
   );

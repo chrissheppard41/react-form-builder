@@ -1,4 +1,4 @@
-interface IndiviualType {
+export interface IndiviualType {
   [key: string]: string;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-cs",
-  "version": "0.8.1",
+  "version": "1.0.0",
   "private": false,
   "dependencies": {
     "@types/node": "12.0.8",
@@ -32,7 +32,7 @@
   },
   "scripts": {
     "clean": "rimraf lib",
-    "build": "tsc -p ./src/tsconfig.json",
+    "build": "tsc -p ./src/tsconfig.json --declaration",
     "start": "react-scripts start",
     "build:old": "react-scripts build",
     "test": "react-scripts test --env=node",
@@ -60,7 +60,7 @@
   "license": "MIT",
   "author": "Chris Sheppard",
   "main": "lib/build.js",
-  "types": "index.d.ts",
+  "types": "lib/build.d.ts",
   "husky": {
     "hooks": {
       "pre-push": "npm run test:single"
