@@ -3,16 +3,16 @@ import useValidationSelect from './useValidationSelect';
 import React, {useState} from "react";
 
 const Toggle = ({
-                  label,
-                  id,
-                  inputName,
-                  inputValue,
-                  inputClassName,
-                  validation,
-                  disableChild
-                }: inputType) => {
+  label,
+  id,
+  inputName,
+  inputValue,
+  inputClassName,
+  validation,
+  disableChild
+}: inputType) => {
   const { actions }: any = useStateValue();
-  const [val, setVal] = useState(inputValue);
+  const [val, setVal] = useState(false);
   const { selectedMessage, selected } = useValidationSelect(
     validation,
     val,
@@ -34,8 +34,8 @@ const Toggle = ({
         name={inputName}
         className={`${inputClassName} ${selected}`}
         id={id}
-        value={val}
-        onChange={e => setVal(e.target.value)}
+        value={inputValue}
+        onChange={() => setVal(!val)}
       />
       <ValidationRules
         validation={[selectedMessage]}

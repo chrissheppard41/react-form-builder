@@ -1,5 +1,5 @@
 import React from "react";
-import {Panel, Text, useStateValue, panelData} from "react-form-builder";
+import {Panel, Text, useStateValue, panelData} from "react-form-builder-cs";
 import Selected from "./Selected";
 
 interface Props {
@@ -33,6 +33,13 @@ const TogglePanel = ({ panel, panelData }: Props): any => {
             inputClassName="toggle"
             inputName="inputName"
             inputValue={panelData.inputName}
+          />
+          <Text
+            label="Enter input value"
+            type="text"
+            inputClassName="toggle"
+            inputName="inputValue"
+            inputValue={panelData.inputValue}
           />
           <Text
             label="Enter parent class name"

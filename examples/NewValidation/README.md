@@ -14,7 +14,7 @@ interface ValidationHook {
 
 const useValidationSelect = (
   validation: any,
-  value: string,
+  value: boolean,
   id: string,
   addValidation: (id: string, validationRule: string) => void,
   removeValidation: (id: string, validationRule: string) => void
@@ -22,7 +22,7 @@ const useValidationSelect = (
   let selectedMessage = "";
   let selected = false;
 
-  if (validation && validation.required) {
+  if (validation && validation.selected) {
     selected = validation.selected.enabled;
 
     if (selected) {
@@ -146,7 +146,7 @@ import useValidationRequire from './useValidationRequire';
 
 ...
 const { actions }: any = useStateValue();
-const [val, setVal] = useState(inputValue);
+const [val, setVal] = useState(false);
   
 const { selectedMessage, selected } = useValidationSelect(
     validation,
